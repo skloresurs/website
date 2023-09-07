@@ -1,0 +1,119 @@
+---
+import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
+import Layout from "../../../layouts/Layout.astro";
+import Block from "../../../components/table/Block.astro";
+import ButtonWithImage from "../../../components/table/ButtonWithImage.astro";
+import getLocaledURL from "../../../utils/localedURL.ts";
+import { Prepr } from "src/utils/prepr";
+import GetServices from "src/queries/get-services";
+
+changeLanguage("en");
+
+setDefaultNamespace("services");
+const category = Astro.params.category;
+const response = await Prepr(GetServices(i18n.language));
+const { data } = await response.json();
+const services = data.Services.items.filter((e: any) => e.category === category);
+---
+
+<Layout title={`${t(`${category}.title`)} | ${t('title')}`}>
+  <h1 class='hidden'>{`${t(`${category}.title`)} | ${t('title')} | ${t('common:title.short')}`}</h1>
+  <section
+    class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden bg-[length:100%_auto] md:bg-none'
+  >
+    <div
+      class='absolute left-0 top-0 grid h-full w-[100vw] grid-cols-2 md:grid-cols-6 lg:grid-cols-8'
+    >
+      <Block s='lg' />
+      <ButtonWithImage
+        path={getLocaledURL('/')}
+        alt='Склоресурс'
+        title='Склоресурс'
+        src='/svgs/logo-ua.svg'
+      />
+      <Block />
+      <a
+        href={getLocaledURL('/catalog/facades')}
+        title={t(`facades.title`)}
+        class='flex aspect-square flex-col items-center justify-center gap-2 p-5 text-center text-2xl text-white duration-300 hover:bg-black/50 md:text-sm lg:text-base xl:text-lg 2xl:text-xl'
+        ><img
+          src='/icons/catalog/facades.png'
+          alt={t(`facades.title`)}
+          title={t(`facades.title`)}
+          width='240'
+          height='240'
+        /><p>
+          {t(`facades.title`)}
+        </p></a
+      >
+      <a
+        href={getLocaledURL('/catalog/inside')}
+        title={t(`inside.title`)}
+        class='flex aspect-square flex-col items-center justify-center gap-2 p-5 text-center text-2xl text-white duration-300 hover:bg-black/50 md:text-sm lg:text-base xl:text-lg 2xl:text-xl'
+        ><img
+          src='/icons/catalog/inside.png'
+          alt={t(`inside.title`)}
+          title={t(`inside.title`)}
+          width='240'
+          height='240'
+        /><p>
+          {t(`inside.title`)}
+        </p></a
+      >
+      <a
+        href={getLocaledURL('/catalog/outside')}
+        title={t(`outside.title`)}
+        class='flex aspect-square flex-col items-center justify-center gap-2 p-5 text-center text-2xl text-white duration-300 hover:bg-black/50 md:text-sm lg:text-base xl:text-lg 2xl:text-xl'
+        ><img
+          src='/icons/catalog/outside.png'
+          alt={t(`outside.title`)}
+          title={t(`outside.title`)}
+          width='240'
+          height='240'
+        /><p>{t(`outside.title`)}</p></a
+      >
+      <a
+        href={getLocaledURL('/catalog/safe')}
+        title={t(`safe.title`)}
+        class='flex aspect-square flex-col items-center justify-center gap-2 p-5 text-center text-2xl text-white duration-300 hover:bg-black/50 md:text-sm lg:text-base xl:text-lg 2xl:text-xl'
+        ><img
+          src='/icons/catalog/safe.png'
+          alt={t(`safe.title`)}
+          title={t(`safe.title`)}
+          width='240'
+          height='240'
+        /><p>
+          {t(`safe.title`)}
+        </p></a
+      >
+      <Block s='md' />
+      <Block s='lg' />
+      <div class='col-span-2 bg-white px-12 py-8 leading-8 md:col-span-6'>
+        <h2 class='text-center text-3xl'>{t(`${category}.title`)}</h2>
+        <p>{t(`${category}.description`)}</p>
+        <div class='mt-5 flex flex-col gap-3'>
+          {
+            services.map((e: any) => (
+              <div class='flex flex-col items-center gap-3 sm:flex-row md:flex-row'>
+                <img
+                  src={e.image.url}
+                  alt={e.title}
+                  title={e.title}
+                  width='320'
+                  height='320'
+                  class='sm:min-w-[120px]'
+                />
+                <div>
+                  <h3 class='my-3 text-3xl font-semibold'>
+                    {e.title}
+                  </h3>
+                  <p>{e.body}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,142 @@
+---
+import i18n, { changeLanguage, setDefaultNamespace, t } from "i18next";
+import Layout from "../../layouts/Layout.astro";
+import Block from "../../components/table/Block.astro";
+import ButtonWithImage from "../../components/table/ButtonWithImage.astro";
+import generatelocaledURL from "src/utils/localedURL";
+import { Prepr } from "src/utils/prepr";
+import GetPartners from "src/queries/get-partners";
+
+changeLanguage("en");
+
+setDefaultNamespace("about");
+const cerfiticates = [
+    "certificate1",
+    "certificate2",
+    "certificate3",
+    "certificate4",
+    "certificate5",
+    "certificate6",
+];
+const targetList: any[] = t("targethero.content.list", { returnObjects: true }) ?? [];
+const infoData: any[] = t("info", { returnObjects: true }) ?? [];
+const featuresData: any[] = t("features.data", { returnObjects: true }) ?? [];
+const response = await Prepr(GetPartners(i18n.language));
+const { data } = await response.json();
+const partners = data.Partners.items;
+---
+
+<Layout title={t('title')}>
+  <section
+    class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden bg-sky bg-[length:100%_auto] md:bg-none'
+  >
+    <div
+      class='absolute left-0 top-0 grid h-full w-[100vw] grid-cols-2 md:grid-cols-6 lg:grid-cols-8'
+    >
+      <Block s='lg' />
+      <ButtonWithImage path={generatelocaledURL('/')} alt='Склоресурс' title='Склоресурс' src='/svgs/logo-ua.svg' />
+      <Block />
+      <Block s='md' />
+      <Block s='md' />
+      <Block s='md' />
+      <Block s='md' />
+      <Block s='md' />
+      <Block s='lg' />
+      <div class='col-span-6 bg-white px-12 py-8 leading-8'>
+        <h1 class='mb-3 text-center text-3xl font-bold md:text-4xl lg:text-5xl'>{t('title')}</h1>
+        <p>
+          <span class='text-2xl'>{t('mainhero.title')}</span>{t('mainhero.content')}
+        </p>
+        <p class='my-5'>
+          <span class='font-semibold'>{t('targethero.title')}</span><br />
+          {t('targethero.content.p1')}<br />
+          {t('targethero.content.p2')}
+        </p>
+        <p class='mt-5'>
+          <span class='font-semibold'>{t('targethero.content.p3.default')}</span>: <em
+            >{t('targethero.content.p3.italic')}</em
+          >
+        </p>
+        <ul class='list-disc pl-5'>
+          {targetList.map((e) => <li>{e}</li>)}
+        </ul>
+        <h2 class='mt-5 text-center text-2xl font-semibold'>
+          {t('certificate.title')}
+        </h2>
+        <div class='grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4'>
+          {
+            cerfiticates.map((e) => (
+              <a href={`/images/certificates/${e}.png`} target='_blank'>
+                <img src={`/images/certificates/${e}.png`} alt={e} width="1000" height="1400" />
+              </a>
+            ))
+          }
+        </div>
+        <div class='mt-10 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3'>
+          {
+            infoData.map((e) => (
+              <div class='flex flex-col justify-center rounded-sm border-2 border-cyan-800 px-5 py-3 text-center'>
+                <img src={e.icon} alt={e.alt} width='180px' title={e.alt} class='mx-auto' width="300" height="150" />
+                {e.main.pre !== null && (
+                  <div class='mt-5 text-lg font-semibold leading-none'>
+                    <Fragment set:html={e.main.pre} />
+                  </div>
+                )}
+                <div class='py-2 text-4xl font-bold leading-[0.95] text-cyan-600 md:pt-0 md:text-6xl xl:text-7xl'>
+                  <Fragment set:html={e.main.number} />
+                </div>
+                {e.main.post !== null && (
+                  <div class='text-lg font-semibold leading-none'>
+                    <Fragment set:html={e.main.post} />
+                  </div>
+                )}
+                {e.after !== null && (
+                  <div class='mt-8 text-sm leading-none'>
+                    <Fragment set:html={e.after} />
+                  </div>
+                )}
+              </div>
+            ))
+          }
+        </div>
+        <h2 class='mb-4 mt-10 text-center text-2xl font-semibold'>{t('features.h2')}</h2>
+        <div class='columns-1 gap-6 md:columns-2 xl:columns-3'>
+          {
+            featuresData.map((e) => (
+              <div class='mb-4 flex break-inside-avoid items-start gap-6'>
+                <div class='shrink-0'>
+                  <img
+                    src={`/icons/fact/${e.icon}.svg`}
+                    alt={e.icon}
+                    width='45px'
+                    height='45px'
+                    title={e.icon}
+                  />
+                </div>
+                <div class='block'>
+                  <Fragment set:html={e.content} class='leading-relaxed text-slate-500' />
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <h2 class='mb-4 mt-10 text-center text-2xl font-semibold'>{t('partners.h2')}</h2>
+        <div
+          class='mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'
+        >
+          {
+            partners.map((e: any) => (
+              <a
+                class='flex aspect-auto items-center justify-center p-1'
+                href={e.url}
+                target='_blank'
+              >
+                <img src={e.logo.url} alt={e.title} title={e.title} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

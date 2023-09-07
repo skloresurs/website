@@ -1,0 +1,30 @@
+---
+import Block from '../components/table/Block.astro';
+import ButtonWithImage from '../components/table/ButtonWithImage.astro';
+import getLocaledURL from '../utils/localedURL.ts';
+import { t, setDefaultNamespace } from 'i18next';
+
+setDefaultNamespace('common');
+---
+
+<section
+  class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden bg-sky bg-[length:100%_auto] md:overflow-hidden md:bg-none'
+>
+  <div
+    class='absolute left-0 top-0 grid h-full w-[100vw] grid-cols-2 md:grid-cols-6 lg:grid-cols-8'
+  >
+    <Block s='lg' />
+    <ButtonWithImage
+      path={getLocaledURL('/')}
+      alt={t('title.short')}
+      title={t('title.short')}
+      src='/svgs/logo-ua.svg'
+    />
+    <slot />
+    {
+      Array(30)
+        .fill(1)
+        .map(() => <Block s='md' />)
+    }
+  </div>
+</section>

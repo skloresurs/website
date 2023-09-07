@@ -1,0 +1,50 @@
+---
+import i18n, { t, changeLanguage } from "i18next";
+import Layout from "../../layouts/Layout.astro";
+import Block from "../../components/table/Block.astro";
+import ButtonWithImage from "../../components/table/ButtonWithImage.astro";
+import getLocaledURL from "../../utils/localedURL.ts";
+import { Prepr } from "../../utils/prepr";
+import GetPosts from "../../queries/get-posts";
+
+changeLanguage("uk");
+
+const response = await Prepr(GetPosts(i18n.language));
+const { data } = await response.json();
+const posts = data.Posts.items;
+---
+
+<Layout title={t('posts')}>
+  <h1 class='hidden'>{`${t('posts')}  |  ${t('common:title.short')}`}</h1>
+  <section class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden'>
+    <div
+      class='absolute left-0 top-0 grid h-full w-[100vw] grid-cols-2 md:grid-cols-6 lg:grid-cols-8'
+    >
+      <Block s='md' />
+      <ButtonWithImage
+        path={getLocaledURL('/')}
+        alt={t('title')}
+        title={t('title')}
+        src='/svgs/logo-ua.svg'
+      />
+      {
+        posts.map((e: any) => (
+          <a class='group relative col-span-2 row-span-2 aspect-square' href={getLocaledURL(`/posts/${e._slug}`)}>
+            <div class='absolute inset-0 flex flex-col object-cover duration-300'>
+              <img
+                src={e.image.url ?? 'https://placehold.co/400'}
+                alt={e.title}
+                class='opacity-100 duration-300 group-hover:opacity-75'
+                width="640"
+                height="640"
+              />
+              <div class='absolute inset-x-0 bottom-0 bg-white px-2 pb-3 text-3xl font-semibold'>
+                {e.title}
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

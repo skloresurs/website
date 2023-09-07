@@ -1,0 +1,52 @@
+---
+import i18next, { t, setDefaultNamespace } from 'i18next';
+const { title } = Astro.props;
+const {pathname} = Astro.url;
+
+setDefaultNamespace('common');
+const fTitle = title !== undefined && title !== '' ? title + ' | ' + t('title.short') : t('title.full');
+---
+
+<html lang={i18next.language}>
+  <head>
+    <!-- Base tags -->
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- Base SEO -->
+    <title>{fTitle}</title>
+    <meta name="description" content={t('meta.description')} />
+    <meta name="keywords" content={t('meta.tags')} />
+    <meta name="author" content="Склоресурс">
+    <meta name="copyright" content="Склоресурс">
+    <meta name="language" content={i18next.language}>
+
+    <!-- GEO -->
+    <meta name="geo.placename" content="вулиця Семидубська, 105, Дубно, Рівненська область, 35600">
+    <meta name="geo.position" content="50.393393898987426, 25.77552926677272">
+    <meta name="geo.region" content="Рівненська область">
+
+    <!-- OpenGraph tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/logo.png">
+    <meta property="og:title" content={fTitle}>
+    <meta property="og:description" content={t('meta.description')}>
+    <meta property="og:url" content={`https://skloresurs.com${pathname}`}>
+
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content={fTitle}>
+    <meta name="twitter:description" content={t('meta.description')}/>
+    <meta name="twitter:image" content="/images/logo.png">
+
+    <!-- Other tags -->
+    <meta name="robots" content="index, follow">
+    <meta name='generator' content={Astro.generator} />
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    <link rel="canonical" href={`https://skloresurs.com${pathname}`}/>
+  </head>
+  <body class='h-screen w-full bg-[#05151d]'>
+    <slot />
+  </body>
+</html>

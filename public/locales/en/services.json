@@ -1,0 +1,19 @@
+{
+    "title": "Services catalog",
+    "facades": {
+        "title": "Facade glazing",
+        "description": "One of the priority directions of the company 'Sloresurs' is the architectural glazing of the facades. Our production specializes in the manufacture of double -glazed windows of complex geometric shapes and structures. The technical equipment of the workshop allows us to produce single and double-glazed windows of different thickness using not only ordinary float glass, but also energy-saving (with a soft coating), tinted, reflex, tempered glass, as well as triplex."
+    },
+    "inside": {
+        "title": "Interior and furniture",
+        "description": "In modern architecture, glass is used not only for facades. The peculiarity of modern homes is the use of glass for roofs, floors, interior doors, walls, bathrooms and furniture."
+    },
+    "outside": {
+        "title": "External elements of architecture",
+        "description": "In modern architecture, glass is used not only for facades. The peculiarity of the modern house is the use of glass for roofs, floors, interior doors, walls, bathrooms and furniture."
+    },
+    "safe": {
+        "title": "Safe glass",
+        "description": "Glass is a modern material with ancient traditions and a great future, the glass is resistant to the main types of acids and alkalis, does not dissolve in water and does not corrode, does not change color, does not turn yellow, does not deteriorate. The use of glass elements allows you to create a sense of a spacious and light room in which a lot of air. Winter gardens, the use of which allows you to visually increase the area of the room, as well as glazed surfaces that create a sense of free space, are increasingly found in modern structures."
+    }
+}

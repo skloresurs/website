@@ -1,0 +1,100 @@
+---
+import i18next, { t, changeLanguage, setDefaultNamespace } from "i18next";
+import Layout from "../layouts/Layout.astro";
+import Block from "../components/table/Block.astro";
+import Button from "../components/table/Button.astro";
+import ButtonWithImage from "../components/table/ButtonWithImage.astro";
+import Table from "../layouts/Table.astro";
+import generatelocaledURL from "../utils/localedURL.ts";
+
+changeLanguage("uk");
+
+setDefaultNamespace("home");
+---
+
+
+<Layout>
+  <h1 class="hidden">{t('common:title.full')}</h1>
+  <div class='absolute left-0 top-0 -z-50 hidden h-[100vh] w-full overflow-hidden md:block'>
+    {
+      Array(2)
+        .fill(1)
+        .map(() => (
+          <video loop muted autoplay class='hidden max-h-none w-full max-w-none lg:block'>
+            <source src='/videos/background/sky_1280.mp4' type='video/mp4' />
+          </video>
+        ))
+    }
+    {
+      Array(2)
+        .fill(1)
+        .map(() => (
+          <video
+            loop
+            muted
+            autoplay
+            class='ml-[-16.6%] block max-h-none w-[133%] max-w-none lg:hidden'
+          >
+            <source src='/videos/background/sky_square.mp4' type='video/mp4' />
+          </video>
+        ))
+    }
+  </div>
+  <Table>
+    <ButtonWithImage
+      path='https://gualos.com/'
+      alt='Gualos'
+      title='Gualos'
+      src='/images/logo-gualos.png'
+    />
+    <Block s='md' />
+    <Block s='md' />
+    <div
+      class='flex aspect-square flex-col items-center justify-center gap-1 bg-black/75 p-2 text-white lg:text-base xl:text-lg 2xl:text-xl'
+    >
+      <p>{t('slogan.a')}</p>
+      <p>{t('slogan.b')}</p>
+      <p>{t('slogan.c')}</p>
+    </div>
+    {
+      i18next.language === 'uk' ? (
+        <a
+          href='/en'
+          class='flex aspect-square flex-col items-center justify-center gap-1 bg-black/75 p-2 text-white lg:text-base xl:text-lg 2xl:text-xl'
+        >
+          EN
+        </a>
+      ) : (
+        <a
+          href='/'
+          class='flex aspect-square flex-col items-center justify-center gap-1 bg-black/75 p-2 text-white lg:text-base xl:text-lg 2xl:text-xl'
+        >
+          UA
+        </a>
+      )
+    }
+    <Block s='lg' />
+    <Block s='lg' />
+    <Block s='md' />
+    <Button path={generatelocaledURL('/catalog/facades')} alt={t('service')} title={t('service')} />
+    <Button path={generatelocaledURL('/production')} title={t('production')} />
+    <Button path={generatelocaledURL('/posts')} alt={t('posts')} title={t('posts')} />
+    <Button path={generatelocaledURL('/about')} alt={t('about')} title={t('about')} />
+    <Block s='md' />
+    <Block s='lg' />
+    <Block s='lg' />
+    <Block s='md' />
+    <Button path={generatelocaledURL('/projects')} alt={t('projects')} title={t('projects')} />
+    <Button path={generatelocaledURL('/contacts')} alt={t('contacts')} title={t('contacts')} />
+    <Button
+      path='https://drive.google.com/file/d/1vVekRWUyhJkb9wlAj7WfZ-MAGZTeE5Dg/view'
+      alt={t('handbook')}
+      title={t('handbook')}
+    />
+    <Button
+      path={generatelocaledURL('/reportings')}
+      alt={t('reportings')}
+      title={t('reportings')}
+    />
+  </Table>
+</Layout>

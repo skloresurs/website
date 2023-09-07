@@ -1,0 +1,42 @@
+---
+import { t, changeLanguage, setDefaultNamespace } from "i18next";
+import Layout from "../layouts/Layout.astro";
+import Block from "../components/table/Block.astro";
+import ButtonWithImage from "../components/table/ButtonWithImage.astro";
+import ProductionFullScreen from "src/components/ProductionFullScreen";
+import generatelocaledURL from "src/utils/localedURL";
+
+changeLanguage("uk");
+
+setDefaultNamespace("production");
+const data: Array<{
+    video: string;
+    title: string;
+    description: string;
+}> = t("data", { returnObjects: true });
+---
+
+<Layout title={t('productions')}>
+  <h1 class='hidden'>{`${t('productions')} | ${t('common:title.short')}`}</h1>
+  <ProductionFullScreen data={data} prevText={t('prev')} nextText={t('next')} client:load />
+  <section class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden md:bg-none'>
+    <div
+      class='absolute left-0 top-0 grid h-full w-[100vw] grid-cols-2 md:grid-cols-6 lg:grid-cols-8'
+    >
+      <Block s='lg' />
+      <ButtonWithImage
+        path={generatelocaledURL('/')}
+        alt='Склоресурс'
+        title='Склоресурс'
+        src='/svgs/logo-ua.svg'
+      />
+      <Block />
+      <Block s='md' />
+      <Block s='md' />
+      <Block s='md' />
+      <Block s='md' />
+      <Block s='md' />
+      <Block s='lg' />
+    </div>
+  </section>
+</Layout>

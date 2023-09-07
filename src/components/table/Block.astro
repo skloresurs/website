@@ -1,0 +1,8 @@
+---
+const { s } = Astro.props;
+
+const lgStyle = ' hidden lg:block';
+const mdStyle = ' hidden md:block';
+---
+
+<div class={'aspect-square' + (s === 'lg' ? lgStyle : s === 'md' ? mdStyle : '')}></div>

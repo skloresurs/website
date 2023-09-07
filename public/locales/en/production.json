@@ -1,0 +1,57 @@
+{
+    "title": "Production",
+    "prev": "Preview",
+    "next": "Next",
+    "data": [
+        {
+            "video": "/videos/production/1.mp4",
+            "title": "Laboratory",
+            "description": "A certified laboratory for determining the quality of raw materials, as well as finished products."
+        },
+        {
+            "video": "/videos/production/2.mp4",
+            "title": "Cutting",
+            "description": "Two lines of cutting glass 3200x6000mm LISEC with a soft coating function, a function of cutting glass cutting."
+        },
+        {
+            "video": "/videos/production/3.mp4",
+            "title": "Drafting",
+            "description": "Two lines of assembly of double-glazed windows up to 2700x5000mm with gas filling function, sealing polysulfide, silicone, polyurethane."
+        },
+        {
+            "video": "/videos/production/4.mp4",
+            "title": "Edge processing",
+            "description": "Blunting, polishing, grinding and parallel processing of glass edges on Deltaprogetti, Forel, Doubl Edger equipment."
+        },
+        {
+            "video": "/videos/production/5.mp4",
+            "title": "Hardening",
+            "description": "The quenching furnace for modern types of Nort Glass glass with the upper and lower glass convention up to 2440x5000 mm."
+        },
+        {
+            "video": "/videos/production/6.mp4",
+            "title": "Enamel",
+            "description": "Ino Jambocoter line for applying ceramic paint to glass up to 2200 mm wide with its subsequent drying. Silk screen printing table."
+        },
+        {
+            "video": "/videos/production/7.mp4",
+            "title": "Triplelexation",
+            "description": "Four Pujol furnaces for the maximum product size up to 2450x5000mm."
+        },
+        {
+            "video": "/videos/production/8.mp4",
+            "title": "Sandblasting",
+            "description": "Sand-cutting glass processing to provide personality products. Creating patterns on glass or mirror."
+        },
+        {
+            "video": "/videos/production/9.mp4",
+            "title": "Additional glass processing",
+            "description": "Drilling and cutting in the glass holes of different geometric shapes and diameters. Glass size up to 4000x2600 mm. Possibility of production of typical products with openings and cutouts."
+        },
+        {
+            "video": "/videos/production/10.mp4",
+            "title": "Heat Soak Test",
+            "description": "The test for the detection of nickel sulfide impurities avoids the unauthorized destruction of the hardened glass in the finished structure."
+        }
+    ]
+}

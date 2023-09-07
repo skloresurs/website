@@ -1,0 +1,26 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"]
+    },
+    "rootDir": "./"
+  },
+  "include": [
+    "./src/**/*",
+    "./.eslintrc.cjs",
+    "./tailwind.config.cjs",
+    "./astro.config.mjs",
+    "./astro-i18next.config.mjs",
+    "./tina/**/*"
+  ]
+}

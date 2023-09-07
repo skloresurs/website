@@ -1,0 +1,142 @@
+{
+  "title": "About Company",
+  "mainhero": {
+    "title": "Skloresurs",
+    "content": " - has 17 years of experience in the field of architectural and interior glazing. Based on modern technologies, we create high-quality products that meet all international quality standards. Cooperation with world leaders in the production of glass and equipment, professionalism and highly advanced systems make it possible to implement the most daring design and architectural solutions."
+  },
+  "targethero": {
+    "title": "Company mission",
+    "content": {
+      "p1": "Modern glass processing technologies for the realization of your dreams.",
+      "p2": "Look at the world with pleasure!",
+      "p3": {
+        "default": "Values:",
+        "italic": "Professionalism. Transparency. Innovation."
+      },
+      "list": [
+        "In the profession - professional.",
+        "In work - conscientious.",
+        "The team is cohesive.",
+        "With colleagues - honest.",
+        "In relationships - transparent.",
+        "To customers - with respect.",
+        "In society - socially responsible.",
+        "In technology - advanced.",
+        "The decisions are bold."
+      ]
+    }
+  },
+  "certificate": {
+    "title": "The quality of our company's products is tested by the German Institute IFT Rosenheim"
+  },
+  "features": {
+    "h2": "Skloresurs today",
+    "data": [
+      {
+        "content": "<strong>The internal quality control system</strong>",
+        "icon": "lab"
+      },
+      {
+        "content": "<strong>Glass cut with functions (Low-e and laminated glass) 4 lines:</strong><br>max 3210 mm x 6000 mm",
+        "icon": "cut"
+      },
+      {
+        "content": "<strong>Automated double glazing lines with gas filling functions:</strong><ul><li><strong>Structural double -glazed windows</strong></li><li><strong>1 -, 2 -, 3 -chamber double glazing up to 100 mm thick:</strong><br>max 3210 mm x 6000 mm</li><li><strong>Hunted double-glazed windows (1-, 2-chamber):</strong><br>max 3300 mm x 4500 mm</li></ul>",
+        "icon": "store"
+      },
+      {
+        "content": "<strong>Digital technology of full color printing with ceramic paint:</strong><br/>max 2800 mm x 6000 mm",
+        "icon": "obrobka"
+      },
+      {
+        "content": "<strong>Quenching all kinds of glass 5 lines:</strong><br>max 3300 mm x 6000 mm - hardening<br>max 3300 mm x 4500 mm - bend",
+        "icon": "armed"
+      },
+      {
+        "content": "<strong>HST (Heat Soak Test) - Nickel Sulfide Sulfide Detection Test</strong>",
+        "icon": "sulfid"
+      },
+      {
+        "content": "<strong>Glass enamel:</strong><br>max 2200 mm x 5000 mm",
+        "icon": "emaluvannia"
+      },
+      {
+        "content": "<strong>Trymphallexation (hardened, bent, smart, warm and others):</strong><br/>max 2900 mm x 5900 mm",
+        "icon": "laminat"
+      },
+      {
+        "content": "<strong>Sandblasting of glass (solid and decorative):</strong><br>max 2600 mm x 3000 mm",
+        "icon": "piskostruika"
+      },
+      {
+        "content": "<strong>All kinds of glass processing: <br> PE, GE, SE, BEM <br>- complex cutouts and holes (Water Jet):</strong><br>max 2500 mm x 5000 mm",
+        "icon": "additional-processing"
+      }
+    ]
+  },
+  "info": [
+    {
+      "icon": "/icons/info/locations.svg",
+      "alt": "locations",
+      "main": {
+        "pre": null,
+        "number": "2",
+        "post": "Production platform"
+      },
+      "after": "Dubno, Rivne region<br />m. Tlumach, Ivano-Frankivsk region"
+    },
+    {
+      "icon": "/icons/info/area.svg",
+      "alt": "area",
+      "main": {
+        "pre": "Total production area",
+        "number": "17 600м<sup>2</sup>",
+        "post": null
+      },
+      "after": null
+    },
+    {
+      "icon": "/icons/info/workers.svg",
+      "alt": "workers",
+      "main": {
+        "pre": "Over",
+        "number": "300",
+        "post": "Workers"
+      },
+      "after": null
+    },
+    {
+      "icon": "/icons/info/wares.svg",
+      "alt": "wares",
+      "main": {
+        "pre": "Over",
+        "number": "50 000м<sup>2</sup>",
+        "post": "products per month"
+      },
+      "after": null
+    },
+    {
+      "icon": "/icons/info/variants.svg",
+      "alt": "variants",
+      "main": {
+        "pre": "Over",
+        "number": "60",
+        "post": "species of glass in stock"
+      },
+      "after": null
+    },
+    {
+      "icon": "/icons/info/projects.svg",
+      "alt": "projects",
+      "main": {
+        "pre": null,
+        "number": "200",
+        "post": "projects every year"
+      },
+      "after": null
+    }
+  ],
+  "partners": {
+    "h2": "Our partners"
+  }
+}
