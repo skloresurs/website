@@ -14,7 +14,7 @@ const { data } = await response.json();
 const projects = data.Projects.items;
 ---
 
-<Layout title={t('projects')}>
+<Layout title={t('projects.title')} description={t('projects.description')}>
   <h1 class='hidden'>{`${t('prjects')} | ${t('common:title.short')}`}</h1>
   <section class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden'>
     <div
@@ -28,7 +28,7 @@ const projects = data.Projects.items;
         src='/svgs/logo-ua.svg'
       />
       {
-        projects.map((e:any) => (
+        projects.map((e: any) => (
           <a
             class='group relative col-span-2 row-span-2 aspect-square overflow-hidden'
             href={getLocaledURL(`/projects/${e._slug}`)}
@@ -38,8 +38,8 @@ const projects = data.Projects.items;
                 src={e.images ? e.images[0].url : 'https://placehold.co/400'}
                 alt={e.title}
                 class='opacity-100 duration-300 group-hover:scale-110 group-hover:opacity-75'
-                width="640"
-                height="640"
+                width='640'
+                height='640'
               />
               <div class='absolute inset-x-0 bottom-0 rounded-t-md bg-white px-2 py-3 text-3xl font-semibold'>
                 {e.title}

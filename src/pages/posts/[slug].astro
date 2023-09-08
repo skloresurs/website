@@ -14,7 +14,7 @@ const { data } = await response.json();
 const post = data.Post;
 ---
 
-<Layout title={post?.title ?? ''}>
+<Layout title={post?.title ?? ''} description={post?.description}>
   <section
     class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden bg-sky bg-[length:100%_auto] md:bg-none'
   >
@@ -41,16 +41,15 @@ const post = data.Post;
             <h1 class='mb-3 text-center text-3xl font-bold md:text-4xl lg:text-5xl'>
               {post.title}
             </h1>
-            {
-              post.body.map((e: any) => {
-                if (e.__typename === 'Text'){
-                  return <Fragment set:html={e.body}/>
-                }
-                else if (e.__typename === 'Assets'){
-                  return <img src={e.items[0].url} />
-                }
-              })
-            }
+            {post.body.map((e: any) => {
+              if (e.__typename === 'Text') {
+                return <Fragment set:html={e.body} />;
+              }
+              if (e.__typename === 'Assets') {
+                return <img src={e.items[0].url} />;
+              }
+              return null;
+            })}
           </div>
         )
       }

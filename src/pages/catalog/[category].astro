@@ -16,7 +16,7 @@ const { data } = await response.json();
 const services = data.Services.items.filter((e: any) => e.category === category);
 ---
 
-<Layout title={`${t(`${category}.title`)} | ${t('title')}`}>
+<Layout title={`${t(`${category}.title`)} | ${t('title')}`} description={t('description')}>
   <h1 class='hidden'>{`${t(`${category}.title`)} | ${t('title')} | ${t('common:title.short')}`}</h1>
   <section
     class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden bg-[length:100%_auto] md:bg-none'
@@ -104,9 +104,7 @@ const services = data.Services.items.filter((e: any) => e.category === category)
                   class='sm:min-w-[120px]'
                 />
                 <div>
-                  <h3 class='my-3 text-3xl font-semibold'>
-                    {e.title}
-                  </h3>
+                  <h3 class='my-3 text-3xl font-semibold'>{e.title}</h3>
                   <p>{e.body}</p>
                 </div>
               </div>

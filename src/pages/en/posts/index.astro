@@ -14,7 +14,7 @@ const { data } = await response.json();
 const posts = data.Posts.items;
 ---
 
-<Layout title={t('posts')}>
+<Layout title={t('posts.title')} description={t('posts.description')}>
   <h1 class='hidden'>{`${t('posts')}  |  ${t('common:title.short')}`}</h1>
   <section class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden'>
     <div
@@ -29,14 +29,17 @@ const posts = data.Posts.items;
       />
       {
         posts.map((e: any) => (
-          <a class='group relative col-span-2 row-span-2 aspect-square' href={getLocaledURL(`/posts/${e._slug}`)}>
+          <a
+            class='group relative col-span-2 row-span-2 aspect-square'
+            href={getLocaledURL(`/posts/${e._slug}`)}
+          >
             <div class='absolute inset-0 flex flex-col object-cover duration-300'>
               <img
                 src={e.image.url ?? 'https://placehold.co/400'}
                 alt={e.title}
                 class='opacity-100 duration-300 group-hover:opacity-75'
-                width="640"
-                height="640"
+                width='640'
+                height='640'
               />
               <div class='absolute inset-x-0 bottom-0 bg-white px-2 pb-3 text-3xl font-semibold'>
                 {e.title}

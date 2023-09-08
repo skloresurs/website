@@ -14,7 +14,7 @@ const { data } = await response.json();
 const reportings = data.Reportings.items;
 ---
 
-<Layout title={t('title')}>
+<Layout title={t('title')} description={t('description')}>
   <Table>
     <Block />
     <Block s='md' />
