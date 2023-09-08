@@ -10,8 +10,9 @@ import GetProjects from "src/queries/get-projects";
 changeLanguage("en");
 
 setDefaultNamespace("projects");
-// const element = Astro.url.searchParams.get('element') ?? 1;
-const element = Number.isNaN(+Astro.url.searchParams.get("element"))
+const element = Number.isNaN(+Astro.url.searchParams.get("element")) ||
+    +Astro.url.searchParams.get("element") <= 0 ||
+    !Astro.url.searchParams.get("element")
     ? 1
     : +Astro.url.searchParams.get("element");
 const response = await Prepr(GetProjects(i18n.language, element));
@@ -26,12 +27,17 @@ const project = data.Projects.items[0] ?? null;
   <!-- Grid Elements -->
   <Block mobile md lg />
   <ButtonWithItem
-    path={generateLocaledURL(`/projects?element=${Math.max(element - 1, 1)}`)}
+    path={generateLocaledURL(element > 1 ? `/projects?element=${Math.max(element - 1, 1)}` : '#')}
     title='Назад'
   >
     <img src='/icons/left.svg' />
   </ButtonWithItem>
-  <ButtonWithItem path={generateLocaledURL(`/projects?element=${+element + 1}`)} title='Назад'>
+  <ButtonWithItem
+    path={data.Projects.items.length > 1
+      ? generateLocaledURL(`/projects?element=${+element + 1}`)
+      : '#'}
+    title='Назад'
+  >
     <img src='/icons/right.svg' />
   </ButtonWithItem>
   <div
