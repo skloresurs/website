@@ -1,0 +1,10 @@
+---
+import i18n from 'i18next';
+---
+
+<a
+  href={i18n.language === 'uk' ? '/en' : '/'}
+  class='flex aspect-square items-center justify-center bg-black/75 p-2 text-center text-sm text-white duration-300 hover:bg-black/50 lg:text-base xl:text-lg 2xl:text-xl'
+>
+  {i18n.language === 'uk' ? 'EN' : 'UA'}
+</a>

@@ -1,0 +1,22 @@
+---
+import { t, setDefaultNamespace, changeLanguage } from "i18next";
+import Block from "../../components/grid/Block.astro";
+import Grid from "../../layouts/Grid.astro";
+
+changeLanguage("en");
+
+setDefaultNamespace("common");
+---
+
+<Grid>
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block lg />
+  <div class='col-span-2 bg-white p-5 md:col-span-4 lg:col-span-6'>
+    <h1 class='text-center text-4xl font-bold'>{t('404')}</h1>
+  </div>
+</Grid>

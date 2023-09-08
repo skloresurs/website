@@ -1,24 +1,15 @@
 ---
 import i18next, { t, setDefaultNamespace } from 'i18next';
-const { title, description } = Astro.props;
+import Block from '../components/grid/Block.astro';
+import ButtonWithImage from '../components/grid/ButtonWithImage.astro';
+import generatelocaledURL from '../utils/localedURL.ts';
+const { title, description, sky } = Astro.props;
 const { pathname } = Astro.url;
 
 setDefaultNamespace('common');
 const fTitle = title ? title + ' | ' + t('title.short') : t('title.full');
 const fDescription = description ?? t('meta.description');
 ---
-
-<script type='application/ld+json'>
-  {
-    "@context": "https://schema.org",
-    "@type": "Corporation",
-    "name": "Склоресурс",
-    "alternateName": "Skloresurs",
-    "url": "https://skloresurs.com/",
-    "logo": "",
-    "sameAs": ["https://www.facebook.com/skloresurs", "https://www.instagram.com/skloresurs/"]
-  }
-</script>
 
 <html lang={i18next.language}>
   <head>
@@ -61,8 +52,30 @@ const fDescription = description ?? t('meta.description');
     <meta name='generator' content={Astro.generator} />
     <link rel='sitemap' href='/sitemap-index.xml' />
     <link rel='canonical' href={`https://skloresurs.com${pathname}`} />
+
+    <!-- Schema.org -->
+    <script type='application/ld+json'>
+      {
+        "@context": "https://schema.org",
+        "@type": "Corporation",
+        "name": "Склоресурс",
+        "alternateName": "Skloresurs",
+        "url": "https://skloresurs.com/",
+        "logo": "",
+        "sameAs": ["https://www.facebook.com/skloresurs", "https://www.instagram.com/skloresurs/"]
+      }
+    </script>
   </head>
-  <body class='h-screen w-full bg-[#05151d]'>
-    <slot />
+  <body class={`h-screen w-full  bg-[length:100%_auto] ${sky ? 'bg-sky' : 'bg-[#05151d]'}`}>
+    <div class='grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8'>
+      <Block lg />
+      <ButtonWithImage
+        path={generatelocaledURL('/')}
+        alt={t('title.short')}
+        title={t('title.short')}
+        src='/svgs/logo-ua.svg'
+      />
+      <slot />
+    </div>
   </body>
 </html>

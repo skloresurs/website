@@ -1,53 +1,109 @@
 ---
-import i18n, { t, changeLanguage } from "i18next";
-import Layout from "../../layouts/Layout.astro";
-import Block from "../../components/table/Block.astro";
-import ButtonWithImage from "../../components/table/ButtonWithImage.astro";
-import getLocaledURL from "../../utils/localedURL.ts";
+import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
+import Grid from "../../layouts/Grid.astro";
+import Block from "../../components/grid/Block.astro";
+import ButtonWithItem from "../../components/grid/ButtonWithItem.astro";
+import generateLocaledURL from "../../utils/localedURL.ts";
 import { Prepr } from "src/utils/prepr";
 import GetProjects from "src/queries/get-projects";
 
 changeLanguage("uk");
 
-const response = await Prepr(GetProjects(i18n.language));
+setDefaultNamespace("projects");
+// const element = Astro.url.searchParams.get('element') ?? 1;
+const element = Number.isNaN(+Astro.url.searchParams.get("element"))
+    ? 1
+    : +Astro.url.searchParams.get("element");
+const response = await Prepr(GetProjects(i18n.language, element));
 const { data } = await response.json();
-const projects = data.Projects.items;
+const project = data.Projects.items[0] ?? null;
 ---
 
-<Layout title={t('projects.title')} description={t('projects.description')}>
-  <h1 class='hidden'>{`${t('prjects')} | ${t('common:title.short')}`}</h1>
-  <section class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden'>
-    <div
-      class='absolute left-0 top-0 grid h-full w-[100vw] grid-cols-2 md:grid-cols-6 lg:grid-cols-8'
-    >
-      <Block s='md' />
-      <ButtonWithImage
-        path={getLocaledURL('/')}
-        alt={t('title')}
-        title={t('title')}
-        src='/svgs/logo-ua.svg'
-      />
-      {
-        projects.map((e: any) => (
-          <a
-            class='group relative col-span-2 row-span-2 aspect-square overflow-hidden'
-            href={getLocaledURL(`/projects/${e._slug}`)}
-          >
-            <div class='absolute inset-0 flex flex-col object-cover duration-300'>
-              <img
-                src={e.images ? e.images[0].url : 'https://placehold.co/400'}
-                alt={e.title}
-                class='opacity-100 duration-300 group-hover:scale-110 group-hover:opacity-75'
-                width='640'
-                height='640'
-              />
-              <div class='absolute inset-x-0 bottom-0 rounded-t-md bg-white px-2 py-3 text-3xl font-semibold'>
-                {e.title}
-              </div>
-            </div>
-          </a>
-        ))
-      }
-    </div>
-  </section>
-</Layout>
+<Grid title={project?.title ?? ''} description={t('common:projects.description')}>
+  <!-- Not grid elements -->
+  <h1 class='hidden'>{project?.title ?? ''}</h1>
+
+  <!-- Grid Elements -->
+  <Block mobile md lg />
+  <ButtonWithItem
+    path={generateLocaledURL(`/projects?element=${Math.max(element - 1, 1)}`)}
+    title='Назад'
+  >
+    <img src='/icons/left.svg' />
+  </ButtonWithItem>
+  <ButtonWithItem path={generateLocaledURL(`/projects?element=${+element + 1}`)} title='Назад'>
+    <img src='/icons/right.svg' />
+  </ButtonWithItem>
+  <div
+    class='col-span-2 aspect-square justify-center px-5 pt-3 text-white md:aspect-auto lg:col-span-3'
+  >
+    {!project && <h1 class='text-center text-2xl font-semibold'>Project not found</h1>}
+    {
+      project && (
+        <>
+          <h1 class='text-2xl font-semibold'>{project.title}</h1>
+          <div class=''>
+            <p class='flex flex-row items-center gap-3'>
+              <img src='/icons/location.svg' width='20' height='20' alt='location' />
+              {project.location}
+            </p>
+            <p class='flex flex-row items-center gap-3 text-sm'>
+              <img src='/icons/glass.svg' width='20' height='20' alt='location' />
+              {project.glasstype}
+            </p>
+            <p class='flex flex-row items-center gap-3'>
+              <img src='/icons/calendar.svg' width='20' height='20' alt='location' />
+              {project.year}
+            </p>
+          </div>
+        </>
+      )
+    }
+  </div>
+  <Block lg />
+  {
+    project && (
+      <>
+        <a
+          class='group col-span-2 overflow-hidden'
+          href={project.images[0].url}
+          title={project.title}
+          target='_blank'
+        >
+          <img
+            src={project.images[0].url}
+            alt={project.title}
+            title={project.title}
+            class='duration-300 group-hover:scale-110'
+          />
+        </a>
+        <a
+          class='group col-span-2 overflow-hidden'
+          href={project.images[1].url}
+          title={project.title}
+          target='_blank'
+        >
+          <img
+            src={project.images[1].url}
+            alt={project.title}
+            title={project.title}
+            class='duration-300 group-hover:scale-110'
+          />
+        </a>
+        <a
+          class='group col-span-2 overflow-hidden'
+          href={project.images[2].url}
+          title={project.title}
+          target='_blank'
+        >
+          <img
+            src={project.images[2].url}
+            alt={project.title}
+            title={project.title}
+            class='duration-300 group-hover:scale-110'
+          />
+        </a>
+      </>
+    )
+  }
+</Grid>

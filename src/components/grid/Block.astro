@@ -1,0 +1,11 @@
+---
+const { mobile, md, lg } = Astro.props;
+---
+
+<div
+  class={`aspect-square 
+        ${mobile ? 'block' : 'hidden'} 
+        ${md ? 'md:block' : 'md:hidden'} 
+        ${lg ? 'lg:block' : 'lg:hidden'}`}
+>
+</div>

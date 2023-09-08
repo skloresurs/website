@@ -1,5 +1,5 @@
 export default function GetPartners(locale: string): string {
-    return `
+  return `
     query {
         Partners ( locale : ${locale === 'en' ? '"en-US"' : '"uk-UA"'} ) {
             items {
@@ -12,5 +12,5 @@ export default function GetPartners(locale: string): string {
             }
         }
     }
-    `
+    `;
 }

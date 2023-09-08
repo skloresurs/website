@@ -1,11 +1,12 @@
 export default function GetPosts(locale: string): string {
-    return `
+  return `
     query {
         Posts ( locale : ${locale === 'en' ? '"en-US"' : '"uk-UA"'} ) {
             items {
                 _id
                 _slug
                 title
+                type
                 description
                 image{
                     url
@@ -17,8 +18,9 @@ export default function GetPosts(locale: string): string {
                         format
                     }
                 }
+                video
             }
         }
     }
-    `
+    `;
 }

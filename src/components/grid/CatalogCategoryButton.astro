@@ -1,0 +1,23 @@
+---
+import { t, setDefaultNamespace } from 'i18next';
+import generateLocaledURL from '../../utils/localedURL.ts';
+
+const { category } = Astro.props;
+
+setDefaultNamespace('services');
+---
+
+<a
+  href={generateLocaledURL(`/catalog/${category}`)}
+  title={t(`${category}.title`)}
+  class='flex aspect-square flex-col items-center justify-center gap-2 p-5 text-center text-lg text-white duration-300 hover:bg-black/50'
+  ><img
+    src={`/icons/catalog/${category}.png`}
+    alt={t(`${category}.title`)}
+    title={t(`${category}.title`)}
+    width='80'
+    height='80'
+  /><p>
+    {t(`${category}.title`)}
+  </p></a
+>

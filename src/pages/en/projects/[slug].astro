@@ -16,10 +16,7 @@ const { data } = await response.json();
 const project = data.Project;
 ---
 
-<Layout
-  title={project?.title ?? ''}
-  disableFooter
->
+<Layout title={project?.title ?? ''} disableFooter>
   <section class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden'>
     <div
       class='absolute left-0 top-0 grid h-full w-[100vw] grid-cols-2 md:grid-cols-6 lg:grid-cols-8'
@@ -30,6 +27,7 @@ const project = data.Project;
         alt='Склоресурс'
         title='Склоресурс'
         src='/svgs/logo-ua.svg'
+        className='z-50'
       />
       <Block />
       <Block s='md' />
@@ -52,7 +50,7 @@ const project = data.Project;
   {
     project && (
       <ProjectFullScreen
-        images={project.images.map((e: {url: string}) => e.url)}
+        images={project.images.map((e: { url: string }) => e.url)}
         title={project.title}
         location={project.location}
         type={project.glasstype}

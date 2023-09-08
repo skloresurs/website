@@ -8,32 +8,41 @@ import robotsTxt from 'astro-robots-txt';
 import node from '@astrojs/node';
 import sitemap from '@astrojs/sitemap';
 
-import compress from "astro-compress";
+import compress from 'astro-compress';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://skloresurs.com',
   output: 'server',
-  integrations: [astroI18next(), tailwind(), react(), markdoc(), sitemap({
-    i18n: {
-      defaultLocale: 'uk',
-      locales: {
-        uk: 'uk-UA',
-        en: 'en-US'
-      }
-    }
-  }), robotsTxt({
-    policy: [
-      {
-        userAgent: '*',
-      }
-    ],
-    sitemapBaseFileName: 'sitemap-index'
-  }), compress(), compressor({
-    gzip: true,
-    brotli: true
-  })],
+  integrations: [
+    astroI18next(),
+    tailwind(),
+    react(),
+    markdoc(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'uk',
+        locales: {
+          uk: 'uk-UA',
+          en: 'en-US',
+        },
+      },
+    }),
+    robotsTxt({
+      policy: [
+        {
+          userAgent: '*',
+        },
+      ],
+      sitemapBaseFileName: 'sitemap-index',
+    }),
+    compress(),
+    compressor({
+      gzip: true,
+      brotli: true,
+    }),
+  ],
   adapter: node({
-    mode: 'standalone'
-  })
+    mode: 'standalone',
+  }),
 });

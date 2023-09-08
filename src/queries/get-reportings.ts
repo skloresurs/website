@@ -1,7 +1,7 @@
 export default function GetReportings(): string {
-    return `
+  return `
     query {
-        Reportings {
+        Reportings (sort : year_DESC) {
             items {
                 _id
                 year
@@ -14,5 +14,5 @@ export default function GetReportings(): string {
             }
         }
     }
-    `
+    `;
 }

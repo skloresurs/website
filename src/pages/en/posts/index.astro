@@ -1,9 +1,8 @@
 ---
 import i18n, { t, changeLanguage } from "i18next";
-import Layout from "../../../layouts/Layout.astro";
-import Block from "../../../components/table/Block.astro";
-import ButtonWithImage from "../../../components/table/ButtonWithImage.astro";
-import getLocaledURL from "../../../utils/localedURL.ts";
+import Grid from "../../../layouts/Grid.astro";
+import Block from "../../../components/grid/Block.astro";
+import generateLocaledURL from "../../../utils/localedURL.ts";
 import { Prepr } from "../../../utils/prepr";
 import GetPosts from "../../../queries/get-posts";
 
@@ -14,40 +13,46 @@ const { data } = await response.json();
 const posts = data.Posts.items;
 ---
 
-<Layout title={t('posts.title')} description={t('posts.description')}>
-  <h1 class='hidden'>{`${t('posts')}  |  ${t('common:title.short')}`}</h1>
-  <section class='relative h-[100vh] min-h-[100vh] w-full overflow-x-hidden'>
-    <div
-      class='absolute left-0 top-0 grid h-full w-[100vw] grid-cols-2 md:grid-cols-6 lg:grid-cols-8'
-    >
-      <Block s='md' />
-      <ButtonWithImage
-        path={getLocaledURL('/')}
-        alt={t('title')}
-        title={t('title')}
-        src='/svgs/logo-ua.svg'
-      />
-      {
-        posts.map((e: any) => (
-          <a
-            class='group relative col-span-2 row-span-2 aspect-square'
-            href={getLocaledURL(`/posts/${e._slug}`)}
-          >
-            <div class='absolute inset-0 flex flex-col object-cover duration-300'>
-              <img
-                src={e.image.url ?? 'https://placehold.co/400'}
-                alt={e.title}
-                class='opacity-100 duration-300 group-hover:opacity-75'
-                width='640'
-                height='640'
-              />
-              <div class='absolute inset-x-0 bottom-0 bg-white px-2 pb-3 text-3xl font-semibold'>
-                {e.title}
-              </div>
-            </div>
-          </a>
-        ))
-      }
-    </div>
-  </section>
-</Layout>
+<Grid title={t('posts.title')} description={t('posts.description')}>
+  <Block md lg />
+  {
+    posts.map((e: any, i: number) => (
+      <>
+        <a
+          href={e.type === 'video' ? e.video : generateLocaledURL(`/posts/${e._slug}`)}
+          class='group relative col-span-2 row-span-2 aspect-square overflow-hidden'
+          target={e.type === 'video' ? '_blank' : '_self'}
+        >
+          <img
+            src={e.image.url ?? 'https://placehold.co/400'}
+            alt={e.title}
+            class='w-full opacity-100 duration-300 group-hover:scale-110'
+            width='640'
+            height='640'
+          />
+          <div class='absolute inset-x-0 bottom-0 bg-white px-5 py-3 text-center text-2xl'>
+            {e.title}
+          </div>
+        </a>
+        {(i - 1) % 3 === 0 && <Block lg />}
+        {(i - 1) % 3 === 0 && <Block lg />}
+      </>
+    ))
+  }
+</Grid>
+
+<!-- <a
+          href={e.type === 'video' ? e.video : generateLocaledURL(`/posts/${e._slug}`)}
+          class='group relative col-span-2 row-span-2 aspect-square overflow-hidden'
+        >
+          <img
+            src={e.image.url ?? 'https://placehold.co/400'}
+            alt={e.title}
+            class='w-full opacity-100 duration-300 group-hover:scale-110 group-hover:opacity-75'
+            width='640'
+            height='640'
+          />
+          <div class='absolute inset-x-0 bottom-0 rounded-t-md bg-white px-2 pb-3 text-3xl font-semibold'>
+            {e.title}
+          </div>
+        </a> -->
