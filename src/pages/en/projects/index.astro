@@ -1,18 +1,18 @@
 ---
-import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
-import Grid from "../../../layouts/Grid.astro";
-import Block from "../../../components/grid/Block.astro";
-import ButtonWithItem from "../../../components/grid/ButtonWithItem.astro";
-import generateLocaledURL from "../../../utils/localedURL.ts";
-import { Prepr } from "src/utils/prepr";
-import GetProjects from "src/queries/get-projects";
+import i18n, { t, changeLanguage, setDefaultNamespace } from 'i18next';
+import Grid from '../../../layouts/Grid.astro';
+import Block from '../../../components/grid/Block.astro';
+import ButtonWithItem from '../../../components/grid/ButtonWithItem.astro';
+import generateLocaledURL from '../../../utils/localedURL.ts';
+import { Prepr } from 'src/utils/prepr';
+import GetProjects from 'src/queries/get-projects';
 
-changeLanguage("en");
+changeLanguage('en');
 
-setDefaultNamespace("projects");
-let element = +(Astro.url.searchParams.get("element") ?? 1);
+setDefaultNamespace('projects');
+let element = +(Astro.url.searchParams.get('element') ?? 1);
 if (Number.isNaN(+element) || element <= 0) {
-    element = 1;
+  element = 1;
 }
 const response = await Prepr(GetProjects(i18n.language, element));
 const { data } = await response.json();

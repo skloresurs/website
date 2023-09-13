@@ -1,18 +1,55 @@
 ---
-import i18n, { changeLanguage } from "i18next";
-import Grid from "../../layouts/Grid.astro";
-import Block from "../../components/grid/Block.astro";
-import Button from "../../components/grid/Button.astro";
-import { Prepr } from "src/utils/prepr";
-import GetPostBySlug from "src/queries/get-post-by-slug";
-import generateLocaledURL from "../../utils/localedURL.ts";
-import NotFound from "../404.astro";
+import i18n, { changeLanguage } from 'i18next';
+import Grid from '../../layouts/Grid.astro';
+import Block from '../../components/grid/Block.astro';
+import Button from '../../components/grid/Button.astro';
+import { Prepr } from 'src/utils/prepr';
+import GetPostBySlug from 'src/queries/get-post-by-slug';
+import generateLocaledURL from '../../utils/localedURL.ts';
+import NotFound from '../404.astro';
 
-changeLanguage("uk");
+changeLanguage('uk');
 
-const response = await Prepr(GetPostBySlug(i18n.language, Astro.params.slug ?? ""));
+const response = await Prepr(GetPostBySlug(i18n.language, Astro.params.slug ?? ''));
 const { data } = await response.json();
 const post = data.Post;
+if (post?.body) {
+  post.body.map((e: any) => {
+    if (e.__typename === 'Text') {
+      e.body = e.body.replaceAll('<p', '<p class="indent-8 mb-3" ');
+      e.body = e.body.replaceAll(
+        '<h2',
+        '<h2 class="mb-5 mt-10 text-center text-3xl font-semibold" '
+      );
+      e.body = e.body.replaceAll(
+        '<h3',
+        '<h3 class="mb-5 mt-10 text-center text-2xl font-semibold" '
+      );
+      e.body = e.body.replaceAll(
+        '<h4',
+        '<h4 class="mb-5 mt-10 text-center text-xl font-semibold" '
+      );
+      e.body = e.body.replaceAll(
+        '<h5',
+        '<h5 class="mb-5 mt-10 text-center text-lg font-semibold" '
+      );
+      e.body = e.body.replaceAll(
+        '<h6',
+        '<h6 class="mb-5 mt-10 text-center text-base font-semibold" '
+      );
+      e.body = e.body.replaceAll('<ul', '<ul class="list-disc pl-5" ');
+      e.body = e.body.replaceAll('<ol', '<ol class="list-decimal pl-5" ');
+      e.body = e.body.replaceAll('<a', '<a class="underline text-cyan-600" ');
+      e.body = e.body.replaceAll(
+        '<table',
+        '<table class="border-collapse border border-slate-500 mt-10 mb-5" '
+      );
+      e.body = e.body.replaceAll('<th', '<th class="border border-slate-600" ');
+      e.body = e.body.replaceAll('<td', '<td class="border border-slate-700" ');
+    }
+    return e;
+  });
+}
 ---
 
 {

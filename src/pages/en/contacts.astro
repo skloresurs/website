@@ -1,12 +1,12 @@
 ---
-import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
-import Block from "../../components/grid/Block.astro";
-import Button from "../../components/grid/Button.astro";
-import Grid from "../../layouts/Grid.astro";
+import i18n, { t, changeLanguage, setDefaultNamespace } from 'i18next';
+import Block from '../../components/grid/Block.astro';
+import Button from '../../components/grid/Button.astro';
+import Grid from '../../layouts/Grid.astro';
 
-changeLanguage("en");
+changeLanguage('en');
 
-setDefaultNamespace("contacts");
+setDefaultNamespace('contacts');
 ---
 
 <Grid title={t('title')} description={t('description')}>
@@ -29,6 +29,7 @@ setDefaultNamespace("contacts");
     path='https://maps.google.com/maps/dir//%D0%A1%D0%9A%D0%9B%D0%9E%D0%A0%D0%95%D0%A1%D0%A3%D0%A0%D0%A1,+%D0%A2%D0%9E%D0%92+%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A1%D0%B5%D0%BC%D0%B8%D0%B4%D1%83%D0%B1%D1%81%D1%8C%D0%BA%D0%B0,+105+%D0%94%D1%83%D0%B1%D0%BD%D0%BE,+%D0%A0%D1%96%D0%B2%D0%BD%D0%B5%D0%BD%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C+35600/@50.3934135,25.7756003,15z/data=!4m5!4m4!1m0!1m2!1m1!1s0x472f834aa1a7e7c7:0x647fedd3239403'
     alt='Google Map'
     title={t('route')}
+    blank
   />
   <div
     class='col-span-2 flex aspect-square flex-col justify-center gap-1 bg-black/75 p-4 text-white'

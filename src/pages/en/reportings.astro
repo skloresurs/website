@@ -1,13 +1,13 @@
 ---
-import { t, changeLanguage, setDefaultNamespace } from "i18next";
-import Block from "../../components/grid/Block.astro";
-import { Prepr } from "src/utils/prepr";
-import GetReportings from "src/queries/get-reportings";
-import Grid from "../../layouts/Grid.astro";
+import { t, changeLanguage, setDefaultNamespace } from 'i18next';
+import Block from '../../components/grid/Block.astro';
+import { Prepr } from 'src/utils/prepr';
+import GetReportings from 'src/queries/get-reportings';
+import Grid from '../../layouts/Grid.astro';
 
-changeLanguage("en");
+changeLanguage('en');
 
-setDefaultNamespace("reportings");
+setDefaultNamespace('reportings');
 const response = await Prepr(GetReportings());
 const { data } = await response.json();
 const reportings = data.Reportings.items;

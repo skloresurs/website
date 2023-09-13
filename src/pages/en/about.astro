@@ -1,23 +1,23 @@
 ---
-import i18n, { changeLanguage, setDefaultNamespace, t } from "i18next";
-import Block from "../../components/grid/Block.astro";
-import { Prepr } from "src/utils/prepr";
-import GetPartners from "src/queries/get-partners";
-import Grid from "../../layouts/Grid.astro";
+import i18n, { changeLanguage, setDefaultNamespace, t } from 'i18next';
+import Block from '../../components/grid/Block.astro';
+import { Prepr } from 'src/utils/prepr';
+import GetPartners from 'src/queries/get-partners';
+import Grid from '../../layouts/Grid.astro';
 
-changeLanguage("en");
+changeLanguage('en');
 
-setDefaultNamespace("about");
+setDefaultNamespace('about');
 const cerfiticates = [
-    "certificate1",
-    "certificate2",
-    "certificate3",
-    "certificate4",
-    "certificate5",
+  'certificate1',
+  'certificate2',
+  'certificate3',
+  'certificate4',
+  'certificate5',
 ];
-const targetList: any[] = t("targethero.content.list", { returnObjects: true }) ?? [];
-const infoData: any[] = t("info", { returnObjects: true }) ?? [];
-const featuresData: any[] = t("features.data", { returnObjects: true }) ?? [];
+const targetList: any[] = t('targethero.content.list', { returnObjects: true }) ?? [];
+const infoData: any[] = t('info', { returnObjects: true }) ?? [];
+const featuresData: any[] = t('features.data', { returnObjects: true }) ?? [];
 const response = await Prepr(GetPartners(i18n.language));
 const { data } = await response.json();
 const partners = data.Partners.items;
