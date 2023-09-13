@@ -100,11 +100,8 @@ const project = data.Projects.items[0] ?? null;
   <Block lg />
   {
     element > 1 ? (
-      <ButtonWithItem
-        path={generateLocaledURL(`/projects?element=${Math.max(element - 1, 1)}`)}
-        title='Назад'
-      >
-        <img src='/icons/left.svg' />
+      <ButtonWithItem path={generateLocaledURL(`/projects?element=${Math.max(element - 1, 1)}`)}>
+        <img src='/icons/left.svg' alt='left arrow' />
       </ButtonWithItem>
     ) : (
       <Block mobile md lg />
@@ -114,8 +111,8 @@ const project = data.Projects.items[0] ?? null;
   <Block md lg />
   {
     data.Projects.items.length > 1 && (
-      <ButtonWithItem path={generateLocaledURL(`/projects?element=${+element + 1}`)} title='Назад'>
-        <img src='/icons/right.svg' />
+      <ButtonWithItem path={generateLocaledURL(`/projects?element=${+element + 1}`)}>
+        <img src='/icons/right.svg' alt='right arrow' />
       </ButtonWithItem>
     )
   }
