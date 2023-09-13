@@ -10,38 +10,20 @@ import GetProjects from "src/queries/get-projects";
 changeLanguage("en");
 
 setDefaultNamespace("projects");
-const element = Number.isNaN(+Astro.url.searchParams.get("element")) ||
-    +Astro.url.searchParams.get("element") <= 0 ||
-    !Astro.url.searchParams.get("element")
-    ? 1
-    : +Astro.url.searchParams.get("element");
+let element = +(Astro.url.searchParams.get("element") ?? 1);
+if (Number.isNaN(+element) || element <= 0) {
+    element = 1;
+}
 const response = await Prepr(GetProjects(i18n.language, element));
 const { data } = await response.json();
 const project = data.Projects.items[0] ?? null;
 ---
 
 <Grid title={project?.title ?? ''} description={t('common:projects.description')}>
-  <!-- Not grid elements -->
-  <h1 class='hidden'>{project?.title ?? ''}</h1>
-
   <!-- Grid Elements -->
   <Block mobile md lg />
-  <ButtonWithItem
-    path={generateLocaledURL(element > 1 ? `/projects?element=${Math.max(element - 1, 1)}` : '#')}
-    title='Назад'
-  >
-    <img src='/icons/left.svg' />
-  </ButtonWithItem>
-  <ButtonWithItem
-    path={data.Projects.items.length > 1
-      ? generateLocaledURL(`/projects?element=${+element + 1}`)
-      : '#'}
-    title='Назад'
-  >
-    <img src='/icons/right.svg' />
-  </ButtonWithItem>
   <div
-    class='col-span-2 aspect-square justify-center px-5 pt-3 text-white md:aspect-auto lg:col-span-3'
+    class='col-span-2 aspect-square justify-center px-5 pt-3 text-white md:col-span-4 md:aspect-auto'
   >
     {!project && <h1 class='text-center text-2xl font-semibold'>Project not found</h1>}
     {
@@ -67,6 +49,7 @@ const project = data.Projects.items[0] ?? null;
     }
   </div>
   <Block lg />
+  <Block lg />
   {
     project && (
       <>
@@ -80,7 +63,7 @@ const project = data.Projects.items[0] ?? null;
             src={project.images[0].url}
             alt={project.title}
             title={project.title}
-            class='duration-300 group-hover:scale-110'
+            class='border-2 border-[#05151d] opacity-70 duration-300 group-hover:scale-110 group-hover:opacity-100'
           />
         </a>
         <a
@@ -93,7 +76,7 @@ const project = data.Projects.items[0] ?? null;
             src={project.images[1].url}
             alt={project.title}
             title={project.title}
-            class='duration-300 group-hover:scale-110'
+            class='border-2 border-[#05151d] opacity-70 duration-300 group-hover:scale-110 group-hover:opacity-100'
           />
         </a>
         <a
@@ -106,10 +89,34 @@ const project = data.Projects.items[0] ?? null;
             src={project.images[2].url}
             alt={project.title}
             title={project.title}
-            class='duration-300 group-hover:scale-110'
+            class='border-2 border-[#05151d] opacity-70 duration-300 group-hover:scale-110 group-hover:opacity-100'
           />
         </a>
       </>
+    )
+  }
+  <Block md lg />
+  <Block lg />
+  <Block lg />
+  {
+    element > 1 ? (
+      <ButtonWithItem
+        path={generateLocaledURL(`/projects?element=${Math.max(element - 1, 1)}`)}
+        title='Назад'
+      >
+        <img src='/icons/left.svg' />
+      </ButtonWithItem>
+    ) : (
+      <Block mobile md lg />
+    )
+  }
+  <Block md lg />
+  <Block md lg />
+  {
+    data.Projects.items.length > 1 && (
+      <ButtonWithItem path={generateLocaledURL(`/projects?element=${+element + 1}`)} title='Назад'>
+        <img src='/icons/right.svg' />
+      </ButtonWithItem>
     )
   }
 </Grid>

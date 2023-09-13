@@ -5,7 +5,8 @@
   "scripts": {
     "prod": "node ./dist/server/entry.mjs",
     "dev": "astro dev",
-    "build": "npx astro-i18next generate && astro build",
+    "i18n": "npx astro-i18next generate",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

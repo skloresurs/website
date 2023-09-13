@@ -26,7 +26,7 @@ const posts = data.Posts.items;
           <img
             src={e.image.url ?? 'https://placehold.co/400'}
             alt={e.title}
-            class='w-full opacity-100 duration-300 group-hover:scale-110'
+            class='w-full opacity-60 duration-300 group-hover:scale-110 group-hover:opacity-100'
             width='640'
             height='640'
           />
@@ -40,19 +40,3 @@ const posts = data.Posts.items;
     ))
   }
 </Grid>
-
-<!-- <a
-          href={e.type === 'video' ? e.video : generateLocaledURL(`/posts/${e._slug}`)}
-          class='group relative col-span-2 row-span-2 aspect-square overflow-hidden'
-        >
-          <img
-            src={e.image.url ?? 'https://placehold.co/400'}
-            alt={e.title}
-            class='w-full opacity-100 duration-300 group-hover:scale-110 group-hover:opacity-75'
-            width='640'
-            height='640'
-          />
-          <div class='absolute inset-x-0 bottom-0 rounded-t-md bg-white px-2 pb-3 text-3xl font-semibold'>
-            {e.title}
-          </div>
-        </a> -->

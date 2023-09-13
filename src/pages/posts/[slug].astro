@@ -27,7 +27,7 @@ const post = data.Post;
       <Block lg />
       <div class='col-span-2 bg-white p-5 md:col-span-4 lg:col-span-6'>
         <h1 class='mb-5 text-center text-4xl font-bold'>{post?.title}</h1>
-        {post.body.map((e: any) => {
+        {post.body?.map((e: any) => {
           if (e.__typename === 'Text') {
             return <Fragment set:html={e.body} />;
           }
@@ -35,7 +35,7 @@ const post = data.Post;
             return <img src={e.items[0].url} />;
           }
           return null;
-        })}
+        }) ?? ''}
       </div>
     </Grid>
   ) : (
