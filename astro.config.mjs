@@ -34,7 +34,6 @@ export default defineConfig({
           userAgent: '*',
         },
       ],
-      sitemapBaseFileName: 'sitemap-index',
     }),
     compress(),
     compressor({

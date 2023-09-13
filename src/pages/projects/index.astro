@@ -1,100 +1,88 @@
 ---
-import i18n, { t, changeLanguage, setDefaultNamespace } from 'i18next';
-import Grid from '../../layouts/Grid.astro';
-import Block from '../../components/grid/Block.astro';
-import ButtonWithItem from '../../components/grid/ButtonWithItem.astro';
-import generateLocaledURL from '../../utils/localedURL.ts';
-import { Prepr } from 'src/utils/prepr';
-import GetProjects from 'src/queries/get-projects';
+import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
+import Grid from "../../layouts/Grid.astro";
+import Block from "../../components/grid/Block.astro";
+import ButtonWithItem from "../../components/grid/ButtonWithItem.astro";
+import generateLocaledURL from "../../utils/localedURL.ts";
+import { Prepr } from "src/utils/prepr";
+import GetProjects from "src/queries/get-projects";
+import NotFound from "../404.astro";
 
-changeLanguage('uk');
+changeLanguage("uk");
 
-setDefaultNamespace('projects');
-let element = +(Astro.url.searchParams.get('element') ?? 1);
+setDefaultNamespace("projects");
+let element = +(Astro.url.searchParams.get("element") ?? 1);
 if (Number.isNaN(+element) || element <= 0) {
-  element = 1;
+    element = 1;
 }
 const response = await Prepr(GetProjects(i18n.language, element));
 const { data } = await response.json();
 const project = data.Projects.items[0] ?? null;
 ---
 
-<Grid title={project?.title ?? ''} description={t('common:projects.description')}>
+{project ? <Grid title={project?.title ?? ''} description={t('common:projects.description')}>
   <!-- Grid Elements -->
   <Block mobile md lg />
   <div
     class='col-span-2 aspect-square justify-center px-5 pt-3 text-white md:col-span-4 md:aspect-auto'
   >
-    {!project && <h1 class='text-center text-2xl font-semibold'>Project not found</h1>}
-    {
-      project && (
-        <>
-          <h1 class='text-2xl font-semibold'>{project.title}</h1>
-          <div class=''>
-            <p class='flex flex-row items-center gap-3'>
-              <img src='/icons/location.svg' width='20' height='20' alt='location' />
-              {project.location}
-            </p>
-            <p class='flex flex-row items-center gap-3 text-sm'>
-              <img src='/icons/glass.svg' width='20' height='20' alt='location' />
-              {project.glasstype}
-            </p>
-            <p class='flex flex-row items-center gap-3'>
-              <img src='/icons/calendar.svg' width='20' height='20' alt='location' />
-              {project.year}
-            </p>
-          </div>
-        </>
-      )
-    }
+    <h1 class='text-2xl font-semibold'>{project.title}</h1>
+    <div class=''>
+      <p class='flex flex-row items-center gap-3'>
+        <img src='/icons/location.svg' width='20' height='20' alt='location' />
+        {project.location}
+      </p>
+      <p class='flex flex-row items-center gap-3 text-sm'>
+        <img src='/icons/glass.svg' width='20' height='20' alt='location' />
+        {project.glasstype}
+      </p>
+      <p class='flex flex-row items-center gap-3'>
+        <img src='/icons/calendar.svg' width='20' height='20' alt='location' />
+        {project.year}
+      </p>
+    </div>
   </div>
   <Block lg />
   <Block lg />
-  {
-    project && (
-      <>
-        <a
-          class='group col-span-2 overflow-hidden'
-          href={project.images[0].url}
-          title={project.title}
-          target='_blank'
-        >
-          <img
-            src={project.images[0].url}
-            alt={project.title}
-            title={project.title}
-            class='border-2 border-[#05151d] opacity-70 duration-300 group-hover:scale-110 group-hover:opacity-100'
-          />
-        </a>
-        <a
-          class='group col-span-2 overflow-hidden'
-          href={project.images[1].url}
-          title={project.title}
-          target='_blank'
-        >
-          <img
-            src={project.images[1].url}
-            alt={project.title}
-            title={project.title}
-            class='border-2 border-[#05151d] opacity-70 duration-300 group-hover:scale-110 group-hover:opacity-100'
-          />
-        </a>
-        <a
-          class='group col-span-2 overflow-hidden'
-          href={project.images[2].url}
-          title={project.title}
-          target='_blank'
-        >
-          <img
-            src={project.images[2].url}
-            alt={project.title}
-            title={project.title}
-            class='border-2 border-[#05151d] opacity-70 duration-300 group-hover:scale-110 group-hover:opacity-100'
-          />
-        </a>
-      </>
-    )
-  }
+  <a
+    class='group col-span-2 overflow-hidden'
+    href={project.images[0].url}
+    title={project.title}
+    target='_blank'
+  >
+    <img
+      src={project.images[0].url}
+      alt={project.title}
+      title={project.title}
+      class='border-2 border-[#05151d] opacity-70 duration-300 group-hover:scale-110 group-hover:opacity-100'
+    />
+  </a>
+  <a
+    class='group col-span-2 overflow-hidden'
+    href={project.images[1].url}
+    title={project.title}
+    target='_blank'
+  >
+    <img
+      src={project.images[1].url}
+      alt={project.title}
+      title={project.title}
+      class='border-2 border-[#05151d] opacity-70 duration-300 group-hover:scale-110 group-hover:opacity-100'
+    />
+  </a>
+  <a
+    class='group col-span-2 overflow-hidden'
+    href={project.images[2].url}
+    title={project.title}
+    target='_blank'
+  >
+    <img
+      src={project.images[2].url}
+      alt={project.title}
+      title={project.title}
+      class='border-2 border-[#05151d] opacity-70 duration-300 group-hover:scale-110 group-hover:opacity-100'
+    />
+  </a>
   <Block md lg />
   <Block lg />
   <Block lg />
@@ -116,4 +104,4 @@ const project = data.Projects.items[0] ?? null;
       </ButtonWithItem>
     )
   }
-</Grid>
+</Grid> : <NotFound/>}
