@@ -6,7 +6,7 @@
     "prod": "node ./dist/server/entry.mjs",
     "dev": "astro dev",
     "i18n": "npx astro-i18next generate",
-    "build": "astro build",
+    "build": "astro build --port 3000",
     "preview": "astro preview",
     "astro": "astro"
   },
