@@ -1,12 +1,12 @@
 ---
-import i18n, { t, changeLanguage } from "i18next";
-import Grid from "../../layouts/Grid.astro";
-import Block from "../../components/grid/Block.astro";
-import generateLocaledURL from "../../utils/localedURL.ts";
-import { Prepr } from "../../utils/prepr";
-import GetPosts from "../../queries/get-posts";
+import i18n, { t, changeLanguage } from 'i18next';
+import Grid from '../../layouts/Grid.astro';
+import Block from '../../components/grid/Block.astro';
+import generateLocaledURL from '../../utils/localedURL.ts';
+import { Prepr } from '../../utils/prepr';
+import GetPosts from '../../queries/get-posts';
 
-changeLanguage("uk");
+changeLanguage('uk');
 
 const response = await Prepr(GetPosts(i18n.language));
 const { data } = await response.json();

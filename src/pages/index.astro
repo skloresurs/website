@@ -13,10 +13,10 @@ changeLanguage('uk');
 setDefaultNamespace('home');
 ---
 
-<Grid sky>
+<Grid>
   <!-- Not grid elements -->
   <h1 class='hidden'>{t('common:title.full')}</h1>
-  <div class='absolute left-0 top-0 -z-50 hidden h-[100vh] w-full overflow-hidden md:block'>
+  <div class='absolute left-0 top-0 -z-50 h-[100vh] w-full overflow-hidden'>
     {
       Array(2)
         .fill(1)
@@ -29,9 +29,12 @@ setDefaultNamespace('home');
               loop
               muted
               autoplay
-              class='ml-[-16.6%] block max-h-none w-[133%] max-w-none lg:hidden'
+              class='ml-[-16.6%] hidden max-h-none w-[133%] max-w-none md:block lg:hidden'
             >
               <source src='/videos/background/sky_square.mp4' type='video/mp4' />
+            </video>
+            <video loop muted autoplay class='fixed inset-0 block w-full md:hidden'>
+              <source src='/videos/background/sky_mobile.mp4' type='video/mp4' />
             </video>
           </>
         ))

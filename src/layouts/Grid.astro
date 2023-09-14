@@ -4,12 +4,12 @@ import Block from '../components/grid/Block.astro';
 import ButtonWithImage from '../components/grid/ButtonWithImage.astro';
 import generatelocaledURL from '../utils/localedURL.ts';
 import Base from './Base.astro';
-const { title, description, sky } = Astro.props;
+const { title, description, image } = Astro.props;
 
 setDefaultNamespace('common');
 ---
 
-<Base title={title} description={description} sky={sky}>
+<Base title={title} description={description} image={image}>
   <div class='grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8'>
     <Block lg />
     <ButtonWithImage

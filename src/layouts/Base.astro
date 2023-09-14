@@ -1,7 +1,7 @@
 ---
 import i18next, { t, setDefaultNamespace } from 'i18next';
 import { ViewTransitions } from 'astro:transitions';
-const { title, description, sky } = Astro.props;
+const { title, description, image } = Astro.props;
 const { pathname } = Astro.url;
 
 setDefaultNamespace('common');
@@ -11,6 +11,11 @@ const fDescription = description ?? t('meta.description');
 
 <html lang={i18next.language}>
   <head>
+    <style>
+      body {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1078%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='rgba(9%2c 30%2c 41%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c681.155C138.624%2c696.094%2c283.54%2c698.09%2c407.006%2c633.313C535.707%2c565.789%2c643.735%2c453.318%2c694.108%2c316.988C743.006%2c184.65%2c699.751%2c41.898%2c676.974%2c-97.334C654.644%2c-233.832%2c652.817%2c-382.657%2c562.514%2c-487.421C472.137%2c-592.271%2c321.209%2c-605.428%2c193.332%2c-658.428C47.671%2c-718.799%2c-94.433%2c-878.811%2c-240.891%2c-820.4C-391.157%2c-760.47%2c-379.772%2c-538.902%2c-459.425%2c-398.094C-519.754%2c-291.446%2c-635.322%2c-215.132%2c-651.956%2c-93.737C-668.556%2c27.41%2c-599.524%2c139.368%2c-548.285%2c250.394C-497.246%2c360.986%2c-450.057%2c476.022%2c-354.28%2c551.27C-253.329%2c630.582%2c-127.641%2c667.399%2c0%2c681.155' fill='%2306141b'%3e%3c/path%3e%3cpath d='M1920 1837.0259999999998C2068.18 1840.4189999999999 2219.266 1819.798 2345.01 1741.329 2471.633 1662.3110000000001 2573.643 1541.615 2620.4790000000003 1399.8980000000001 2665.082 1264.938 2597.304 1124.983 2595.681 982.852 2593.735 812.429 2693.355 630.771 2610.002 482.11 2525.372 331.17100000000005 2343.649 236.32399999999996 2170.952 225.337 2005.831 214.832 1872.946 346.269 1727.968 425.99699999999996 1614.438 488.43100000000004 1493.285 539.078 1414.0439999999999 641.586 1337.292 740.873 1306.222 865.028 1292.184 989.734 1278.479 1111.485 1300.0700000000002 1229.79 1334.5990000000002 1347.344 1374.1689999999999 1482.059 1399.62 1632.062 1507.316 1722.1480000000001 1619.105 1815.658 1774.295 1833.69 1920 1837.0259999999998' fill='%230c2937'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1078'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+      }
+    </style>
     <!-- Base tags -->
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
@@ -34,7 +39,7 @@ const fDescription = description ?? t('meta.description');
 
     <!-- OpenGraph tags -->
     <meta property='og:type' content='website' />
-    <meta property='og:image' content='/images/logo.png' />
+    <meta property='og:image' content={image ?? '/images/logo.png'} />
     <meta property='og:title' content={fTitle} />
     <meta property='og:description' content={fDescription} />
     <meta property='og:url' content={`https://skloresurs.com${pathname}`} />
@@ -43,7 +48,7 @@ const fDescription = description ?? t('meta.description');
     <meta name='twitter:card' content='summary' />
     <meta name='twitter:title' content={fTitle} />
     <meta name='twitter:description' content={fDescription} />
-    <meta name='twitter:image' content='/images/logo.png' />
+    <meta name='twitter:image' content={image ?? '/images/logo.png'} />
 
     <!-- Other tags -->
     <meta name='robots' content='index, follow' />
@@ -79,7 +84,7 @@ const fDescription = description ?? t('meta.description');
     <!-- Animation -->
     <ViewTransitions />
   </head>
-  <body class={`relative h-screen w-full bg-[length:100%_auto] ${sky ? 'bg-sky' : 'bg-[#05151d]'}`}>
+  <body class={`relative h-screen w-full`}>
     <slot />
   </body>
 </html>
