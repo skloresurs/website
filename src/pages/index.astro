@@ -1,20 +1,24 @@
 ---
-import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
-import Block from "../components/grid/Block.astro";
-import Button from "../components/grid/Button.astro";
-import generatelocaledURL from "../utils/localedURL.ts";
-import SloganBlock from "../components/grid/SloganBlock.astro";
-import LanguageSwitcherBlock from "../components/grid/LanguageSwitcherBlock.astro";
-import Grid from "../layouts/Grid.astro";
+import i18n, { t, changeLanguage, setDefaultNamespace } from 'i18next';
+import Block from '../components/grid/Block.astro';
+import Button from '../components/grid/Button.astro';
+import generatelocaledURL from '../utils/localedURL.ts';
+import SloganBlock from '../components/grid/SloganBlock.astro';
+import LanguageSwitcherBlock from '../components/grid/LanguageSwitcherBlock.astro';
+import Grid from '../layouts/Grid.astro';
 
-changeLanguage("uk");
+changeLanguage('uk');
 
-setDefaultNamespace("home");
+setDefaultNamespace('home');
 ---
 
 <script>
   const langNotification = document.getElementById('lang-notification');
-  if (!localStorage.getItem('langModalInteraction') && window.navigator.language !== 'uk') {
+  if (
+    !localStorage.getItem('langModalInteraction') &&
+    window.navigator.language !== 'uk' &&
+    window.navigator.language !== 'uk-UA'
+  ) {
     langNotification?.style.setProperty('display', 'block');
   }
 
