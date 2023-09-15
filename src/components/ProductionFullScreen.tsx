@@ -63,14 +63,14 @@ export default function ProductionFullScreen({
           />
         ))}
       </div>
-      <div className='absolute inset-x-2 bottom-20 z-40 mx-auto max-w-7xl rounded-md bg-slate-50/75 py-2'>
-        <h2 className='text-center text-4xl font-bold lg:text-5xl lg:tracking-tight'>
-          {data[active]?.title ?? ''}
-        </h2>
-        <p className='px-4 text-center text-black'>{data[active]?.description ?? ''}</p>
-      </div>
-      <div className='fixed inset-x-0 bottom-8 z-50'>
-        <div className='mx-auto flex max-w-7xl flex-row items-center justify-between gap-3 px-2'>
+      <div className='absolute bottom-5 flex w-full flex-col items-center gap-5 px-5'>
+        <div className='rounded-md bg-slate-50/75 px-3 py-2'>
+          <h2 className='text-center text-4xl font-bold lg:text-5xl lg:tracking-tight'>
+            {data[active]?.title ?? ''}
+          </h2>
+          <p className='px-4 text-center text-black'>{data[active]?.description ?? ''}</p>
+        </div>
+        <div className='flex w-full flex-row items-center justify-between gap-3'>
           <button
             aria-label={prevText}
             disabled={active <= 0}
