@@ -1,7 +1,7 @@
 ---
 import i18next, { t, setDefaultNamespace } from 'i18next';
 import { ViewTransitions } from 'astro:transitions';
-const { title, description, image } = Astro.props;
+const { title, description, image, halfTransparentFooter, disableFooter } = Astro.props;
 const { pathname } = Astro.url;
 
 setDefaultNamespace('common');
@@ -84,7 +84,24 @@ const fDescription = description ?? t('meta.description');
     <!-- Animation -->
     <ViewTransitions />
   </head>
-  <body class={`relative h-screen w-full`}>
-    <slot />
+  <body class='relative flex h-screen w-full flex-col'>
+    <div class='flex-1 pb-5'><slot /></div>
+    {
+      !disableFooter && (
+        <footer
+          class={`flex flex-col items-center justify-between gap-5 border-t-2 border-t-gray-100 px-5 py-3 md:flex-row ${
+            halfTransparentFooter ? 'bg-white/80' : 'bg-white'
+          }`}
+        >
+          <a href='https://skloresurs.com/' title='Skloresurs' class='flex flex-row'>
+            <img src='/images/logo.png' width='100' alt='Skloresurs' title='Skloresurs' />
+          </a>
+          <div>{t('common:footer.left.copyright')}</div>
+          <a href='https://gualos.com/' title='Gualos' target='_blank' class='flex flex-row'>
+            <img src='/images/logo-gualos.png' width='100' alt='Gualos' title='Gualos' />
+          </a>
+        </footer>
+      )
+    }
   </body>
 </html>

@@ -13,7 +13,7 @@ const data: Array<{
 }> = t("data", { returnObjects: true });
 ---
 
-<Grid title={t('title')} description={t('description')}>
+<Grid title={t('title')} description={t('description')} disableFooter>
   <h1 class='hidden'>{`${t('productions')} | ${t('common:title.short')}`}</h1>
   <ProductionFullScreen data={data} prevText={t('prev')} nextText={t('next')} client:load />
 </Grid>

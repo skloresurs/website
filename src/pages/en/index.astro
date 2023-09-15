@@ -33,7 +33,7 @@ setDefaultNamespace("home");
   });
 </script>
 
-<Grid>
+<Grid halfTransparentFooter={true}>
   <!-- Not grid elements -->
   <h1 class='hidden'>{t('common:title.full')}</h1>
   {
@@ -72,31 +72,39 @@ setDefaultNamespace("home");
       </div>
     )
   }
-  <div class='absolute left-0 top-0 -z-50 h-[100vh] w-full overflow-hidden'>
+  <div class='absolute left-0 top-0 -z-50 h-[100dvh] w-full overflow-hidden'>
     {
       Array(2)
         .fill(1)
         .map(() => (
           <>
-            <video loop muted autoplay class='hidden max-h-none w-full max-w-none lg:block'>
-              <source src='/videos/background/sky_1280.mp4' type='video/mp4' />
-            </video>
             <video
               loop
               muted
               autoplay
+              preload='none'
+              src='/videos/background/sky_1280.mp4'
+              class='hidden max-h-none w-full max-w-none lg:block'
+            />
+            <video
+              loop
+              muted
+              autoplay
+              preload='none'
+              src='/videos/background/sky_square.mp4'
               class='ml-[-16.6%] hidden max-h-none w-[133%] max-w-none md:block lg:hidden'
-            >
-              <source src='/videos/background/sky_square.mp4' type='video/mp4' />
-            </video>
-            <video loop muted autoplay class='fixed inset-0 block w-full md:hidden'>
-              <source src='/videos/background/sky_mobile.mp4' type='video/mp4' />
-            </video>
+            />
           </>
         ))
     }
+    <video
+      loop
+      muted
+      autoplay
+      preload='none'
+      src='/videos/background/sky_mobile.mp4'
+      class='fixed top-0 w-full md:hidden'></video>
   </div>
-
   <!-- Grid elements -->
   <SloganBlock />
   <Block md lg />
