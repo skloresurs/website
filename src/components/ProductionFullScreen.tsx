@@ -72,12 +72,14 @@ export default function ProductionFullScreen({
       <div className='fixed inset-x-0 bottom-8 z-50'>
         <div className='mx-auto flex max-w-7xl flex-row items-center justify-between gap-3 px-2'>
           <button
-          aria-label={prevText}
+            aria-label={prevText}
             disabled={active <= 0}
             onClick={() => {
               prev();
             }}
-            className='flex flex-row items-center gap-2 rounded-md bg-slate-100/75 px-3 py-1'
+            className={`flex flex-row items-center gap-2 rounded-md bg-slate-100/75 px-3 py-1 ${
+              active <= 0 ? 'opacity-0' : ''
+            }`}
           >
             <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'>
               <path fill='currentColor' d='M10.05 16.94v-4h8.92l.03-2.01h-8.95V6.94l-5 5Z' />
@@ -90,12 +92,14 @@ export default function ProductionFullScreen({
             </p>
           </div>
           <button
-          aria-label={nextText}
+            aria-label={nextText}
             onClick={() => {
               next();
             }}
             disabled={active >= data.length - 1}
-            className='flex flex-row items-center gap-2 rounded-md bg-slate-100/75 px-3 py-1'
+            className={`flex flex-row items-center gap-2 rounded-md bg-slate-100/75 px-3 py-1 ${
+              active >= data.length - 1 ? 'opacity-0' : ''
+            }`}
           >
             <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'>
               <path fill='currentColor' d='M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5Z' />
