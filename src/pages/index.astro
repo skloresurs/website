@@ -1,5 +1,5 @@
 ---
-import { t, changeLanguage, setDefaultNamespace } from 'i18next';
+import i18n, { t, changeLanguage, setDefaultNamespace } from 'i18next';
 import Block from '../components/grid/Block.astro';
 import Button from '../components/grid/Button.astro';
 import ButtonWithImage from '../components/grid/ButtonWithImage.astro';
@@ -13,9 +13,45 @@ changeLanguage('uk');
 setDefaultNamespace('home');
 ---
 
+<script>
+  const langNotification = document.getElementById('lang-notification');
+  if (!localStorage.getItem('langModalInteraction') && window.navigator.language !== 'uk') {
+    langNotification?.style.setProperty('display', 'block');
+  }
+
+  const langUKButton = document.getElementById('lang-uk');
+  const langENButton = document.getElementById('lang-en');
+
+  langENButton?.addEventListener('click', () => {
+    localStorage.setItem('langModalInteraction', 'true');
+    langNotification?.style.setProperty('display', 'none');
+    window.location.href = '/en';
+  })
+
+  langUKButton?.addEventListener('click', () => {
+    localStorage.setItem('langModalInteraction', 'true');
+    langNotification?.style.setProperty('display', 'none');
+  })
+</script>
+
+
 <Grid>
   <!-- Not grid elements -->
   <h1 class='hidden'>{t('common:title.full')}</h1>
+  {i18n.language === 'uk' && <div class="hidden fixed inset-0 bg-black/60 z-50" id="lang-notification">
+    <div class="rounded-md px-5 py-3 bg-white flex flex-col items-center justify-center h-min md:w-max mx-auto mt-10">
+      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-full">
+        <img src="/icons/en.svg"/></div>
+      <h2 class="font-semibold text-3xl my-5">Hello</h2>
+      <p>We noticed that the language of your browser is not <strong>Ukrainian</strong>,</p>
+      <p>maybe you want to change the language of the website to <strong>English</strong>?</p>
+      <p class="mt-5 text-sm text-gray-500">You can always change the language on the <strong>main page</strong> by clicking on the button on the <strong>top right</strong>*</p>
+      <div class="flex flex-wrap md:flex-row gap-6 justify-center mt-5 w-full border-t-2 border-blue-500 py-3">
+        <button class="border-2 border-blue-500 rounded-md px-4 py-3 hover:scale-110 duration-300" id="lang-uk">Stay on the Ukrainian</button>
+        <button class="bg-blue-500 text-white rounded-md px-4 py-3 hover:scale-110 duration-300" id="lang-en">Switch to the English</button>
+      </div>
+    </div>
+  </div>}
   <div class='absolute left-0 top-0 -z-50 h-[100vh] w-full overflow-hidden'>
     {
       Array(2)
