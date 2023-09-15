@@ -12,5 +12,6 @@ export default {
     'production',
     'projects',
     'services',
+    'feedback'
   ],
 };

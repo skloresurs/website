@@ -2,6 +2,7 @@
   "title": "Contacts",
   "description": "Skloresurs contact information. Get in touch with us for collaboration and inquiries.",
   "route": "Route",
+  "form": "Feedback form",
   "content": {
     "a": "Skloresurs, Tov",
     "b": "Ukraine, 35600, Dubno, Rivne Oblast",

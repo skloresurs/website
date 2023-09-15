@@ -1,17 +1,17 @@
 ---
-import i18n, { t, changeLanguage, setDefaultNamespace } from 'i18next';
-import Grid from '../../../layouts/Grid.astro';
-import Block from '../../../components/grid/Block.astro';
-import CatalogCategoryButton from '../../../components/grid/CatalogCategoryButton.astro';
-import { Prepr } from 'src/utils/prepr';
-import GetServices from 'src/queries/get-services';
-import NotFound from '../../404.astro';
+import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
+import Grid from "../../../layouts/Grid.astro";
+import Block from "../../../components/grid/Block.astro";
+import CatalogCategoryButton from "../../../components/grid/CatalogCategoryButton.astro";
+import { Prepr } from "src/utils/prepr";
+import GetServices from "src/queries/get-services";
+import NotFound from "../../404.astro";
 
-changeLanguage('en');
+changeLanguage("en");
 
-const avalibleCategory = ['facades', 'inside', 'outside', 'safe'];
-setDefaultNamespace('services');
-const category = Astro.params.category ?? '';
+const avalibleCategory = ["facades", "inside", "outside", "safe"];
+setDefaultNamespace("services");
+const category = Astro.params.category ?? "";
 const response = await Prepr(GetServices(i18n.language, category));
 const { data } = await response.json();
 const services = data.Services.items;

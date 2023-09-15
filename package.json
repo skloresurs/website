@@ -24,6 +24,7 @@
     "astro-compressor": "^0.4.0",
     "astro-i18next": "^1.0.0-beta.21",
     "astro-robots-txt": "^0.5.0",
+    "axios": "^1.5.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "sitemap": "^7.1.1",

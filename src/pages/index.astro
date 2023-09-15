@@ -1,16 +1,16 @@
 ---
-import i18n, { t, changeLanguage, setDefaultNamespace } from 'i18next';
-import Block from '../components/grid/Block.astro';
-import Button from '../components/grid/Button.astro';
-import ButtonWithImage from '../components/grid/ButtonWithImage.astro';
-import generatelocaledURL from '../utils/localedURL.ts';
-import SloganBlock from '../components/grid/SloganBlock.astro';
-import LanguageSwitcherBlock from '../components/grid/LanguageSwitcherBlock.astro';
-import Grid from '../layouts/Grid.astro';
+import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
+import Block from "../components/grid/Block.astro";
+import Button from "../components/grid/Button.astro";
+import ButtonWithImage from "../components/grid/ButtonWithImage.astro";
+import generatelocaledURL from "../utils/localedURL.ts";
+import SloganBlock from "../components/grid/SloganBlock.astro";
+import LanguageSwitcherBlock from "../components/grid/LanguageSwitcherBlock.astro";
+import Grid from "../layouts/Grid.astro";
 
-changeLanguage('uk');
+changeLanguage("uk");
 
-setDefaultNamespace('home');
+setDefaultNamespace("home");
 ---
 
 <script>
@@ -38,17 +38,17 @@ setDefaultNamespace('home');
 <Grid>
   <!-- Not grid elements -->
   <h1 class='hidden'>{t('common:title.full')}</h1>
-  {i18n.language === 'uk' && <div class="hidden fixed inset-0 bg-black/60 z-50" id="lang-notification">
-    <div class="rounded-md px-5 py-3 bg-white flex flex-col items-center justify-center h-min md:w-max mx-auto mt-10">
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-full">
+  {i18n.language === 'uk' && <div class="fixed inset-0 z-50 hidden bg-black/60" id="lang-notification">
+    <div class="mx-auto mt-10 flex h-min flex-col items-center justify-center rounded-md bg-white px-5 py-3 md:w-max">
+      <div class="flex items-center justify-center rounded-full bg-gray-50 p-4">
         <img src="/icons/en.svg"/></div>
-      <h2 class="font-semibold text-3xl my-5">Hello</h2>
+      <h2 class="my-5 text-3xl font-semibold">Hello</h2>
       <p>We noticed that the language of your browser is not <strong>Ukrainian</strong>,</p>
       <p>maybe you want to change the language of the website to <strong>English</strong>?</p>
       <p class="mt-5 text-sm text-gray-500">You can always change the language on the <strong>main page</strong> by clicking on the button on the <strong>top right</strong>*</p>
-      <div class="flex flex-wrap md:flex-row gap-6 justify-center mt-5 w-full border-t-2 border-blue-500 py-3">
-        <button class="border-2 border-blue-500 rounded-md px-4 py-3 hover:scale-110 duration-300" id="lang-uk">Stay on the Ukrainian</button>
-        <button class="bg-blue-500 text-white rounded-md px-4 py-3 hover:scale-110 duration-300" id="lang-en">Switch to the English</button>
+      <div class="mt-5 flex w-full flex-wrap justify-center gap-6 border-t-2 border-blue-500 py-3 md:flex-row">
+        <button class="rounded-md border-2 border-blue-500 px-4 py-3 duration-300 hover:scale-110" id="lang-uk">Stay on the Ukrainian</button>
+        <button class="rounded-md bg-blue-500 px-4 py-3 text-white duration-300 hover:scale-110" id="lang-en">Switch to the English</button>
       </div>
     </div>
   </div>}

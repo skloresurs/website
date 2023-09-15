@@ -1,16 +1,16 @@
 ---
-import { t, changeLanguage, setDefaultNamespace } from 'i18next';
-import Grid from '../layouts/Grid.astro';
-import ProductionFullScreen from 'src/components/ProductionFullScreen';
+import { t, changeLanguage, setDefaultNamespace } from "i18next";
+import Grid from "../layouts/Grid.astro";
+import ProductionFullScreen from "src/components/ProductionFullScreen";
 
-changeLanguage('uk');
+changeLanguage("uk");
 
-setDefaultNamespace('production');
+setDefaultNamespace("production");
 const data: Array<{
-  video: string;
-  title: string;
-  description: string;
-}> = t('data', { returnObjects: true });
+    video: string;
+    title: string;
+    description: string;
+}> = t("data", { returnObjects: true });
 ---
 
 <Grid title={t('title')} description={t('description')}>

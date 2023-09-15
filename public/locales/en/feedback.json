@@ -1,0 +1,21 @@
+{
+    "title": "Feedback",
+    "description": "Feedback is crucial. Share your thoughts with us right now.",
+    "form": {
+        "items": {
+            "name": {
+                "label": "Your name"
+            },
+            "email": {
+                "label": "Your email",
+                "placeholder": "you@example.com"
+            },
+            "message": {
+                "label": "Your message"
+            }
+        },
+        "sendbutton": "Send",
+        "success": "Your message has been sent.",
+        "recaptcha": "Please confirm that you are not a robot."
+    }
+}
