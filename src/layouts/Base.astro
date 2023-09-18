@@ -54,7 +54,12 @@ const fDescription = description ?? t('meta.description');
     <meta name='robots' content='index, follow' />
     <meta name='generator' content={Astro.generator} />
     <link rel='sitemap' href='/sitemap-index.xml' />
-    <link rel='canonical' href={`https://skloresurs.com${pathname}`} />
+    <link
+      rel='canonical'
+      href={`https://skloresurs.com${
+        pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname
+      }`}
+    />
 
     <!-- Schema.org -->
     <script type='application/ld+json'>
