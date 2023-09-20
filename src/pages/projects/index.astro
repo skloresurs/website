@@ -1,26 +1,26 @@
 ---
-import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
+import { getLocale } from 'astro-i18n-aut';
+import { t, localedURL } from '../../utils/i18n.ts';
 import Grid from "../../layouts/Grid.astro";
 import Block from "../../components/grid/Block.astro";
 import ButtonWithItem from "../../components/grid/ButtonWithItem.astro";
-import generateLocaledURL from "../../utils/localedURL.ts";
 import { Prepr } from "src/utils/prepr";
 import GetProjects from "src/queries/get-projects";
 import NotFound from "../404.astro";
 
-changeLanguage("uk");
+const locale = getLocale(Astro.url);
+const localedData = t(locale).projects;
 
-setDefaultNamespace("projects");
 let element = +(Astro.url.searchParams.get("element") ?? 1);
 if (Number.isNaN(+element) || element <= 0) {
     element = 1;
 }
-const response = await Prepr(GetProjects(i18n.language, element));
+const response = await Prepr(GetProjects(locale, element));
 const { data } = await response.json();
 const project = data.Projects.items[0] ?? null;
 ---
 
-{project ? <Grid title={project?.title ?? ''} description={t('common:projects.description')}>
+{project ? <Grid title={project?.title} description={localedData.description}>
   <!-- Grid Elements -->
   <Block mobile md lg />
   <div
@@ -88,7 +88,7 @@ const project = data.Projects.items[0] ?? null;
   <Block lg />
   {
     element > 1 ? (
-      <ButtonWithItem path={generateLocaledURL(`/projects?element=${Math.max(element - 1, 1)}`)}>
+      <ButtonWithItem path={localedURL(locale, `/projects?element=${Math.max(element - 1, 1)}`)}>
         <img src='/icons/left.svg' alt='left arrow' />
       </ButtonWithItem>
     ) : (
@@ -99,7 +99,7 @@ const project = data.Projects.items[0] ?? null;
   <Block md lg />
   {
     data.Projects.items.length > 1 && (
-      <ButtonWithItem path={generateLocaledURL(`/projects?element=${+element + 1}`)}>
+      <ButtonWithItem path={localedURL(locale, `/projects?element=${+element + 1}`)}>
         <img src='/icons/right.svg' alt='right arrow' />
       </ButtonWithItem>
     )

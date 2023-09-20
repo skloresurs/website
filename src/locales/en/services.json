@@ -1,0 +1,34 @@
+{
+    "delivery": {
+        "title": "Delivery of Products",
+        "description": "Efficient delivery from Skloresurs: reliable and fast. Optimal delivery times in Ukraine and abroad.",
+        "content": {
+            "h1": "Delivery of Products",
+            "main": "<p>We understand the importance of timely and safe delivery, which is why our transportation department has a modern fleet equipped with cranes. This allows us to safely load and unload glass packages of any size and weight.</p><p>Glass packages are carefully packaged to prevent damage during transport and securely attached to the transport.</p><p class='mt-5'>Our drivers have years of experience and are well-versed in the routes, which helps reduce delivery time and ensure the highest quality of service.</p>"
+        }
+    },
+    "components": {
+        "title": "Glass Processing Components",
+        "description": "The best glass processing components from Skloresurs. Quality and reliability for your business.",
+        "content": {
+            "h1": "Glass Processing Components",
+            "main": "<p>Information is currently unavailable. Please stay tuned for updates.</p>"
+        }
+    },
+    "seminars": {
+        "title": "Seminars",
+        "description": "Join our educational seminars: up-to-date information and skills for development. Join our team of experts!",
+        "content": {
+            "h1": "Seminars",
+            "main": "<p>Our company conducts educational seminars on the topic of \"Glass in Modern Architecture\" to enhance the knowledge and effectiveness of employees in the glass industry.</p><ul class='list-disc pl-5 mt-3'>Seminar Sections:<li>Introduction to Skloresurs</li><li>Presentation of new technical capabilities and products</li><li>Detailed overview of glass characteristics and properties in industry</li></ul><p class='mt-5'>Seminar duration up to 2 hours and 45 minutes</p>"
+        }
+    },
+    "vacancies": {
+        "title": "Job Vacancies",
+        "description": "Find your ideal job vacancy at our company. Join our team today!",
+        "content": {
+            "h1": "Job Vacancies",
+            "main": "<p>Information is currently unavailable. Please stay tuned for updates.</p>"
+        }
+    }
+}

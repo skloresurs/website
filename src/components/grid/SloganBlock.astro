@@ -1,13 +1,15 @@
 ---
-import { t, setDefaultNamespace } from 'i18next';
+import { getLocale } from 'astro-i18n-aut';
+import { t } from '../../utils/i18n.ts';
 
-setDefaultNamespace('home');
+const locale = getLocale(Astro.url);
+const localedData = t(locale).home.slogan;
 ---
 
 <div
   class='flex aspect-square flex-col items-center justify-center gap-1 bg-black/60 p-2 text-white lg:text-base xl:text-lg 2xl:text-xl'
 >
-  <p>{t('slogan.a')}</p>
-  <p>{t('slogan.b')}</p>
-  <p>{t('slogan.c')}</p>
+  <p>{localedData.a}</p>
+  <p>{localedData.b}</p>
+  <p>{localedData.c}</p>
 </div>

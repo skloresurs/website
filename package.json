@@ -5,7 +5,6 @@
   "scripts": {
     "prod": "node ./dist/server/entry.mjs",
     "dev": "astro dev",
-    "i18n": "npx astro-i18next generate",
     "build": "astro build --port 3000",
     "preview": "astro preview",
     "astro": "astro"
@@ -17,12 +16,14 @@
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/tailwind": "^5.0.0",
     "@astrojs/ts-plugin": "^1.1.3",
+    "@iconify-json/ri": "^1.1.12",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "astro": "^3.0.7",
     "astro-compress": "^2.0.15",
     "astro-compressor": "^0.4.0",
-    "astro-i18next": "^1.0.0-beta.21",
+    "astro-i18n-aut": "^0.4.23",
+    "astro-icon": "^1.0.0-next.2",
     "astro-robots-txt": "^0.5.0",
     "axios": "^1.5.0",
     "react": "^18.0.0",

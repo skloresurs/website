@@ -1,0 +1,20 @@
+{
+    "main": {
+        "title": {
+            "short": "SkloResurs",
+            "full": "SkloResurs - Glass Production Company"
+        },
+        "description": "SkloResurs – your trusted source for glass.",
+        "tags": "glass, glass production, window glass, mirror glass, safety glass, Ukraine, Skloresurs, glass products, glass services, glass manufacturing, glass industry, glass solutions, glass company, glass supplier, glass contractor, glass dealer",
+        "footer": {
+            "copyright": "Copyright © 2023 Skloresurs"
+        },
+        "notfound": "Page not found"
+    },
+    "posts": {
+        "title": "Posts",
+        "description": "Interesting glass articles by Skloresurs. Overview of glass industry news.",
+        "share": "Share",
+        "back": "Back"
+    }
+}

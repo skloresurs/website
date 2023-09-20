@@ -1,0 +1,23 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLocale } from 'astro-i18n-aut';
+import { t, localedURL } from '../../utils/i18n.ts';
+
+const { category, active } = Astro.props;
+
+const locale = getLocale(Astro.url);
+const localedData = t(locale).services[category];
+---
+
+<a
+  href={active ? '#' : localedURL(locale, `/services/${category}`)}
+  title={localedData.title}
+  class={`flex h-full flex-col items-center justify-center gap-4 border-2 px-2 py-3 text-center text-lg duration-300 ${
+    active
+      ? 'border-white fill-white text-white'
+      : 'border-neutral-500 fill-neutral-500 text-neutral-500'
+  } hover:border-white hover:fill-white hover:text-white`}
+  ><Icon name={`services-${category}`} class='h-12 w-12 lg:h-20 lg:w-20 xl:h-24 xl:w-24' /><p>
+    {localedData.title}
+  </p></a
+>

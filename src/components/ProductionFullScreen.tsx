@@ -82,7 +82,7 @@ export default function ProductionFullScreen({
             }`}
           >
             <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'>
-              <path fill='currentColor' d='M10.05 16.94v-4h8.92l.03-2.01h-8.95V6.94l-5 5Z' />
+              <path fill='#000000' d='M10.05 16.94v-4h8.92l.03-2.01h-8.95V6.94l-5 5Z' />
             </svg>
             <p className='hidden sm:block'>{prevText}</p>
           </button>
@@ -101,10 +101,10 @@ export default function ProductionFullScreen({
               active >= data.length - 1 ? 'opacity-0' : ''
             }`}
           >
-            <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'>
-              <path fill='currentColor' d='M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5Z' />
-            </svg>
             <p className='hidden sm:block'>{nextText}</p>
+            <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'>
+              <path fill='#000000' d='M14 16.94v-4H5.08l-.03-2.01H14V6.94l5 5Z' />
+            </svg>
           </button>
         </div>
       </div>

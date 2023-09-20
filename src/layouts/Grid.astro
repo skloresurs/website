@@ -1,12 +1,13 @@
 ---
-import { t, setDefaultNamespace } from 'i18next';
+import { getLocale } from 'astro-i18n-aut';
+import { t, localedURL } from '../utils/i18n.ts';
 import Block from '../components/grid/Block.astro';
 import ButtonWithImage from '../components/grid/ButtonWithImage.astro';
-import generatelocaledURL from '../utils/localedURL.ts';
 import Base from './Base.astro';
 const { title, description, image, halfTransparentFooter, disableFooter } = Astro.props;
 
-setDefaultNamespace('common');
+const locale = getLocale(Astro.url);
+const localedData = t(locale).meta;
 ---
 
 <Base
@@ -19,9 +20,9 @@ setDefaultNamespace('common');
   <div class='grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8'>
     <Block lg />
     <ButtonWithImage
-      path={generatelocaledURL('/')}
-      alt={t('title.short')}
-      title={t('title.short')}
+      path={localedURL(locale, '/')}
+      alt={localedData.main.title.short}
+      title={localedData.main.title.short}
       src='/svgs/logo-ua.svg'
     />
     <slot />

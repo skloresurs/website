@@ -1,25 +1,26 @@
 ---
-import i18n, { t, changeLanguage } from "i18next";
-import Grid from "../../layouts/Grid.astro";
-import Block from "../../components/grid/Block.astro";
-import generateLocaledURL from "../../utils/localedURL.ts";
-import { Prepr } from "../../utils/prepr";
-import GetPosts from "../../queries/get-posts";
+import { getLocale } from 'astro-i18n-aut';
+import { t, localedURL } from '../../utils/i18n.ts';
+import Grid from '../../layouts/Grid.astro';
+import Block from '../../components/grid/Block.astro';
+import { Prepr } from '../../utils/prepr';
+import GetPosts from '../../queries/get-posts';
 
-changeLanguage("uk");
+const locale = getLocale(Astro.url);
+const localedData = t(locale).meta;
 
-const response = await Prepr(GetPosts(i18n.language));
+const response = await Prepr(GetPosts(locale));
 const { data } = await response.json();
 const posts = data.Posts.items;
 ---
 
-<Grid title={t('posts.title')} description={t('posts.description')}>
+<Grid title={localedData.posts.title} description={localedData.posts.description}>
   <Block md lg />
   {
     posts.map((e: any, i: number) => (
       <>
         <a
-          href={e.type === 'video' ? e.video : generateLocaledURL(`/posts/${e._slug}`)}
+          href={e.type === 'video' ? e.video : localedURL(locale, `/posts/${e._slug}`)}
           class='group relative col-span-2 row-span-2 aspect-square overflow-hidden'
           target={e.type === 'video' ? '_blank' : '_self'}
         >

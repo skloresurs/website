@@ -1,15 +1,14 @@
 ---
-import i18n, { t, changeLanguage, setDefaultNamespace } from 'i18next';
+import { getLocale } from 'astro-i18n-aut';
+import { t, localedURL } from '../utils/i18n.ts';
 import Block from '../components/grid/Block.astro';
 import Button from '../components/grid/Button.astro';
-import generatelocaledURL from '../utils/localedURL.ts';
 import SloganBlock from '../components/grid/SloganBlock.astro';
 import LanguageSwitcherBlock from '../components/grid/LanguageSwitcherBlock.astro';
 import Grid from '../layouts/Grid.astro';
 
-changeLanguage('uk');
-
-setDefaultNamespace('home');
+const locale = getLocale(Astro.url);
+const localedData = t(locale);
 ---
 
 <script>
@@ -39,9 +38,9 @@ setDefaultNamespace('home');
 
 <Grid halfTransparentFooter={true}>
   <!-- Not grid elements -->
-  <h1 class='hidden'>{t('common:title.full')}</h1>
+  <h1 class='hidden'>{t(locale).meta.main.title.full}</h1>
   {
-    i18n.language === 'uk' && (
+    locale === 'uk' && (
       <div class='fixed inset-0 z-50 hidden bg-black/60' id='lang-notification'>
         <div class='mx-auto mt-10 flex h-min flex-col items-center justify-center rounded-md bg-white px-5 py-3 md:w-max'>
           <div class='flex items-center justify-center rounded-full bg-gray-50 p-4'>
@@ -113,29 +112,53 @@ setDefaultNamespace('home');
   <SloganBlock />
   <Block md lg />
   <Block md lg />
-  <Button path={generatelocaledURL('/about')} alt={t('about')} title={t('about')} />
+  <Button
+    path={localedURL(locale, '/contacts')}
+    alt={localedData.home.contacts}
+    title={localedData.home.contacts}
+  />
   <LanguageSwitcherBlock />
   <Block lg />
   <Block lg />
   <Block md lg /><Button
-    path={generatelocaledURL('/catalog/facades')}
-    alt={t('service')}
-    title={t('service')}
+    path={localedURL(locale, '/catalog/facades')}
+    alt={localedData.home.catalog}
+    title={localedData.home.catalog}
   />
-  <Button path={generatelocaledURL('/production')} title={t('production')} />
-  <Button path={generatelocaledURL('/posts')} alt={t('posts')} title={t('posts')} />
-  <Button path={generatelocaledURL('/feedback')} alt={t('feedback')} title={t('feedback')} />
+  <Button path={localedURL(locale, '/production')} title={localedData.home.production} />
+  <Button
+    path={localedURL(locale, '/posts')}
+    alt={localedData.home.posts}
+    title={localedData.home.posts}
+  />
+  <Button
+    path={localedURL(locale, '/services/delivery')}
+    alt={localedData.home.services}
+    title={localedData.home.services}
+  />
   <Block md lg />
   <Block lg />
   <Block lg />
   <Block md lg />
-  <Button path={generatelocaledURL('/projects')} alt={t('projects')} title={t('projects')} />
-  <Button path={generatelocaledURL('/contacts')} alt={t('contacts')} title={t('contacts')} />
+  <Button
+    path={localedURL(locale, '/projects')}
+    alt={localedData.home.projects}
+    title={localedData.home.projects}
+  />
+  <Button
+    path={localedURL(locale, '/about')}
+    alt={localedData.home.about}
+    title={localedData.home.about}
+  />
   <Button
     path='https://drive.google.com/file/d/1vVekRWUyhJkb9wlAj7WfZ-MAGZTeE5Dg/view'
-    alt={t('handbook')}
-    title={t('handbook')}
+    alt={localedData.home.handbook}
+    title={localedData.home.handbook}
     blank
   />
-  <Button path={generatelocaledURL('/reportings')} alt={t('reportings')} title={t('reportings')} />
+  <Button
+    path={localedURL(locale, '/reportings')}
+    alt={localedData.home.reportings}
+    title={localedData.home.reportings}
+  />
 </Grid>

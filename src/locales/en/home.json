@@ -4,7 +4,7 @@
         "b": "Transparency",
         "c": "Innovation"
     },
-    "service": "Services Catalog",
+    "catalog": "Services Catalog",
     "production": "Production",
     "posts": "Posts",
     "about": "About the Company",
@@ -12,5 +12,5 @@
     "contacts": "Contacts",
     "handbook": "Handbook of Quality",
     "reportings": "Reportings",
-    "feedback": "Feedback"
+    "services": "Services"
 }

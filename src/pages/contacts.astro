@@ -1,20 +1,19 @@
 ---
-import i18n, { t, changeLanguage, setDefaultNamespace } from "i18next";
-import Block from "../components/grid/Block.astro";
-import Button from "../components/grid/Button.astro";
-import Grid from "../layouts/Grid.astro";
-import generatelocaledURL from "src/utils/localedURL";
+import { getLocale } from 'astro-i18n-aut';
+import { t, localedURL } from '../utils/i18n.ts';
+import Block from '../components/grid/Block.astro';
+import Button from '../components/grid/Button.astro';
+import Grid from '../layouts/Grid.astro';
 
-changeLanguage("uk");
-
-setDefaultNamespace("contacts");
+const locale = getLocale(Astro.url);
+const localedData = t(locale).contacts;
 ---
 
-<Grid title={t('title')} description={t('description')}>
+<Grid title={localedData.title} description={localedData.title}>
   <!-- Not grid elements -->
-  <h1 class='hidden'>{`${t('title')} | ${t('common:title.short')}`}</h1>
+  <h1 class='hidden'>{localedData.title}</h1>
   <iframe
-    src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10172.771550362992!2d25.756297722752496!3d50.40024274531918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472f834aa1a7e7c7%3A0x647fedd3239403!2z0KHQmtCb0J7QoNCV0KHQo9Cg0KEsINCi0J7Qkg!5e0!3m2!1suk!2sua!4v1693825357053!5m2!1s${i18n.language}!2sua`}
+    src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10172.771550362992!2d25.756297722752496!3d50.40024274531918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472f834aa1a7e7c7%3A0x647fedd3239403!2z0KHQmtCb0J7QoNCV0KHQo9Cg0KEsINCi0J7Qkg!5e0!3m2!1suk!2sua!4v1693825357053!5m2!1s${locale}!2sua`}
     width='100%'
     height='100%'
     loading='lazy'
@@ -25,19 +24,19 @@ setDefaultNamespace("contacts");
   <!-- Grid elements -->
   <Block mobile md lg />
   <Block md lg />
-  <Button path={generatelocaledURL('/feedback')} alt={t('form')} title={t('form')} />
+  <Button path={localedURL(locale, '/feedback')} alt={localedData.form} title={localedData.form} />
   <Button
     path='https://maps.google.com/maps/dir//%D0%A1%D0%9A%D0%9B%D0%9E%D0%A0%D0%95%D0%A1%D0%A3%D0%A0%D0%A1,+%D0%A2%D0%9E%D0%92+%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A1%D0%B5%D0%BC%D0%B8%D0%B4%D1%83%D0%B1%D1%81%D1%8C%D0%BA%D0%B0,+105+%D0%94%D1%83%D0%B1%D0%BD%D0%BE,+%D0%A0%D1%96%D0%B2%D0%BD%D0%B5%D0%BD%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C+35600/@50.3934135,25.7756003,15z/data=!4m5!4m4!1m0!1m2!1m1!1s0x472f834aa1a7e7c7:0x647fedd3239403'
     alt='Google Map'
-    title={t('route')}
+    title={localedData.route}
     blank
   />
   <div
     class='col-span-2 flex aspect-square flex-col justify-center gap-1 bg-black/75 p-4 text-white'
   >
-    <p>{t('content.a')}</p>
-    <p>{t('content.b')}</p>
-    <p>{t('content.c')}</p>
+    <p>{localedData.content.a}</p>
+    <p>{localedData.content.b}</p>
+    <p>{localedData.content.c}</p>
     <p><a href='tel:+380443550599'>+38 (044) 355-05-99</a></p>
     <p><a href='mailto:office@skloresurs.com'>office@skloresurs.com</a></p>
     <p>

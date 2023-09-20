@@ -1,19 +1,25 @@
 ---
-import { t, changeLanguage, setDefaultNamespace } from "i18next";
-import Grid from "../layouts/Grid.astro";
-import ProductionFullScreen from "src/components/ProductionFullScreen";
+import { getLocale } from 'astro-i18n-aut';
+import { t } from '../utils/i18n.ts';
+import Grid from '../layouts/Grid.astro';
+import ProductionFullScreen from 'src/components/ProductionFullScreen';
 
-changeLanguage("uk");
+const locale = getLocale(Astro.url);
+const localedData = t(locale).production;
 
-setDefaultNamespace("production");
 const data: Array<{
-    video: string;
-    title: string;
-    description: string;
-}> = t("data", { returnObjects: true });
+  video: string;
+  title: string;
+  description: string;
+}> = localedData.data;
 ---
 
-<Grid title={t('title')} description={t('description')} disableFooter>
-  <h1 class='hidden'>{`${t('productions')} | ${t('common:title.short')}`}</h1>
-  <ProductionFullScreen data={data} prevText={t('prev')} nextText={t('next')} client:load />
+<Grid title={localedData.title} description={localedData.description} disableFooter>
+  <h1 class='hidden'>{localedData.title}</h1>
+  <ProductionFullScreen
+    data={data}
+    prevText={localedData.prev}
+    nextText={localedData.next}
+    client:load
+  />
 </Grid>

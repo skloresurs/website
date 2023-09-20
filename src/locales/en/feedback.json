@@ -10,6 +10,9 @@
                 "label": "Your email",
                 "placeholder": "you@example.com"
             },
+            "telephone": {
+                "label": "Your telephone"
+            },
             "message": {
                 "label": "Your message"
             }

@@ -11,12 +11,5 @@
     "baseUrl": "./",
     "rootDir": "./"
   },
-  "include": [
-    "./src/**/*",
-    "./.eslintrc.cjs",
-    "./tailwind.config.cjs",
-    "./astro.config.mjs",
-    "./astro-i18next.config.mjs",
-    "./tina/**/*"
-  ]
+  "include": ["./src/**/*", "./.eslintrc.cjs", "./tailwind.config.cjs", "./astro.config.mjs"]
 }
