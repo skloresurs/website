@@ -4,9 +4,22 @@ import { t } from '../../utils/i18n.ts';
 import Grid from '../../layouts/Grid.astro';
 import Block from '../../components/grid/Block.astro';
 import ServicesCategoryButton from '../../components/grid/ServicesCategoryButton.astro';
+import ProductList from 'src/components/ProductList';
+import axios from 'axios';
 
 const locale = getLocale(Astro.url);
 const localedData = t(locale).services.components;
+
+const response = await axios.get(import.meta.env.WEB_URL + '/api/prom').catch((e) => {
+  console.log(e);
+  return {
+    data: {
+      products: null,
+      error: true,
+    },
+  };
+});
+const data = response.data;
 ---
 
 <Grid title={localedData.title} description={localedData.description}>
@@ -18,12 +31,25 @@ const localedData = t(locale).services.components;
   <Block lg />
   <Block md lg />
   <div class='col-span-2 bg-white p-5 pt-12 md:col-span-4 md:px-12 lg:col-span-6'>
-    <h1 class='mb-5 text-4xl font-bold uppercase'>{localedData.content.h1}</h1>
-    <div class='relative'>
-      <div class='absolute inset-x-0 h-full w-16 border-b-2 border-l-2 border-neutral-700'></div>
-      <div class='py-6 pl-5'>
-        <Fragment set:html={localedData.content.main} />
-      </div>
-    </div>
+    <h1 class='mb-5 text-center text-3xl font-bold uppercase'>{localedData.content.h1}</h1>
+    {data.error && <p class='text-center text-lg'>{localedData.content.error}</p>}
+    {
+      !data.error && data.products && data.products.length === 0 && (
+        <p class='text-center text-lg'>{localedData.content.missingitems}</p>
+      )
+    }
+    {
+      !data.error && data.products && data.products.length > 0 && (
+        <ProductList
+          client:load
+          data={data.products}
+          translationData={{
+            previewPage: localedData.content.prevpage,
+            nextPage: localedData.content.nextpage,
+            details: localedData.content.details,
+          }}
+        />
+      )
+    }
   </div>
 </Grid>

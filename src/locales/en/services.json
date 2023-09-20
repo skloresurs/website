@@ -12,7 +12,11 @@
         "description": "The best glass processing components from Skloresurs. Quality and reliability for your business.",
         "content": {
             "h1": "Glass Processing Components",
-            "main": "<p>Information is currently unavailable. Please stay tuned for updates.</p>"
+            "prevPage": "Preview page",
+            "nextPage": "Next page",
+            "details": "More details",
+            "error": "Error. Failed to download. Try again later.",
+            "missingitems": "The list of goods/services is empty."
         }
     },
     "seminars": {
