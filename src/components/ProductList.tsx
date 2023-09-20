@@ -88,7 +88,11 @@ function Product({
   return (
     <div className='flex flex-col items-center gap-3 rounded-md border-2 border-neutral-100 p-3'>
       <img
-        src={data.image ?? 'https://placehold.co/400?text=Missing Image'}
+        src={
+          !data.image || data.image.startsWith('/')
+            ? 'https://placehold.co/400?text=Missing Image'
+            : data.image
+        }
         width='200px'
         height='200px'
         className='h-[200px] w-[200px] object-cover object-center'
