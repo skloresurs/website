@@ -1,4 +1,4 @@
 ---
 year: "2023"
-auditory: public/reportings/4810264983_germetik-poliuretan-emcepren.webp
+auditory: /public/reportings/zviti_cb77f60a-4e08-42b2-94f2-7c80076ed46f.json
 ---
