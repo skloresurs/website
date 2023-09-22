@@ -1,0 +1,53 @@
+---
+import { getLocale } from 'astro-i18n-aut';
+import { localedURL, t } from 'src/utils/i18n.ts';
+import GetVacancies from 'src/queries/get-vacancies';
+import ServicesCategoryButton from 'src/components/grid/ServicesCategoryButton.astro';
+import { Prepr } from 'src/utils/prepr';
+import Grid from 'src/layouts/Grid.astro';
+import Block from 'src/components/grid/Block.astro';
+
+const locale = getLocale(Astro.url);
+const localedData = t(locale).services.vacancies;
+
+const response = await Prepr(GetVacancies(locale));
+const { data } = await response.json();
+const vacancies = data.Vacancies.items;
+---
+
+<Grid title={localedData.title} description={localedData.description}>
+  <Block mobile md lg />
+  <ServicesCategoryButton category='delivery' />
+  <ServicesCategoryButton category='components' />
+  <ServicesCategoryButton category='seminars' />
+  <ServicesCategoryButton category='vacancies' active />
+  <Block lg />
+  <Block md lg />
+  <div class='col-span-2 bg-white p-5 pt-12 md:col-span-4 md:px-12 lg:col-span-6'>
+    <h1 class='mb-5 text-4xl font-bold uppercase'>{localedData.content.h1}</h1>
+    <div class='flex w-full flex-col gap-3'>
+      {
+        vacancies.map((e: any) => (
+          <div class='relative w-full'>
+            <div class='absolute inset-x-0 h-full w-16 border-y-2 border-l-2 border-neutral-700' />
+            <div class='flex w-full flex-col gap-4 py-6 pl-5 md:flex-row md:items-center'>
+              <img src={e.image.url} height='150' width='150' class='object-cover' />
+              <div class='flex w-full flex-col items-center justify-between md:items-start'>
+                <div>
+                  <h2 class='text-2xl font-semibold'>{e.title}</h2>
+                  <p>{e.description}</p>
+                </div>
+                <a
+                  href={localedURL(locale, `/services/vacancies/${e._slug}`)}
+                  class='mt-4 w-min cursor-pointer rounded-md bg-[#0c2836] px-4 py-3 text-center text-white duration-300 hover:scale-105 md:ml-auto md:mt-1'
+                >
+                  Детальніше
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Grid>

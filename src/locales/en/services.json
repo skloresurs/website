@@ -32,7 +32,8 @@
         "description": "Find your ideal job vacancy at our company. Join our team today!",
         "content": {
             "h1": "Job Vacancies",
-            "main": "<p>Information is currently unavailable. Please stay tuned for updates.</p>"
+            "details": "More details",
+            "back": "Back"
         }
     }
 }
