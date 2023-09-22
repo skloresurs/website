@@ -19,7 +19,7 @@ const vacancy = data.Vacancy;
 if (vacancy?.body) {
   vacancy.body.map((e: any) => {
     if (e.__typename === 'Text') {
-      e.body = e.body.replaceAll('<p', '<p class="indent-8 mb-3" ');
+      e.body = e.body.replaceAll('<p', '<p class="mb-3" ');
       e.body = e.body.replaceAll(
         '<h2',
         '<h2 class="mb-5 mt-10 text-center text-3xl font-semibold" '
@@ -40,7 +40,7 @@ if (vacancy?.body) {
         '<h6',
         '<h6 class="mb-5 mt-10 text-center text-base font-semibold" '
       );
-      e.body = e.body.replaceAll('<ul', '<ul class="list-disc pl-5" ');
+      e.body = e.body.replaceAll('<ul', '<ul class="list-disc pl-5 mb-5" ');
       e.body = e.body.replaceAll('<ol', '<ol class="list-decimal pl-5" ');
       e.body = e.body.replaceAll('<a', '<a class="underline text-cyan-600" ');
       e.body = e.body.replaceAll(
@@ -75,7 +75,7 @@ if (vacancy?.body) {
             <div class='absolute inset-x-0 h-full w-16 border-b-2 border-l-2 border-neutral-700' />
             <div class='flex w-full flex-col gap-4 py-6 pl-5 md:flex-row'>
               <img
-                src={vacancy.image.url}
+                src={vacancy.image?.url ?? 'https://placehold.co/400?text=Missing Image'}
                 height='150'
                 width='150'
                 class='mx-auto h-min object-cover'

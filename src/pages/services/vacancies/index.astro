@@ -31,7 +31,12 @@ const vacancies = data.Vacancies.items;
           <div class='relative w-full'>
             <div class='absolute inset-x-0 h-full w-16 border-y-2 border-l-2 border-neutral-700' />
             <div class='flex w-full flex-col gap-4 py-6 pl-5 md:flex-row md:items-center'>
-              <img src={e.image.url} height='150' width='150' class='object-cover' />
+              <img
+                src={e.image?.url ?? 'https://placehold.co/400?text=Missing Image'}
+                height='150'
+                width='150'
+                class='object-cover'
+              />
               <div class='flex w-full flex-col items-center justify-between md:items-start'>
                 <div>
                   <h2 class='text-2xl font-semibold'>{e.title}</h2>

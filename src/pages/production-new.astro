@@ -1,0 +1,54 @@
+---
+import { getLocale } from 'astro-i18n-aut';
+import { t } from '../utils/i18n.ts';
+import Grid from 'src/layouts/Grid.astro';
+import Block from 'src/components/grid/Block.astro';
+import NotFound from 'src/pages/404.astro'
+
+const locale = getLocale(Astro.url);
+const localedData = t(locale).production;
+
+const page = Number(Astro.url.searchParams.get('page') ?? 1) ?? 1;
+
+const data: Array<{
+  video: string;
+  title: string;
+  description: string;
+}> = localedData.data;
+---
+
+{!isNaN(page) && page > 0 && page <= data.length ? <Grid title={localedData.title} description={localedData.description}>
+  <!-- Grid elements -->
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block lg />
+  <div class='col-span-2 bg-white p-5 md:col-span-6 lg:col-span-8'>
+    <h1 class='mb-5 text-center text-xl font-bold md:text-4xl'>{data[page - 1].description}</h1>
+    <p class='pb-3 text-center md:text-lg'>{data[page - 1].description}</p>
+    <video
+      class='mx-auto'
+      width='800px'
+      loop
+      muted
+      controls
+      autoplay
+      preload='auto'
+      src={data[page - 1].video}></video>
+    <div class='mt-5 flex items-center justify-center gap-8'>
+      {page > 1 && <a
+        href={`?page=${page - 1}`}
+        class='cursor-pointer rounded-md bg-[#0c2836] px-4 py-3 text-center text-white duration-300 hover:scale-105'
+        >{localedData.prev}</a
+      >}
+      <p>{page}/{data.length}</p>
+      {page < data.length && <a
+        href={`?page=${page + 1}`}
+        class='cursor-pointer rounded-md bg-[#0c2836] px-4 py-3 text-center text-white duration-300 hover:scale-105'
+        >{localedData.next}</a
+      >}
+    </div>
+  </div>
+</Grid> : <NotFound/>}
