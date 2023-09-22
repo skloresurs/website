@@ -24,7 +24,7 @@ const project = data.Projects.items[0] ?? null;
   <!-- Grid Elements -->
   <Block mobile md lg />
   <div
-    class='col-span-2 aspect-square justify-center px-5 pt-3 text-white md:col-span-4 md:aspect-auto'
+    class='col-span-2 mb-3 justify-center px-5 pt-3 text-white md:col-span-4 md:mb-0 md:aspect-auto'
   >
     <h1 class='text-2xl font-semibold'>{project.title}</h1>
     <div class=''>
@@ -45,7 +45,7 @@ const project = data.Projects.items[0] ?? null;
   <Block lg />
   <Block lg />
   <a
-    class='group col-span-2 overflow-hidden'
+    class='group col-span-2 mx-auto overflow-hidden'
     href={project.images[0].url}
     title={project.title}
     target='_blank'
@@ -58,7 +58,7 @@ const project = data.Projects.items[0] ?? null;
     />
   </a>
   <a
-    class='group col-span-2 overflow-hidden'
+    class='group col-span-2 mx-auto overflow-hidden'
     href={project.images[1].url}
     title={project.title}
     target='_blank'
@@ -71,7 +71,7 @@ const project = data.Projects.items[0] ?? null;
     />
   </a>
   <a
-    class='group col-span-2 overflow-hidden'
+    class='group col-span-2 mx-auto overflow-hidden'
     href={project.images[2].url}
     title={project.title}
     target='_blank'
