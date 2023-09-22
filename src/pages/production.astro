@@ -17,7 +17,7 @@ const data: Array<{
 }> = localedData.data;
 ---
 
-<script src='https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js' async defer></script>
+<script is:inline src='/js/typed.2.0.16.js'></script>
 <style>
   .typed-cursor {
     display: inline;
@@ -25,7 +25,7 @@ const data: Array<{
 </style>
 
 {
-  !isNaN(page) && page < 0 < data.length ? (
+  !isNaN(page) && page > 0 && page < data.length + 1 ? (
     <Grid title={localedData.title} description={localedData.description}>
       <Block md lg />
       <Block md lg />
@@ -81,6 +81,7 @@ const data: Array<{
 }
 
 <script define:vars={{ data, page }}>
+  console.log(data, page);
   var typed1 = new Typed('#typedtext-title', {
     strings: [data[page - 1].title],
     typeSpeed: 50,

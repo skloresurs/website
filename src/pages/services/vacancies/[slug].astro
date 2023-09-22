@@ -91,6 +91,18 @@ if (vacancy?.body) {
                   return null;
                 }) ?? ''}
               </div>
+              {vacancy.video?.mp4_medium && (
+                <video
+                  src={vacancy.video.mp4_medium}
+                  width='300px'
+                  height='700px'
+                  muted
+                  autoplay
+                  loop
+                  class='mx-auto mb-4'
+                  controls
+                />
+              )}
             </div>
           </div>
         </>

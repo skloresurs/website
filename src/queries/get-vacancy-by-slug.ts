@@ -8,6 +8,9 @@ export default function GetVacancyBySlug(locale: string, slug: string): string {
             image{
                 url
             }
+            video{
+                mp4_medium : url(res:"medium")
+            }
             description
             body {
                 __typename
