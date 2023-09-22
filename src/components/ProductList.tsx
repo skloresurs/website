@@ -93,6 +93,7 @@ function Product({
             ? 'https://placehold.co/400?text=Missing Image'
             : data.image
         }
+        alt={data.title}
         width='200px'
         height='200px'
         className='h-[200px] w-[200px] object-cover object-center'
