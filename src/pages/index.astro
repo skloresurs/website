@@ -167,7 +167,11 @@ const localedData = t(locale);
     alt={localedData.home.contacts}
     title={localedData.home.contacts}
   />
-  <Block md lg />
+  <Button
+    path={localedURL(locale, '/services/vacancies')}
+    alt={localedData.home.vacancies}
+    title={localedData.home.vacancies}
+  />
   <Block md lg />
   <Button
     path={localedURL(locale, '/feedback')}
