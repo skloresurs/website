@@ -1,0 +1,7 @@
+---
+title: Are you sure of the safety of your windows?
+description: According to statistics, four out of five injured individuals died
+  or sustained injuries from bomb fragments, debris, building parts, stones, and
+  shattered glass.
+---
+According to statistics, four out of five injured individuals died or sustained injuries from bomb fragments, debris, building parts, stones, and shattered glass. Glass accounted for 80% of injuries and fatalities caused by such debris. The problem lies in the fact that regular glass, commonly used in modern architecture, has a strength of 15 megapascals and cannot withstand the force of an explosive blast. Tempered glass, on the other hand, is much better at withstanding more powerful explosion forces. If a regular glass is likely to be destroyed with a 90% probability at a distance of 100 meters from a missile explosion, tempered glass at a distance of 60 meters has a 90% chance of remaining intact. Tempered glass can withstand up to eight times the pressure force of an explosive blast compared to regular glass, up to 120 megapascals. Upon a strong impact or explosion, tempered glass shatters into small fragments that pose no significant risk of severe injuries or fatality. Don't risk your life and health! Choose safety!
