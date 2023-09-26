@@ -6,7 +6,7 @@
     "content": " - has 17 years of experience in the field of architectural and interior glazing. Based on modern technologies, we create high-quality products that meet all international quality standards. Cooperation with world leaders in the production of glass and equipment, professionalism and highly advanced systems make it possible to implement the most daring design and architectural solutions."
   },
   "targethero": {
-    "title": "Company mission",
+    "h2": "Company mission",
     "content": {
       "p1": "Modern glass processing technologies for the realization of your dreams.",
       "p2": "Look at the world with pleasure!",
@@ -27,8 +27,8 @@
       ]
     }
   },
-  "certificate": {
-    "title": "The quality of our company's products is tested by the German Institute IFT Rosenheim"
+  "certificates": {
+    "h2": "The quality of our company's products is tested by the German Institute IFT Rosenheim"
   },
   "features": {
     "h2": "Skloresurs today",
@@ -77,64 +77,34 @@
   },
   "info": [
     {
-      "icon": "/icons/info/locations.svg",
-      "alt": "locations",
-      "main": {
-        "pre": null,
-        "number": "2",
-        "post": "Production platform"
-      },
-      "after": "Dubno, Rivne region<br />m. Tlumach, Ivano-Frankivsk region"
+      "title": "Locations",
+      "description": "We have 2 production facilities located in the cities of Dubno, Rivne region, and Tlumach, Ivano-Frankivsk region. These facilities are strategically important for our company and enable us to provide high-quality products to our clients in these regions.",
+      "icon": "infos-location"
     },
     {
-      "icon": "/icons/info/area.svg",
-      "alt": "area",
-      "main": {
-        "pre": "Total production area",
-        "number": "17 600м<sup>2</sup>",
-        "post": null
-      },
-      "after": null
+      "title": "Total Production Area",
+      "description": "Our total production area is an impressive 17,600 square meters. This large and modern infrastructure allows us to manufacture a significant quantity of products with high quality.",
+      "icon": "infos-area"
     },
     {
-      "icon": "/icons/info/workers.svg",
-      "alt": "workers",
-      "main": {
-        "pre": "Over",
-        "number": "300",
-        "post": "Workers"
-      },
-      "after": null
+      "title": "Employees",
+      "description": "We have over 300 highly skilled employees in our team who are dedicated to their work. Their professionalism and commitment guarantee high-quality solutions and service for you.",
+      "icon": "infos-employees"
     },
     {
-      "icon": "/icons/info/wares.svg",
-      "alt": "wares",
-      "main": {
-        "pre": "Over",
-        "number": "50 000м<sup>2</sup>",
-        "post": "products per month"
-      },
-      "after": null
+      "title": "Products per Month",
+      "description": "Our capacity allows us to produce more than 50,000 square meters of products every month. This means we can fulfill even the largest orders and deliver our clients' products on time.",
+      "icon": "infos-products"
     },
     {
-      "icon": "/icons/info/variants.svg",
-      "alt": "variants",
-      "main": {
-        "pre": "Over",
-        "number": "60",
-        "post": "species of glass in stock"
-      },
-      "after": null
+      "title": "Varieties of Glass in Stock",
+      "description": "We have over 60 varieties of glass available in our warehouse. This provides our clients with the opportunity to choose from a wide range of options and find the optimal solutions for their needs.",
+      "icon": "infos-types"
     },
     {
-      "icon": "/icons/info/projects.svg",
-      "alt": "projects",
-      "main": {
-        "pre": null,
-        "number": "200",
-        "post": "projects every year"
-      },
-      "after": null
+      "title": "Projects",
+      "description": "Every year, we develop and implement over 200 projects. Our experience and technical knowledge help us bring our clients' most ambitious ideas to life and achieve mutual success.",
+      "icon": "infos-projects"
     }
   ],
   "partners": {

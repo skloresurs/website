@@ -25,6 +25,7 @@ module.exports = {
     project: ['./tsconfig.json'],
   },
   rules: {
+    'tailwindcss/no-custom-classname': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
   },

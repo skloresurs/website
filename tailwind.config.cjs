@@ -6,6 +6,15 @@ module.exports = {
       backgroundImage: {
         sky: "url('/images/background.jpg')",
       },
+      keyframes: {
+        fadeup: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+      },
+      animation: {
+        fadeup: 'fadeup 1s ease-in-out forwards',
+      },
     },
   },
   plugins: [],

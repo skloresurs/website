@@ -28,9 +28,6 @@ export default defineConfig({
   integrations: [
     icon({
       iconDir: 'src/icons',
-      include: {
-        ri: ['*'],
-      },
     }),
     i18n({
       locales,

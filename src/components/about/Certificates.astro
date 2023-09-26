@@ -1,0 +1,41 @@
+---
+import { getLocale } from 'astro-i18n-aut';
+import { t } from 'src/utils/i18n.ts';
+
+const locale = getLocale(Astro.url);
+const localedData = t(locale).about;
+
+const cerfiticates = [
+  'certificate1',
+  'certificate2',
+  'certificate3',
+  'certificate4',
+  'certificate5',
+];
+---
+
+<div class='px-3'>
+  <div class='flex justify-center' data-aos='fade-up' data-aos-duration='400'>
+    <h2
+      class='mb-5 mt-10 border-b-2 border-blue-600 px-2 pb-2 text-center text-3xl font-bold text-blue-600'
+    >
+      {localedData.certificates.h2}
+    </h2>
+  </div>
+  <div class='grid grid-cols-3 gap-6 md:grid-cols-4 lg:grid-cols-5'>
+    {
+      cerfiticates.map((e, i) => (
+        <a
+          href={`/images/certificates/${e}.png`}
+          target='_blank'
+          class='shadow-2xl'
+          data-aos='fade-up'
+          data-aos-duration='400'
+          data-aos-delay={50 * i}
+        >
+          <img src={`/images/certificates/${e}.png`} alt={e} width='1000' height='1400' />
+        </a>
+      ))
+    }
+  </div>
+</div>

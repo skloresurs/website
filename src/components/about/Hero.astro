@@ -1,0 +1,43 @@
+---
+import { getLocale } from 'astro-i18n-aut';
+import { t } from 'src/utils/i18n.ts';
+
+const locale = getLocale(Astro.url);
+const localedData = t(locale).about;
+---
+
+<!-- Desktop version -->
+<div class='relative hidden h-[500px] md:block' data-aos='fade-up' data-aos-duration='400'>
+  <img
+    src='/images/sky-skloresurs.jpg'
+    class='absolute inset-0 z-0 h-full w-full object-cover object-center'
+  />
+  <div
+    class='absolute left-1/2 top-1/2 z-10 w-[400px] -translate-x-1/2 -translate-y-1/2 animate-fadeup rounded-md bg-black/75 p-5 text-white opacity-0 lg:left-8 lg:w-[700px] lg:-translate-x-0'
+    id='mainhero'
+  >
+    <h1 class='mb-5 text-center text-4xl font-bold'>{localedData.title}</h1>
+    <p>
+      <span class='text-2xl font-semibold'>{localedData.mainhero.title}</span>{
+        localedData.mainhero.content
+      }
+    </p>
+  </div>
+</div>
+
+<!-- Mobile version -->
+<div
+  class='flex flex-col items-center gap-5 sm:flex-row md:hidden'
+  data-aos='fade-up'
+  data-aos-duration='400'
+>
+  <img src='/images/about.jpg' height='365.7' width='250' class='h-full rounded-md' />
+  <div>
+    <h1 class='mb-5 text-center text-4xl font-bold'>{localedData.title}</h1>
+    <p>
+      <span class='text-2xl font-semibold'>{localedData.mainhero.title}</span>{
+        localedData.mainhero.content
+      }
+    </p>
+  </div>
+</div>
