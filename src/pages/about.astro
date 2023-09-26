@@ -35,6 +35,6 @@ const partners = data.Partners.items;
     <Certificates />
     <Infos />
     <Features />
-    <Partners client:load title={localedData.partners.h2} partners={partners} />
+    <Partners client:load client:only='react' title={localedData.partners.h2} partners={partners} />
   </div>
 </Grid>

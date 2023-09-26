@@ -1,11 +1,12 @@
 ---
 import { getLocale } from 'astro-i18n-aut';
-import { t, localedURL } from '../utils/i18n.ts';
-import Block from '../components/grid/Block.astro';
-import Button from '../components/grid/Button.astro';
-import SloganBlock from '../components/grid/SloganBlock.astro';
-import LanguageSwitcherBlock from '../components/grid/LanguageSwitcherBlock.astro';
-import Grid from '../layouts/Grid.astro';
+import { t, localedURL } from 'src/utils/i18n.ts';
+import Block from 'src/components/grid/Block.astro';
+import Button from 'src/components/grid/Button.astro';
+import SloganBlock from 'src/components/grid/SloganBlock.astro';
+import LanguageSwitcherBlock from 'src/components/grid/LanguageSwitcherBlock.astro';
+import Grid from 'src/layouts/Grid.astro';
+import { Icon } from 'astro-icon/components';
 
 const locale = getLocale(Astro.url);
 const localedData = t(locale);
@@ -43,9 +44,7 @@ const localedData = t(locale);
     locale === 'uk' && (
       <div class='fixed inset-0 z-50 hidden bg-black/60' id='lang-notification'>
         <div class='mx-auto mt-10 flex h-min flex-col items-center justify-center rounded-md bg-white px-5 py-3 md:w-max'>
-          <div class='flex items-center justify-center rounded-full bg-gray-50 p-4'>
-            <img src='/icons/en.svg' alt='English' title='English' />
-          </div>
+          <Icon name='en' class='mt-5 h-16 w-16' />
           <h2 class='my-5 text-3xl font-semibold'>Hello</h2>
           <p>
             We noticed that the language of your browser is not <strong>Ukrainian</strong>,

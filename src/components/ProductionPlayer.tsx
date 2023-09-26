@@ -33,11 +33,7 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
         <Description content={data[currentVideo].description} />
       </div>
       <div className='flex min-w-[250px] max-w-min flex-col gap-2'>
-        <div
-          className='flex justify-center bg-white rounded-md'
-          data-aos='fade-up'
-          data-aos-duration='400'
-        >
+        <div className='flex justify-center bg-white rounded-md'>
           <h2 className='my-3 border-b-2 border-blue-600 px-2 pb-2 text-center text-3xl font-bold text-blue-600'>
             {title}
           </h2>

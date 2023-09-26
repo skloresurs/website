@@ -1,24 +1,24 @@
-import MetaUk from '../locales/uk/meta.json';
-import HomeUk from '../locales/uk/home.json';
-import ContactsUk from '../locales/uk/contacts.json';
-import FeedbackUk from '../locales/uk/feedback.json';
-import CatalogUk from '../locales/uk/catalog.json';
-import ProductionUk from '../locales/uk/production.json';
-import ProjectsUk from '../locales/uk/projects.json';
-import AboutUk from '../locales/uk/about.json';
-import ReportingsUk from '../locales/uk/reportings.json';
-import ServicesUk from '../locales/uk/services.json';
+import MetaUk from 'src/locales/uk/meta.json';
+import HomeUk from 'src/locales/uk/home.json';
+import ContactsUk from 'src/locales/uk/contacts.json';
+import FeedbackUk from 'src/locales/uk/feedback.json';
+import CatalogUk from 'src/locales/uk/catalog.json';
+import ProductionUk from 'src/locales/uk/production.json';
+import ProjectsUk from 'src/locales/uk/projects.json';
+import AboutUk from 'src/locales/uk/about.json';
+import ReportingsUk from 'src/locales/uk/reportings.json';
+import ServicesUk from 'src/locales/uk/services.json';
 
-import MetaEn from '../locales/en/meta.json';
-import HomeEn from '../locales/en/home.json';
-import ContactsEn from '../locales/en/contacts.json';
-import FeedbackEn from '../locales/en/feedback.json';
-import CatalogEn from '../locales/en/catalog.json';
-import ProductionEn from '../locales/en/production.json';
-import ProjectsEn from '../locales/en/projects.json';
-import AboutEn from '../locales/en/about.json';
-import ReportingsEn from '../locales/en/reportings.json';
-import ServicesEn from '../locales/en/services.json';
+import MetaEn from 'src/locales/en/meta.json';
+import HomeEn from 'src/locales/en/home.json';
+import ContactsEn from 'src/locales/en/contacts.json';
+import FeedbackEn from 'src/locales/en/feedback.json';
+import CatalogEn from 'src/locales/en/catalog.json';
+import ProductionEn from 'src/locales/en/production.json';
+import ProjectsEn from 'src/locales/en/projects.json';
+import AboutEn from 'src/locales/en/about.json';
+import ReportingsEn from 'src/locales/en/reportings.json';
+import ServicesEn from 'src/locales/en/services.json';
 
 export function t(locale: string): any {
   if (locale === 'en') {

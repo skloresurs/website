@@ -1,9 +1,10 @@
 ---
 import { getLocale } from 'astro-i18n-aut';
-import { t, localedURL } from '../utils/i18n.ts';
-import Block from '../components/grid/Block.astro';
-import Button from '../components/grid/Button.astro';
-import Grid from '../layouts/Grid.astro';
+import { t, localedURL } from 'src/utils/i18n.ts';
+import Block from 'src/components/grid/Block.astro';
+import Button from 'src/components/grid/Button.astro';
+import Grid from 'src/layouts/Grid.astro';
+import { Icon } from 'astro-icon/components';
 
 const locale = getLocale(Astro.url);
 const localedData = t(locale).contacts;
@@ -41,24 +42,12 @@ const localedData = t(locale).contacts;
     <p><a href='mailto:office@skloresurs.com'>office@skloresurs.com</a></p>
     <p>
       <a href='https://www.instagram.com/skloresurs/' class='flex flex-row items-center gap-1'
-        ><img
-          src='/icons/social/instagram.svg'
-          width='18'
-          height='18'
-          alt='Instagram'
-          title='Instagram'
-        />Instagram</a
+        ><Icon name='logos-instagram' />Instagram</a
       >
     </p>
     <p>
       <a href='https://www.facebook.com/skloresurs' class='flex flex-row items-center gap-1'
-        ><img
-          src='/icons/social/facebook.svg'
-          width='18'
-          height='18'
-          alt='Facebook'
-          title='Facebook'
-        />Facebook</a
+        ><Icon name='logos-facebook' />Facebook</a
       >
     </p>
   </div>

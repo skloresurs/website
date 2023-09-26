@@ -20,7 +20,7 @@ export default function Partners({ title, partners }: iProps): JSX.Element {
   ]);
 
   return (
-    <div className='mb-5 mt-10 px-3'>
+    <div className='mb-5 mt-10 px-6 md:px-10 lg:px-12'>
       <div className='flex justify-center' data-aos='fade-up' data-aos-duration='400'>
         <h2 className='mb-5 mt-10 border-b-2 border-blue-600 px-2 pb-2 text-center text-3xl font-bold text-blue-600'>
           {title}

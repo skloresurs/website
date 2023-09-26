@@ -13,7 +13,7 @@ const infos: Array<{
 }> = localedData.info;
 ---
 
-<div class='mt-10 grid grid-cols-1 gap-5 px-5 md:grid-cols-2 lg:grid-cols-3'>
+<div class='mt-10 grid grid-cols-1 gap-5 px-6 md:grid-cols-2 md:px-10 lg:grid-cols-3 lg:px-12'>
   {
     infos.map((e, i) => (
       <div
@@ -23,7 +23,7 @@ const infos: Array<{
         data-aos-delay={50 * i}
       >
         <div class='aspect-square w-min rounded-md bg-blue-500 p-2'>
-          <Icon name={e.icon} class='h-10 w-10 text-white' />
+          <Icon name={`infos-${e.icon}`} class='h-10 w-10 text-white' />
         </div>
         <h3 class='text-xl font-semibold'>{e.title}</h3>
         <p>{e.description}</p>

@@ -1,12 +1,12 @@
 ---
 import { getLocale } from 'astro-i18n-aut';
-import { t } from '../../utils/i18n.ts';
-import Grid from '../../layouts/Grid.astro';
-import Block from '../../components/grid/Block.astro';
-import CatalogCategoryButton from '../../components/grid/CatalogCategoryButton.astro';
+import { t } from 'src/utils/i18n.ts';
+import Grid from 'src/layouts/Grid.astro';
+import Block from 'src/components/grid/Block.astro';
+import CatalogCategoryButton from 'src/components/grid/CatalogCategoryButton.astro';
 import { Prepr } from 'src/utils/prepr';
 import GetServices from 'src/queries/get-services';
-import NotFound from '../404.astro';
+import NotFound from 'src/pages/404.astro';
 
 const avalibleCategory = ['facades', 'inside', 'outside', 'safe'];
 const category = Astro.params.category ?? '';

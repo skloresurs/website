@@ -79,32 +79,32 @@
     {
       "title": "Locations",
       "description": "We have 2 production facilities located in the cities of Dubno, Rivne region, and Tlumach, Ivano-Frankivsk region. These facilities are strategically important for our company and enable us to provide high-quality products to our clients in these regions.",
-      "icon": "infos-location"
+      "icon": "location"
     },
     {
       "title": "Total Production Area",
       "description": "Our total production area is an impressive 17,600 square meters. This large and modern infrastructure allows us to manufacture a significant quantity of products with high quality.",
-      "icon": "infos-area"
+      "icon": "area"
     },
     {
       "title": "Employees",
       "description": "We have over 300 highly skilled employees in our team who are dedicated to their work. Their professionalism and commitment guarantee high-quality solutions and service for you.",
-      "icon": "infos-employees"
+      "icon": "employees"
     },
     {
       "title": "Products per Month",
       "description": "Our capacity allows us to produce more than 50,000 square meters of products every month. This means we can fulfill even the largest orders and deliver our clients' products on time.",
-      "icon": "infos-products"
+      "icon": "products"
     },
     {
       "title": "Varieties of Glass in Stock",
       "description": "We have over 60 varieties of glass available in our warehouse. This provides our clients with the opportunity to choose from a wide range of options and find the optimal solutions for their needs.",
-      "icon": "infos-types"
+      "icon": "types"
     },
     {
       "title": "Projects",
       "description": "Every year, we develop and implement over 200 projects. Our experience and technical knowledge help us bring our clients' most ambitious ideas to life and achieve mutual success.",
-      "icon": "infos-projects"
+      "icon": "projects"
     }
   ],
   "partners": {

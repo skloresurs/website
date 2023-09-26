@@ -8,7 +8,7 @@ const localedData = t(locale).about;
 const targetList: string[] = localedData.targethero.content.list;
 ---
 
-<div class='px-5'>
+<div class='px-6'>
   <div class='flex justify-center' data-aos='fade-up' data-aos-duration='400'>
     <h2
       class='mb-5 mt-10 border-b-2 border-blue-600 px-2 pb-2 text-center text-3xl font-bold text-blue-600'
@@ -32,7 +32,7 @@ const targetList: string[] = localedData.targethero.content.list;
     {
       targetList.map((e, i) => (
         <div
-          class='rounded-md bg-blue-500 px-3 py-2'
+          class='rounded-md bg-blue-500 px-6 py-2 md:px-10 lg:px-12'
           data-aos='fade-up'
           data-aos-duration='400'
           data-aos-delay={50 * i}

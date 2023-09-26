@@ -1,6 +1,6 @@
 ---
 import { getLocale } from 'astro-i18n-aut';
-import { t } from '../../utils/i18n.ts';
+import { t } from 'src/utils/i18n.ts';
 
 const locale = getLocale(Astro.url);
 const localedData = t(locale).home.slogan;

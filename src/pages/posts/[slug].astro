@@ -1,18 +1,16 @@
 ---
 import { getLocale } from 'astro-i18n-aut';
-import { t, localedURL } from '../../utils/i18n.ts';
-import Grid from '../../layouts/Grid.astro';
-import Block from '../../components/grid/Block.astro';
-import Button from '../../components/grid/Button.astro';
+import { t, localedURL } from 'src/utils/i18n.ts';
+import Grid from 'src/layouts/Grid.astro';
+import Block from 'src/components/grid/Block.astro';
+import Button from 'src/components/grid/Button.astro';
 import { Prepr } from 'src/utils/prepr';
 import GetPostBySlug from 'src/queries/get-post-by-slug';
-import NotFound from '../404.astro';
-import Facebook from '../../components/sharebuttons/Facebook.astro';
-import Twitter from '../../components/sharebuttons/Twitter.astro';
-import Linkedin from '../../components/sharebuttons/Linkedin.astro';
-import Telegram from '../../components/sharebuttons/Telegram.astro';
-import Whatsapp from '../../components/sharebuttons/Whatsapp.astro';
-import Viber from '../../components/sharebuttons/Viber.astro';
+import NotFound from 'src/pages/404.astro';
+import Facebook from 'src/components/sharebuttons/Facebook.astro';
+import Twitter from 'src/components/sharebuttons/Twitter.astro';
+import Linkedin from 'src/components/sharebuttons/Linkedin.astro';
+import Telegram from 'src/components/sharebuttons/Telegram.astro';
 
 const url = Astro.url;
 const locale = getLocale(url);
@@ -71,7 +69,11 @@ if (post?.body) {
       <Block md lg />
       <Block lg />
       <div class='col-span-2 mb-5 bg-white p-5 md:col-span-4 lg:col-span-6'>
-        <h1 class='mb-5 text-center text-4xl font-bold'>{post?.title}</h1>
+        <div class='flex justify-center'>
+          <h1 class='mb-5 border-b-2 border-blue-600 px-2 pb-2 text-center text-3xl font-bold text-blue-600'>
+            {post?.title}
+          </h1>
+        </div>
         {post.body?.map((e: any) => {
           if (e.__typename === 'Text') {
             return <Fragment set:html={e.body} />;
@@ -87,8 +89,6 @@ if (post?.body) {
           <Twitter title={post.title} description={post.description} link={url} />
           <Linkedin link={url} />
           <Telegram link={url} description={post.description} />
-          <Whatsapp link={url} description={post.description} />
-          <Viber link={url} description={post.description} />
         </div>
       </div>
     </Grid>

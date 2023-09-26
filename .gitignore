@@ -23,6 +23,3 @@ pnpm-debug.log*
 node_modules
 
 .netlify/
-
-src/pages/404.astro
-src/pages/en/404.astro
