@@ -32,7 +32,7 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
         <Title content={data[currentVideo].title} />
         <Description content={data[currentVideo].description} />
       </div>
-      <div className='flex  flex-col gap-2'>
+      <div className='flex flex-col gap-2'>
         <div className='flex justify-center rounded-md'>
           <h2 className='my-3 border-b-2 border-blue-500 px-2 pb-2 text-center text-3xl font-bold text-blue-500'>
             {title}
@@ -45,14 +45,14 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
               onClick={() => {
                 setCurrentVideo(i);
               }}
-              className={`flex flex-row gap-3 rounded-md border-2 text-white duration-300 ${
+              className={`flex flex-row gap-3 rounded-md border-2 pr-2 text-white duration-300 ${
                 i === currentVideo ? 'border-blue-600' : 'border-white'
               }`}
             >
               <img src={`/images/production/${i + 1}.png`} width='150' className='rounded' />
-              <div className='flex h-full flex-col items-start justify-between py-2'>
+              <div className='flex h-full flex-col items-start justify-between py-2 text-left'>
                 <p className='text-lg font-medium'>{e.title}</p>
-                <p className='text-sm'>{e.description.slice(0, 30).trim()}...</p>
+                <p className='hidden text-sm md:block'>{e.description.slice(0, 30).trim()}...</p>
               </div>
             </button>
           ))}
