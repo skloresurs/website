@@ -35,6 +35,7 @@ const fDescription = description ?? localedData.main.description;
     <!-- Base tags -->
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='stylesheet' href='https://unpkg.com/aos@next/dist/aos.css' />
 
     <!-- Base SEO -->
     <title>{fTitle}</title>
@@ -162,6 +163,9 @@ const fDescription = description ?? localedData.main.description;
       )
     }
 
-    <script src='../utils/aos.js'></script>
+    <script is:inline src='https://unpkg.com/aos@next/dist/aos.js'></script>
+    <script is:inline>
+      AOS.init();
+    </script>
   </body>
 </html>

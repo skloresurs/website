@@ -15,7 +15,7 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
 
   return (
     <div className='flex flex-col gap-2 md:flex-row md:gap-5'>
-      <div className='flex h-min min-h-[700px] flex-1 flex-col gap-2 overflow-hidden rounded-md bg-white/75 pb-3'>
+      <div className='flex h-min min-h-[700px] flex-1 flex-col gap-2 overflow-hidden rounded-md pb-3'>
         <div className='player-wrapper'>
           <ReactPlayer
             className='react-player'
@@ -33,8 +33,8 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
         <Description content={data[currentVideo].description} />
       </div>
       <div className='flex min-w-[450px] max-w-min flex-col gap-2'>
-        <div className='flex justify-center rounded-md bg-white/75'>
-          <h2 className='my-3 border-b-2 border-blue-600 px-2 pb-2 text-center text-3xl font-bold text-blue-600'>
+        <div className='flex justify-center rounded-md'>
+          <h2 className='my-3 border-b-2 border-blue-500 px-2 pb-2 text-center text-3xl font-bold text-blue-500'>
             {title}
           </h2>
         </div>
@@ -45,10 +45,12 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
               onClick={() => {
                 setCurrentVideo(i);
               }}
-              className='flex flex-row gap-2 rounded-md bg-white/75 p-2'
+              className={`flex flex-row gap-3 rounded-md border-2 text-white duration-300 ${
+                i === currentVideo ? 'border-blue-600' : 'border-white'
+              }`}
             >
               <img src={`/images/production/${i + 1}.png`} width='150' className='rounded' />
-              <div className='flex h-full flex-col items-start justify-between'>
+              <div className='flex h-full flex-col items-start justify-between py-2'>
                 <p className='text-lg font-medium'>{e.title}</p>
                 <p className='text-sm'>{e.description.slice(0, 30).trim()}...</p>
               </div>
@@ -80,7 +82,7 @@ function Title({ content }: { content: string }): JSX.Element {
       };
     }
   }, [currentIndex]);
-  return <h2 className='px-3 text-3xl font-bold'>{currentText}</h2>;
+  return <h2 className='px-3 text-3xl font-bold text-white'>{currentText}</h2>;
 }
 
 function Description({ content }: { content: string }): JSX.Element {
@@ -104,5 +106,5 @@ function Description({ content }: { content: string }): JSX.Element {
       };
     }
   }, [currentIndex]);
-  return <p className='px-3'>{currentText}</p>;
+  return <p className='px-3 text-white'>{currentText}</p>;
 }
