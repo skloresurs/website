@@ -15,7 +15,7 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
 
   return (
     <div className='flex flex-col gap-2 md:flex-row md:gap-5'>
-      <div className='flex h-min min-h-[700px] flex-1 flex-col gap-2 overflow-hidden rounded-md pb-3'>
+      <div className='flex h-min flex-1 flex-col gap-2 overflow-hidden rounded-md pb-3'>
         <div className='player-wrapper'>
           <ReactPlayer
             className='react-player'
@@ -32,7 +32,7 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
         <Title content={data[currentVideo].title} />
         <Description content={data[currentVideo].description} />
       </div>
-      <div className='flex min-w-[450px] max-w-min flex-col gap-2'>
+      <div className='flex  flex-col gap-2'>
         <div className='flex justify-center rounded-md'>
           <h2 className='my-3 border-b-2 border-blue-500 px-2 pb-2 text-center text-3xl font-bold text-blue-500'>
             {title}
