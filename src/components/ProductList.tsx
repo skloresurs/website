@@ -53,7 +53,7 @@ export default function Productlist({ data, translationData }: iProps): JSX.Elem
           onClick={previewPage}
           disabled={page <= 0}
           title={translationData.previewPage}
-          className={`cursor-pointer rounded-md bg-[#0c2836] px-4 py-3 text-center text-white duration-300 hover:scale-105 disabled:cursor-default ${
+          className={`cursor-pointer rounded-md bg-blue-600 px-4 py-3 text-center text-white duration-300 hover:scale-105 disabled:cursor-default ${
             page <= 0 ? 'opacity-0' : ''
           }`}
         >
@@ -67,7 +67,7 @@ export default function Productlist({ data, translationData }: iProps): JSX.Elem
           onClick={nextPage}
           disabled={page + 1 >= pages}
           title={translationData.nextPage}
-          className={`cursor-pointer rounded-md bg-[#0c2836] px-4 py-3 text-center text-white duration-300 hover:scale-105 disabled:cursor-default ${
+          className={`cursor-pointer rounded-md bg-blue-600 px-4 py-3 text-center text-white duration-300 hover:scale-105 disabled:cursor-default ${
             page + 1 >= pages ? 'opacity-0' : ''
           }`}
         >
@@ -86,7 +86,11 @@ function Product({
   detailTransaltionText: string;
 }): JSX.Element {
   return (
-    <div className='flex flex-col items-center gap-3 rounded-md border-2 border-neutral-100 p-3'>
+    <div
+      className='flex flex-col items-center gap-3 rounded-md border-2 border-neutral-100 p-3'
+      data-aos='fade-up'
+      data-aos-duration='400'
+    >
       <img
         src={
           !data.image || data.image.startsWith('/')
@@ -109,7 +113,7 @@ function Product({
           '+'
         )}`}
         title={detailTransaltionText}
-        className='cursor-pointer rounded-md bg-[#0c2836] px-4 py-3 text-center text-white duration-300 hover:scale-105'
+        className='cursor-pointer rounded-md bg-blue-600 px-4 py-3 text-center text-white duration-300 hover:scale-105'
       >
         {detailTransaltionText}
       </a>

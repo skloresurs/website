@@ -14,9 +14,9 @@ const localedData = t(locale).services[category];
   title={localedData.title}
   class={`flex h-full flex-col items-center justify-center gap-4 border-2 px-2 py-3 text-center text-lg duration-300 ${
     active
-      ? 'border-white fill-white text-white'
-      : 'border-neutral-500 fill-neutral-500 text-neutral-500'
-  } hover:border-white hover:fill-white hover:text-white`}
+      ? 'border-blue-500 fill-blue-500 text-blue-500'
+      : 'border-neutral-400 fill-neutral-400 text-neutral-400'
+  } hover:border-blue-500 hover:fill-blue-500 hover:text-blue-500`}
   ><Icon name={`services-${category}`} class='h-12 w-12 lg:h-20 lg:w-20' /><p>
     {localedData.title}
   </p></a

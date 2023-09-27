@@ -1,14 +1,12 @@
 ---
 import { getLocale } from 'astro-i18n-aut';
-import { t } from '../utils/i18n.ts';
+import { t } from 'src/utils/i18n.ts';
 import Grid from 'src/layouts/Grid.astro';
 import Block from 'src/components/grid/Block.astro';
-import NotFound from 'src/pages/404.astro';
+import ProductionPlayer from 'src/components/ProductionPlayer';
 
 const locale = getLocale(Astro.url);
 const localedData = t(locale).production;
-
-const page = Number(Astro.url.searchParams.get('page') ?? 1) ?? 1;
 
 const data: Array<{
   video: string;
@@ -17,77 +15,15 @@ const data: Array<{
 }> = localedData.data;
 ---
 
-<script is:inline src='/js/typed.2.0.16.js'></script>
-<style>
-  .typed-cursor {
-    display: inline;
-  }
-</style>
-
-{
-  !isNaN(page) && page > 0 && page < data.length + 1 ? (
-    <Grid title={localedData.title} description={localedData.description}>
-      <Block md lg />
-      <Block md lg />
-      <Block md lg />
-      <Block md lg />
-      <Block md lg />
-      <Block lg />
-      <div class='col-span-2 p-5 text-white md:col-span-6 lg:col-span-8'>
-        <div class='mx-auto mb-5 w-full max-w-3xl text-center'>
-          <div>
-            <h1 class='inline text-center text-xl font-bold md:text-4xl' id='typedtext-title' />
-          </div>
-          <div class='mb-3'>
-            <p class='inline text-center md:text-lg' id='typedtext-description' />
-          </div>
-        </div>
-        <video
-          class='mx-auto'
-          width='800px'
-          loop
-          muted
-          controls
-          autoplay
-          preload='auto'
-          src={data[page - 1].video}
-        />
-        <div class='mt-5 flex items-center justify-center gap-8'>
-          {page > 1 && (
-            <a
-              href={`?page=${page - 1}`}
-              class='cursor-pointer rounded-md bg-[#B6BEC2] px-4 py-3 text-center text-black duration-300 hover:scale-105'
-            >
-              {localedData.prev}
-            </a>
-          )}
-          <p>
-            {page}/{data.length}
-          </p>
-          {page < data.length && (
-            <a
-              href={`?page=${page + 1}`}
-              class='cursor-pointer rounded-md bg-[#B6BEC2] px-4 py-3 text-center text-black duration-300 hover:scale-105'
-            >
-              {localedData.next}
-            </a>
-          )}
-        </div>
-      </div>
-    </Grid>
-  ) : (
-    <NotFound />
-  )
-}
-
-<script define:vars={{ data, page }}>
-  console.log(data, page);
-  var typed1 = new Typed('#typedtext-title', {
-    strings: [data[page - 1].title],
-    typeSpeed: 50,
-  });
-  var typed2 = new Typed('#typedtext-description', {
-    strings: [data[page - 1].description],
-    typeSpeed: 10,
-  });
-</script>
+<Grid title={localedData.title} description={localedData.description}>
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block lg />
+  <div class='col-span-2 px-2 py-3 md:col-span-4 lg:col-span-6'>
+    <ProductionPlayer client:load client:only='react' title={localedData.title} data={data} />
+  </div>
+</Grid>

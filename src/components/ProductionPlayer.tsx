@@ -14,8 +14,8 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
   const [currentVideo, setCurrentVideo] = useState(0);
 
   return (
-    <div className='flex flex-col items-center gap-2 md:flex-row md:gap-5'>
-      <div className='flex flex-1 flex-col gap-2 overflow-hidden rounded-md bg-white pb-3'>
+    <div className='flex flex-col gap-2 md:flex-row md:gap-5'>
+      <div className='flex h-min min-h-[700px] flex-1 flex-col gap-2 overflow-hidden rounded-md bg-white/75 pb-3'>
         <div className='player-wrapper'>
           <ReactPlayer
             className='react-player'
@@ -24,7 +24,7 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
             loop
             volume={0}
             controls={false}
-            url={data[currentVideo].video}
+            url={`/videos/production/${currentVideo + 1}.mp4`}
             width='100%'
             height='100%'
           />
@@ -32,8 +32,8 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
         <Title content={data[currentVideo].title} />
         <Description content={data[currentVideo].description} />
       </div>
-      <div className='flex min-w-[250px] max-w-min flex-col gap-2'>
-        <div className='flex justify-center bg-white rounded-md'>
+      <div className='flex min-w-[450px] max-w-min flex-col gap-2'>
+        <div className='flex justify-center rounded-md bg-white/75'>
           <h2 className='my-3 border-b-2 border-blue-600 px-2 pb-2 text-center text-3xl font-bold text-blue-600'>
             {title}
           </h2>
@@ -45,11 +45,13 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
               onClick={() => {
                 setCurrentVideo(i);
               }}
-              className={`rounded-md border-2 px-2 py-3 duration-300 hover:bg-gray-300 ${
-                i === currentVideo ? 'bg-gray-300' : 'bg-white'
-              }`}
+              className='flex flex-row gap-2 rounded-md bg-white/75 p-2'
             >
-              {e.title}
+              <img src={`/images/production/${i + 1}.png`} width='150' className='rounded' />
+              <div className='flex h-full flex-col items-start justify-between'>
+                <p className='text-lg font-medium'>{e.title}</p>
+                <p className='text-sm'>{e.description.slice(0, 30).trim()}...</p>
+              </div>
             </button>
           ))}
       </div>

@@ -9,14 +9,7 @@ const localedData = t(locale).about;
 const features: Array<{ content: string; icon: string }> = localedData.features.data;
 ---
 
-<div class='px-6 md:px-10 lg:px-12'>
-  <div class='flex justify-center' data-aos='fade-up' data-aos-duration='400'>
-    <h2
-      class='mb-5 mt-10 border-b-2 border-blue-600 px-2 pb-2 text-center text-3xl font-bold text-blue-600'
-    >
-      {localedData.features.h2}
-    </h2>
-  </div>
+<div class='my-16 px-6 md:px-10 lg:px-12'>
   <div class='columns-1 gap-6 md:columns-2 xl:columns-3'>
     {
       features.map((e) => (
