@@ -1,0 +1,70 @@
+---
+import { getLocale } from 'astro-i18n-aut';
+import { t, localedURL } from 'src/utils/i18n.ts';
+import Grid from 'src/layouts/Grid.astro';
+import Block from 'src/components/grid/Block.astro';
+import ButtonWithItem from 'src/components/grid/ButtonWithItem.astro';
+import { Prepr } from 'src/utils/prepr';
+import GetProjects from 'src/queries/get-projects';
+import NotFound from 'src/pages/404.astro';
+import { Icon } from 'astro-icon/components';
+import Project from 'src/components/Project';
+
+const locale = getLocale(Astro.url);
+const localedData = t(locale).projects;
+
+let element = +(Astro.url.searchParams.get('element') ?? 1);
+if (Number.isNaN(+element) || element <= 0) {
+  element = 1;
+}
+const response = await Prepr(GetProjects(locale, element));
+const { data } = await response.json();
+const project = data.Projects.items[0] ?? null;
+---
+
+{
+  project ? (
+    <Grid title={project?.title} description={localedData.description}>
+      <Block mobile md lg />
+      <div class='col-span-2 mb-3 justify-center px-5 pt-3 text-white md:col-span-4 md:mb-0 md:aspect-auto'>
+        <h1 class='text-2xl font-semibold'>{project.title}</h1>
+        <div class='flex flex-col gap-2'>
+          <p class='flex flex-row items-center gap-3'>
+            <Icon name='mdi:map-marker' class='h-6 w-6' />
+            {project.location}
+          </p>
+          <p class='flex flex-row items-center gap-3 text-sm'>
+            <Icon name='mdi:glassdoor' class='h-6 w-6' />
+            {project.glasstype}
+          </p>
+          <p class='flex flex-row items-center gap-3'>
+            <Icon name='mdi:calendar' class='h-6 w-6' />
+            {project.year}
+          </p>
+        </div>
+      </div>
+      <Block lg />
+      <Block lg />
+      <Project client:load client:only='react' title={project.title} data={project.images} />
+      <Block md lg />
+      <Block lg />
+      <Block lg />
+      {element > 1 ? (
+        <ButtonWithItem path={localedURL(locale, `/projects?element=${Math.max(element - 1, 1)}`)}>
+          <Icon name='mdi:arrow-left' class='h-10 w-10' />
+        </ButtonWithItem>
+      ) : (
+        <Block mobile md lg />
+      )}
+      <Block md lg />
+      <Block md lg />
+      {data.Projects.items.length > 1 && (
+        <ButtonWithItem path={localedURL(locale, `/projects?element=${+element + 1}`)}>
+          <Icon name='mdi:arrow-right' class='h-10 w-10' />
+        </ButtonWithItem>
+      )}
+    </Grid>
+  ) : (
+    <NotFound />
+  )
+}

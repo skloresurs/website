@@ -11,7 +11,9 @@ export default function GetProjects(locale: string, page: number): string {
                 glasstype
                 year
                 images{
-                    url
+                    url,
+                    width,
+                    height 
                 }
             }
         }
