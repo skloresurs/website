@@ -45,8 +45,8 @@ const reportings = data.Reportings.items;
           >
             <a
               href={e.finance.url}
+              type='application/pdf'
               title={`${localedData.finance} ${e.year}${localedData.year}`}
-              target='_blank'
               class='flex flex-row items-center gap-3 rounded-md bg-slate-100 duration-300 hover:bg-slate-200'
             >
               <div class='rounded-md px-5 py-3'>
@@ -58,8 +58,8 @@ const reportings = data.Reportings.items;
             </a>
             <a
               href={e.auditory.url}
+              type='application/pdf'
               title={`${localedData.auditory} ${e.year}${localedData.year}`}
-              target='_blank'
               class='flex flex-row items-center gap-3 rounded-md bg-slate-100 duration-300 hover:bg-slate-200'
             >
               <div class='rounded-md px-5 py-3'>

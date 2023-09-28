@@ -8,6 +8,7 @@ import ProjectsUk from 'src/locales/uk/projects.json';
 import AboutUk from 'src/locales/uk/about.json';
 import ReportingsUk from 'src/locales/uk/reportings.json';
 import ServicesUk from 'src/locales/uk/services.json';
+import PostsUk from 'src/locales/uk/posts.json';
 
 import MetaEn from 'src/locales/en/meta.json';
 import HomeEn from 'src/locales/en/home.json';
@@ -19,6 +20,7 @@ import ProjectsEn from 'src/locales/en/projects.json';
 import AboutEn from 'src/locales/en/about.json';
 import ReportingsEn from 'src/locales/en/reportings.json';
 import ServicesEn from 'src/locales/en/services.json';
+import PostsEn from 'src/locales/en/posts.json';
 
 export function t(locale: string): any {
   if (locale === 'en') {
@@ -33,6 +35,7 @@ export function t(locale: string): any {
       about: AboutEn,
       reportings: ReportingsEn,
       services: ServicesEn,
+      posts: PostsEn,
     };
   }
   return {
@@ -46,6 +49,7 @@ export function t(locale: string): any {
     about: AboutUk,
     reportings: ReportingsUk,
     services: ServicesUk,
+    posts: PostsUk,
   };
 }
 
