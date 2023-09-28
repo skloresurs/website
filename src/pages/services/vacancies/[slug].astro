@@ -69,7 +69,7 @@ if (vacancy?.body) {
       <Block lg />
       <Block md lg />
       <div class='col-span-2 bg-white p-5 pt-12 md:col-span-4 md:px-12 lg:col-span-6'>
-        <div class='flex justify-center'>
+        <div class='flex justify-center' data-aos='fade-up' data-aos-duration='400'>
           <h1 class='mb-5 border-b-2 border-blue-600 px-2 pb-2 text-center text-4xl font-bold text-blue-600'>
             {vacancy.title}
           </h1>
@@ -85,12 +85,27 @@ if (vacancy?.body) {
                 class='mx-auto h-min object-cover'
               />
               <div class='w-full'>
-                {vacancy.body?.map((e: any) => {
+                {vacancy.body?.map((e: any, i: number) => {
                   if (e.__typename === 'Text') {
-                    return <Fragment set:html={e.body} />;
+                    return (
+                      <div
+                        data-aos='fade-up'
+                        data-aos-duration='400'
+                        data-aos-delay={Math.min(i * 100, 500)}
+                      >
+                        <Fragment set:html={e.body} />
+                      </div>
+                    );
                   }
                   if (e.__typename === 'Assets') {
-                    return <img src={e.items[0].url} />;
+                    return (
+                      <img
+                        src={e.items[0].url}
+                        data-aos='fade-up'
+                        data-aos-duration='400'
+                        data-aos-delay={Math.min(i * 100, 500)}
+                      />
+                    );
                   }
                   return null;
                 }) ?? ''}
