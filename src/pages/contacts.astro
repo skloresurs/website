@@ -1,8 +1,7 @@
 ---
 import { getLocale } from 'astro-i18n-aut';
-import { t, localedURL } from 'src/utils/i18n.ts';
+import { t } from 'src/utils/i18n.ts';
 import Block from 'src/components/grid/Block.astro';
-import Button from 'src/components/grid/Button.astro';
 import Grid from 'src/layouts/Grid.astro';
 import { Icon } from 'astro-icon/components';
 
@@ -13,42 +12,52 @@ const localedData = t(locale).contacts;
 <Grid title={localedData.title} description={localedData.title}>
   <!-- Not grid elements -->
   <h1 class='hidden'>{localedData.title}</h1>
-  <iframe
-    src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10172.771550362992!2d25.756297722752496!3d50.40024274531918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472f834aa1a7e7c7%3A0x647fedd3239403!2z0KHQmtCb0J7QoNCV0KHQo9Cg0KEsINCi0J7Qkg!5e0!3m2!1suk!2sua!4v1693825357053!5m2!1s${locale}!2sua`}
-    width='100%'
-    height='100%'
-    loading='lazy'
-    referrerpolicy='no-referrer-when-downgrade'
-    title='Google Map'
-    class='fixed inset-0 -z-50'></iframe>
 
   <!-- Grid elements -->
   <Block mobile md lg />
   <Block md lg />
-  <Button path={localedURL(locale, '/feedback')} alt={localedData.form} title={localedData.form} />
-  <Button
-    path='https://maps.google.com/maps/dir//%D0%A1%D0%9A%D0%9B%D0%9E%D0%A0%D0%95%D0%A1%D0%A3%D0%A0%D0%A1,+%D0%A2%D0%9E%D0%92+%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A1%D0%B5%D0%BC%D0%B8%D0%B4%D1%83%D0%B1%D1%81%D1%8C%D0%BA%D0%B0,+105+%D0%94%D1%83%D0%B1%D0%BD%D0%BE,+%D0%A0%D1%96%D0%B2%D0%BD%D0%B5%D0%BD%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C+35600/@50.3934135,25.7756003,15z/data=!4m5!4m4!1m0!1m2!1m1!1s0x472f834aa1a7e7c7:0x647fedd3239403'
-    alt='Google Map'
-    title={localedData.route}
-    blank
-  />
+  <Block md lg />
+  <Block md lg />
+  <Block md lg />
+  <Block lg />
+  <Block lg />
   <div
-    class='col-span-2 flex aspect-square flex-col justify-center gap-1 bg-black/75 p-4 text-white'
+    class='col-span-2 flex flex-col justify-center gap-1 bg-black/75 p-4 text-white md:aspect-square'
+    data-aos='fade-up'
+    data-aos-duration='400'
   >
-    <p>{localedData.content.a}</p>
-    <p>{localedData.content.b}</p>
-    <p>{localedData.content.c}</p>
-    <p><a href='tel:+380443550599'>+38 (044) 355-05-99</a></p>
-    <p><a href='mailto:office@skloresurs.com'>office@skloresurs.com</a></p>
-    <p>
+    <p data-aos='fade-up' data-aos-duration='400' data-aos-delay='100'>{localedData.content.a}</p>
+    <p data-aos='fade-up' data-aos-duration='400' data-aos-delay='150'>{localedData.content.b}</p>
+    <p data-aos='fade-up' data-aos-duration='400' data-aos-delay='200'>{localedData.content.c}</p>
+    <p data-aos='fade-up' data-aos-duration='400' data-aos-delay='250'>
+      <a href='tel:+380443550599'>+38 (044) 355-05-99</a>
+    </p>
+    <p data-aos='fade-up' data-aos-duration='400' data-aos-delay='300'>
+      <a href='mailto:office@skloresurs.com'>office@skloresurs.com</a>
+    </p>
+    <p data-aos='fade-up' data-aos-duration='400' data-aos-delay='350'>
       <a href='https://www.instagram.com/skloresurs/' class='flex flex-row items-center gap-1'
         ><Icon name='logos-instagram' />Instagram</a
       >
     </p>
-    <p>
+    <p data-aos='fade-up' data-aos-duration='400' data-aos-delay='400'>
       <a href='https://www.facebook.com/skloresurs' class='flex flex-row items-center gap-1'
         ><Icon name='logos-facebook' />Facebook</a
       >
     </p>
+  </div>
+  <div
+    class='col-span-2 aspect-square md:col-span-4 md:aspect-[2/1]'
+    data-aos='fade-up'
+    data-aos-duration='400'
+    data-aos-delay='500'
+  >
+    <iframe
+      src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10172.771550362992!2d25.756297722752496!3d50.40024274531918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472f834aa1a7e7c7%3A0x647fedd3239403!2z0KHQmtCb0J7QoNCV0KHQo9Cg0KEsINCi0J7Qkg!5e0!3m2!1suk!2sua!4v1693825357053!5m2!1s${locale}!2sua`}
+      width='100%'
+      height='100%'
+      loading='lazy'
+      referrerpolicy='no-referrer-when-downgrade'
+      title='Google Map'></iframe>
   </div>
 </Grid>

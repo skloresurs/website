@@ -38,7 +38,7 @@ const vacancies = data.Vacancies.items;
             class='relative w-full'
             data-aos='fade-up'
             data-aos-duration='400'
-            data-aos-delay={50 * i}
+            data-aos-delay={100 * i}
           >
             <div class='absolute inset-x-0 h-full w-16 border-y-2 border-l-2 border-blue-600' />
             <div class='flex w-full flex-col gap-4 py-6 pl-5 md:flex-row md:items-center'>
@@ -47,6 +47,7 @@ const vacancies = data.Vacancies.items;
                 height='150'
                 width='150'
                 class='object-cover'
+                loading='lazy'
               />
               <div class='flex w-full flex-col items-center justify-between md:items-start'>
                 <div>

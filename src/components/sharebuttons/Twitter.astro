@@ -6,10 +6,13 @@ const text = `${encodeURIComponent(title)}%0A${encodeURIComponent(description)}%
 ---
 
 <a
-  class='rounded-full duration-300 hover:scale-110'
+  class='rounded-full'
   target='_blank'
   title='Twitter'
   href={`https://twitter.com/intent/tweet?text=${text}&url=${link}`}
+  data-aos='fade-up'
+  data-aos-duration='400'
+  data-aos-delay='550'
 >
   <Icon name='logos-twitter' class='h-10 w-10' />
 </a>

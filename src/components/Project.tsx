@@ -36,6 +36,9 @@ export default function Project({ title, data }: iProps): JSX.Element {
           data-pswp-width={e.width}
           data-pswp-height={e.height}
           id={`img-${i}`}
+          data-aos='fade-up'
+          data-aos-duration='400'
+          data-aos-delay={50 * i + 250}
         >
           <img
             src={e.url}

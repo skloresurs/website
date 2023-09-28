@@ -25,6 +25,7 @@ const posts = data.Posts.items;
           class='group relative col-span-2 row-span-2 aspect-square overflow-hidden shadow-md duration-500 ease-in-out hover:shadow-lg'
           data-aos='fade-up'
           data-aos-duration='400'
+          data-aos-delay={(i % 5) * 50}
         >
           <img
             src={e.image.url ?? 'https://placehold.co/400'}

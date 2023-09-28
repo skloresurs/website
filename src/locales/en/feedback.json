@@ -13,12 +13,16 @@
             "telephone": {
                 "label": "Your telephone"
             },
+            "call": {
+                "label": "Call back?"
+            },
             "message": {
                 "label": "Your message"
             }
         },
         "sendbutton": "Send",
         "success": "Your message has been sent.",
-        "recaptcha": "Please confirm that you are not a robot."
+        "error": "Something went wrong. Try again later.",
+        "sending": "Sending..."
     }
 }

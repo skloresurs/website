@@ -4,10 +4,13 @@ const { title, link } = Astro.props;
 ---
 
 <a
-  class='overflow-hidden rounded-full duration-300 hover:scale-110'
+  class='rounded-full'
   target='_blank'
   title='Facebook'
   href={`https://www.facebook.com/sharer/sharer.php?s=100&p[title]=${title}&p[url]=${link}`}
+  data-aos='fade-up'
+  data-aos-duration='400'
+  data-aos-delay='500'
 >
   <Icon name='logos-facebook' class='h-10 w-10' />
 </a>

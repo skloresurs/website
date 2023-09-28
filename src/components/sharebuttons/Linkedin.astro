@@ -4,10 +4,13 @@ const { link } = Astro.props;
 ---
 
 <a
-  class='rounded-full duration-300 hover:scale-110'
+  class='rounded-full'
   target='_blank'
   title='LinkedIn'
   href={`https://www.linkedin.com/shareArticle?mini=true&url=${link}`}
+  data-aos='fade-up'
+  data-aos-duration='400'
+  data-aos-delay='600'
 >
   <Icon name='logos-linkedin' class='h-10 w-10' />
 </a>

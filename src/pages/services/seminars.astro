@@ -18,14 +18,14 @@ const localedData = t(locale).services.seminars;
   <Block lg />
   <Block md lg />
   <div class='col-span-2 bg-white p-5 pt-12 md:col-span-4 md:px-12 lg:col-span-6'>
-    <div class='flex justify-center'>
+    <div class='flex justify-center' data-aos='fade-up' data-aos-duration='400'>
       <h1
         class='mb-5 border-b-2 border-blue-600 px-2 pb-2 text-center text-4xl font-bold text-blue-600'
       >
         {localedData.content.h1}
       </h1>
     </div>
-    <div class='relative'>
+    <div class='relative' data-aos='fade-up' data-aos-duration='400' data-aos-delay='200'>
       <div class='absolute inset-x-0 h-full w-16 border-b-2 border-l-2 border-blue-600'></div>
       <div class='py-6 pl-5'>
         <Fragment set:html={localedData.content.main} />

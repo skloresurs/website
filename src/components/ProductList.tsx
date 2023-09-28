@@ -15,21 +15,25 @@ interface iProps {
   };
 }
 
+const ELEMENT_PER_PAGE = 24;
+
 export default function Productlist({ data, translationData }: iProps): JSX.Element {
-  const pages = Math.ceil(data.length / 12);
+  const pages = Math.ceil(data.length / ELEMENT_PER_PAGE);
 
   const [page, setPage] = useState<number>(0);
-  const pageData = data.slice(page * 12, page * 12 + 12);
+  const pageData = data.slice(page * ELEMENT_PER_PAGE, page * ELEMENT_PER_PAGE + ELEMENT_PER_PAGE);
 
   function previewPage(): void {
     if (page > 0) {
       setPage(page - 1);
+      window.scrollTo({ top: 0 });
     }
   }
 
   function nextPage(): void {
     if (page + 1 < pages) {
       setPage(page + 1);
+      window.scrollTo({ top: 0 });
     }
   }
   return (
@@ -43,6 +47,7 @@ export default function Productlist({ data, translationData }: iProps): JSX.Elem
               title: e.title,
               image: e.image,
             }}
+            index={i}
             detailTransaltionText={translationData.details}
           />
         ))}
@@ -81,15 +86,18 @@ export default function Productlist({ data, translationData }: iProps): JSX.Elem
 function Product({
   data,
   detailTransaltionText,
+  index,
 }: {
   data: iProduct;
   detailTransaltionText: string;
+  index: number;
 }): JSX.Element {
   return (
     <div
       className='flex flex-col items-center gap-3 rounded-md border-2 border-neutral-100 p-3'
       data-aos='fade-up'
       data-aos-duration='400'
+      data-aos-delay={(index % 4) * 50}
     >
       <img
         src={
@@ -101,6 +109,7 @@ function Product({
         width='200px'
         height='200px'
         className='h-[200px] w-[200px] object-cover object-center'
+        loading='lazy'
         onError={({ currentTarget }) => {
           currentTarget.src = 'https://placehold.co/400?text=Missing Image';
         }}

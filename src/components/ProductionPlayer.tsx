@@ -41,6 +41,8 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
         {data.length > 0 &&
           data.map((e, i) => (
             <button
+              data-aos='fade-up'
+              data-aos-duration='400'
               key={i}
               onClick={() => {
                 setCurrentVideo(i);

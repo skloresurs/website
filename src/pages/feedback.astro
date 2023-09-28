@@ -8,6 +8,18 @@ const locale = getLocale(Astro.url);
 const localedData = t(locale).feedback;
 ---
 
+<script
+  src='https://www.google.com/recaptcha/api.js?render=6LfS9F0oAAAAAMco8NfG--QcSbS8l_-yinsUPnx2'
+  async
+  defer></script>
+<script
+  src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js'
+  integrity='sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=='
+  crossorigin='anonymous'
+  referrerpolicy='no-referrer'
+  async
+  defer></script>
+
 <Grid title={localedData.title} description={localedData.description}>
   <Block md lg />
   <Block md lg />
@@ -16,12 +28,115 @@ const localedData = t(locale).feedback;
   <Block md lg />
   <Block md lg />
   <Block lg />
-  <div class='col-span-2 h-[1450px] bg-white md:col-span-4 lg:col-span-6'>
-    <h1 class='mb-10 hidden text-center text-4xl font-bold'>{localedData.title}</h1>
-    <iframe
-      id='form'
-      src='https://docs.google.com/forms/d/e/1FAIpQLScK1LlpFmsuCv5vQ5pLDk3B9TBbAw_gcT9cChPeVQOlKn9cFA/viewform?embedded=true'
-      width='100%'
-      height='100%'></iframe>
+  <div class='col-span-2 bg-white px-8 py-5 md:col-span-4 lg:col-span-6'>
+    <div class='flex justify-center' data-aos='fade-up' data-aos-duration='400'>
+      <h1
+        class='mb-5 border-b-2 border-blue-600 px-2 pb-2 text-center text-4xl font-bold text-blue-600'
+      >
+        {localedData.title}
+      </h1>
+    </div>
+    <form id='feedback' class='mx-auto flex max-w-5xl flex-col p-3'>
+      <div class='flex flex-col lg:flex-row lg:gap-3'>
+        <div class='flex flex-1 flex-col gap-3'>
+          <label data-aos='fade-up' data-aos-duration='400' data-aos-delay='50'
+            ><p class='mb-1 text-lg font-medium'>
+              {localedData.form.items.name.label}
+            </p><input
+              id='name'
+              required
+              class='w-full rounded-md border-2 border-blue-600 p-2 outline-blue-600'
+            /></label
+          >
+          <label data-aos='fade-up' data-aos-duration='400' data-aos-delay='100'
+            ><p class='mb-1 text-lg font-medium'>
+              {localedData.form.items.email.label}
+            </p><input
+              id='email'
+              type='email'
+              placeholder={localedData.form.items.email.placeholder}
+              required
+              class='w-full rounded-md border-2 border-blue-600 p-2 outline-blue-600'
+            /></label
+          >
+          <label data-aos='fade-up' data-aos-duration='400' data-aos-delay='150'
+            ><p class='mb-1 text-lg font-medium'>
+              {localedData.form.items.telephone.label}
+            </p><input
+              id='telephone'
+              type='tel'
+              placeholder='+380501234567'
+              required
+              class='w-full rounded-md border-2 border-blue-600 p-2 outline-blue-600'
+            /></label
+          >
+          <label
+            class='flex flex-row items-center gap-5'
+            data-aos='fade-up'
+            data-aos-duration='400'
+            data-aos-delay='200'
+            ><p class='mb-1 text-lg font-medium'>
+              {localedData.form.items.call.label}
+            </p><input
+              id='call'
+              type='checkbox'
+              class='h-4 w-4 rounded-md border-2 border-blue-600 p-2 outline-blue-600'
+            /></label
+          >
+        </div>
+        <label class='flex-1' data-aos='fade-up' data-aos-duration='400' data-aos-delay='300'
+          ><p class='mb-1 text-center text-lg font-medium'>
+            {localedData.form.items.message.label}
+          </p><textarea
+            class='h-80 w-full rounded-md border-2 border-blue-600 p-2 outline-blue-600'
+            name='message'
+            placeholder={localedData.message}
+            required></textarea></label
+        >
+      </div>
+      <button
+        type='submit'
+        id='submit'
+        data-aos='fade-up'
+        data-aos-duration='400'
+        data-aos-delay='400'
+        class='g-recaptcha w-full rounded-md bg-blue-600 px-4 py-3 text-white duration-300 hover:bg-blue-700'
+        >{localedData.form.sendbutton}</button
+      >
+    </form>
   </div>
 </Grid>
+
+<script define:vars={{ localedData }}>
+  const submitButton = document.getElementById('submit');
+  document.getElementById('feedback').addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitButton.disabled = true;
+    submitButton.textContent = localedData.form.sending;
+    grecaptcha.ready(() => {
+      grecaptcha
+        .execute('6LfS9F0oAAAAAMco8NfG--QcSbS8l_-yinsUPnx2', { action: 'submit' })
+        .then((token) => {
+          axios
+            .post('/api/contact', {
+              name: e.target.name.value,
+              email: e.target.email.value,
+              telephone: e.target.telephone.value,
+              call: e.target.call.checked,
+              message: e.target.message.value,
+              captcha: token,
+            })
+            .then(() => {
+              alert(localedData.form.success);
+            })
+            .catch(() => {
+              alert(localedData.form.error);
+            })
+            .finally(() => {
+              submitButton.disabled = false;
+              submitButton.textContent = localedData.form.sendbutton;
+            });
+        });
+    });
+  });
+</script>
