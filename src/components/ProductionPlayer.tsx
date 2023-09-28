@@ -32,7 +32,7 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
         <Title content={data[currentVideo].title} />
         <Description content={data[currentVideo].description} />
       </div>
-      <div className='flex flex-col gap-2'>
+      <div className='flex flex-col gap-2' data-aos='fade-up' data-aos-duration='400'>
         <div className='flex justify-center rounded-md'>
           <h2 className='my-3 border-b-2 border-blue-500 px-2 pb-2 text-center text-3xl font-bold text-blue-500'>
             {title}
@@ -41,8 +41,6 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
         {data.length > 0 &&
           data.map((e, i) => (
             <button
-              data-aos='fade-up'
-              data-aos-duration='400'
               key={i}
               onClick={() => {
                 setCurrentVideo(i);
