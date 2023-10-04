@@ -1,17 +1,11 @@
 import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import type iPartner from 'src/interfaces/Partner';
 
 interface iProps {
   title: string;
-  partners: Array<{
-    _id: string;
-    logo: {
-      url: string;
-    };
-    title: string;
-    url: string;
-  }>;
+  partners: iPartner[];
 }
 
 export default function Partners({ title, partners }: iProps): JSX.Element {
@@ -36,15 +30,20 @@ export default function Partners({ title, partners }: iProps): JSX.Element {
               return aTitle < bTitle ? -1 : 1;
             })
             .map((e) => (
-              <a
-                key={e._id}
-                href={e.url}
+              <div
+                key={e.id}
                 title={e.title}
-                className='flex-[0_0_50%] cursor-pointer object-cover md:flex-[0_0_33%] lg:flex-[0_0_25%] xl:flex-[0_0_20%] mx-5'
-                target='_blank'
+                className='mx-5 flex-[0_0_50%] object-cover md:flex-[0_0_33%] lg:flex-[0_0_25%] xl:flex-[0_0_20%]'
               >
-                <img src={e.logo.url} title={e.title} alt={e.title} className='m-auto' />
-              </a>
+                <img
+                  src={e.url}
+                  title={e.title}
+                  alt={e.title}
+                  width={e.width}
+                  height={e.height}
+                  className='m-auto'
+                />
+              </div>
             ))}
         </div>
       </div>

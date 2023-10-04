@@ -3,15 +3,13 @@ import { getLocale } from 'astro-i18n-aut';
 import { t, localedURL } from 'src/utils/i18n.ts';
 import Grid from 'src/layouts/Grid.astro';
 import Block from 'src/components/grid/Block.astro';
-import { Prepr } from 'src/utils/prepr';
-import GetPosts from 'src/queries/get-posts';
+import getAllPosts from 'src/strapi/get-all-posts';
+import 'src/css/post-badge.css';
 
 const locale = getLocale(Astro.url);
 const localedData = t(locale);
 
-const response = await Prepr(GetPosts(locale));
-const { data } = await response.json();
-const posts = data.Posts.items;
+const posts = (await getAllPosts(locale)) ?? [];
 ---
 
 <Grid title={localedData.meta.posts.title} description={localedData.meta.posts.description}>
@@ -20,8 +18,8 @@ const posts = data.Posts.items;
     posts.map((e: any, i: number) => (
       <>
         <a
-          href={e.type === 'video' ? e.video : localedURL(locale, `/posts/${e._slug}`)}
-          target={e.type === 'video' ? '_blank' : '_self'}
+          href={e.category === 'video' ? e.video : localedURL(locale, `/posts/${e.id}`)}
+          target={e.category === 'video' ? '_blank' : '_self'}
           class='group relative col-span-2 row-span-2 aspect-square overflow-hidden shadow-md duration-500 ease-in-out hover:shadow-lg'
           data-aos='fade-up'
           data-aos-duration='400'
@@ -29,6 +27,8 @@ const posts = data.Posts.items;
         >
           <img
             src={e.image.url ?? 'https://placehold.co/400'}
+            width={e.image.width}
+            height={e.image.height}
             alt={e.title}
             class='absolute inset-0 h-full min-h-full min-w-full overflow-hidden object-cover opacity-70 duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:opacity-80'
           />
@@ -38,8 +38,10 @@ const posts = data.Posts.items;
               {e.description}
             </p>
           </div>
-          <div class='absolute right-2 top-2 rounded-full bg-blue-600 px-3 py-1 text-white'>
-            {localedData.posts.category[e.type]}
+          <div
+            class={`absolute right-2 top-2 rounded-full bg-blue-600 px-3 py-1 text-white ${e.category}`}
+          >
+            {localedData.posts.category[e.category]}
           </div>
         </a>
         {(i - 1) % 3 === 0 && <Block lg />}
@@ -50,9 +52,9 @@ const posts = data.Posts.items;
 </Grid>
 
 <!-- <a
-          href={e.type === 'video' ? e.video : localedURL(locale, `/posts/${e._slug}`)}
+          href={e.category === 'video' ? e.video : localedURL(locale, `/posts/${e._slug}`)}
           class='group relative col-span-2 row-span-2 aspect-square overflow-hidden'
-          target={e.type === 'video' ? '_blank' : '_self'}
+          target={e.category === 'video' ? '_blank' : '_self'}
           data-aos='fade-up'
           data-aos-duration='400'
         >

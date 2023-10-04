@@ -16,5 +16,9 @@
         "description": "Interesting glass articles by Skloresurs. Overview of glass industry news.",
         "share": "Share",
         "back": "Back"
+    },
+    "error": {
+        "title": "Error loading",
+        "description": "Try again later."
     }
 }

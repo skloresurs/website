@@ -1,0 +1,18 @@
+---
+import { getLocale } from 'astro-i18n-aut';
+import { t } from 'src/utils/i18n.ts';
+
+const locale = getLocale(Astro.url);
+const localedData = t(locale).meta.error;
+---
+
+<div class='col-span-2 bg-white p-5 md:col-span-4 lg:col-span-6'>
+  <div class='flex justify-center'>
+    <h1
+      class='mb-5 border-b-2 border-blue-600 px-2 pb-2 text-center text-4xl font-bold text-blue-600'
+    >
+      {localedData.title}
+    </h1>
+  </div>
+  <p class='text-center'>{localedData.description}</p>
+</div>

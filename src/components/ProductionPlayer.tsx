@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
+import type iProduction from 'src/interfaces/Production';
 
 interface iProps {
   title: string;
-  data: Array<{
-    video: string;
-    title: string;
-    description: string;
-  }>;
+  data: iProduction[];
 }
 
 export default function ProductionPlayer({ data = [], title }: iProps): JSX.Element {
@@ -24,7 +21,7 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
             loop
             volume={0}
             controls={false}
-            url={`/videos/production/${currentVideo + 1}.mp4`}
+            url={data[currentVideo].video}
             width='100%'
             height='100%'
           />
@@ -45,15 +42,12 @@ export default function ProductionPlayer({ data = [], title }: iProps): JSX.Elem
               onClick={() => {
                 setCurrentVideo(i);
               }}
-              className={`flex flex-row gap-3 rounded-md border-2 pr-2 text-white duration-300 ${
+              className={`flex flex-col gap-3 rounded-md border-2 p-3 pr-2 text-white duration-300 ${
                 i === currentVideo ? 'border-blue-600' : 'border-white'
               }`}
             >
-              <img src={`/images/production/${i + 1}.png`} width='150' className='rounded' />
-              <div className='flex h-full flex-col items-start justify-between py-2 text-left'>
-                <p className='text-lg font-medium'>{e.title}</p>
-                <p className='hidden text-sm md:block'>{e.description.slice(0, 30).trim()}...</p>
-              </div>
+              <p className='text-lg font-medium'>{e.title}</p>
+              <p className='hidden text-sm md:block'>{e.description.slice(0, 30).trim()}...</p>
             </button>
           ))}
       </div>

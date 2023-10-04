@@ -1,0 +1,7 @@
+.post {
+  @apply bg-blue-600;
+}
+
+.video {
+  @apply bg-red-600;
+}

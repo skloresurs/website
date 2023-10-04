@@ -2,57 +2,17 @@
 import { getLocale } from 'astro-i18n-aut';
 import { localedURL, t } from 'src/utils/i18n.ts';
 import ServicesCategoryButton from 'src/components/grid/ServicesCategoryButton.astro';
-import { Prepr } from 'src/utils/prepr';
 import Grid from 'src/layouts/Grid.astro';
 import Block from 'src/components/grid/Block.astro';
 import Button from 'src/components/grid/Button.astro';
-import GetVacancyBySlug from 'src/queries/get-vacancy-by-slug';
 import NotFound from 'src/pages/404.astro';
+import getVacancyById from 'src/strapi/get-vacancy-by-id';
+import 'src/css/formatter.css';
 
 const locale = getLocale(Astro.url);
 const localedData = t(locale).services.vacancies;
 
-const response = await Prepr(GetVacancyBySlug(locale, Astro.params.slug ?? ''));
-const { data } = await response.json();
-const vacancy = data.Vacancy;
-
-if (vacancy?.body) {
-  vacancy.body.map((e: any) => {
-    if (e.__typename === 'Text') {
-      e.body = e.body.replaceAll('<p', '<p class="mb-3" ');
-      e.body = e.body.replaceAll(
-        '<h2',
-        '<h2 class="mb-5 mt-10 text-center text-3xl font-semibold" '
-      );
-      e.body = e.body.replaceAll(
-        '<h3',
-        '<h3 class="mb-5 mt-10 text-center text-2xl font-semibold" '
-      );
-      e.body = e.body.replaceAll(
-        '<h4',
-        '<h4 class="mb-5 mt-10 text-center text-xl font-semibold" '
-      );
-      e.body = e.body.replaceAll(
-        '<h5',
-        '<h5 class="mb-5 mt-10 text-center text-lg font-semibold" '
-      );
-      e.body = e.body.replaceAll(
-        '<h6',
-        '<h6 class="mb-5 mt-10 text-center text-base font-semibold" '
-      );
-      e.body = e.body.replaceAll('<ul', '<ul class="list-disc pl-5 mb-5" ');
-      e.body = e.body.replaceAll('<ol', '<ol class="list-decimal pl-5" ');
-      e.body = e.body.replaceAll('<a', '<a class="underline text-cyan-600" ');
-      e.body = e.body.replaceAll(
-        '<table',
-        '<table class="border-collapse border border-slate-500 mt-10 mb-5" '
-      );
-      e.body = e.body.replaceAll('<th', '<th class="border border-slate-600" ');
-      e.body = e.body.replaceAll('<td', '<td class="border border-slate-700" ');
-    }
-    return e;
-  });
-}
+const vacancy = await getVacancyById(locale, +(Astro.params.slug ?? 0));
 ---
 
 {
@@ -84,35 +44,12 @@ if (vacancy?.body) {
                 width='150'
                 class='mx-auto h-min object-cover'
               />
-              <div class='w-full'>
-                {vacancy.body?.map((e: any, i: number) => {
-                  if (e.__typename === 'Text') {
-                    return (
-                      <div
-                        data-aos='fade-up'
-                        data-aos-duration='400'
-                        data-aos-delay={Math.min(i * 100, 500)}
-                      >
-                        <Fragment set:html={e.body} />
-                      </div>
-                    );
-                  }
-                  if (e.__typename === 'Assets') {
-                    return (
-                      <img
-                        src={e.items[0].url}
-                        data-aos='fade-up'
-                        data-aos-duration='400'
-                        data-aos-delay={Math.min(i * 100, 500)}
-                      />
-                    );
-                  }
-                  return null;
-                }) ?? ''}
+              <div class='w-full' id='content'>
+                <Fragment set:html={vacancy.content} />
               </div>
-              {vacancy.video?.mp4_medium && (
+              {vacancy.video && (
                 <video
-                  src={vacancy.video.mp4_medium}
+                  src={vacancy.video}
                   width='300px'
                   height='700px'
                   muted

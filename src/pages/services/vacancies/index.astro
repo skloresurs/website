@@ -1,18 +1,15 @@
 ---
 import { getLocale } from 'astro-i18n-aut';
 import { localedURL, t } from 'src/utils/i18n.ts';
-import GetVacancies from 'src/queries/get-vacancies';
 import ServicesCategoryButton from 'src/components/grid/ServicesCategoryButton.astro';
-import { Prepr } from 'src/utils/prepr';
 import Grid from 'src/layouts/Grid.astro';
 import Block from 'src/components/grid/Block.astro';
+import getAllVacancies from 'src/strapi/get-all-vacancies';
 
 const locale = getLocale(Astro.url);
 const localedData = t(locale).services.vacancies;
 
-const response = await Prepr(GetVacancies(locale));
-const { data } = await response.json();
-const vacancies = data.Vacancies.items;
+const vacancies = (await getAllVacancies(locale)) ?? [];
 ---
 
 <Grid title={localedData.title} description={localedData.description}>
@@ -43,7 +40,7 @@ const vacancies = data.Vacancies.items;
             <div class='absolute inset-x-0 h-full w-16 border-y-2 border-l-2 border-blue-600' />
             <div class='flex w-full flex-col gap-4 py-6 pl-5 md:flex-row md:items-center'>
               <img
-                src={e.image?.url ?? 'https://placehold.co/400?text=Missing Image'}
+                src={e.image.url}
                 height='150'
                 width='150'
                 class='aspect-square object-cover'
@@ -55,7 +52,7 @@ const vacancies = data.Vacancies.items;
                   <p>{e.description}</p>
                 </div>
                 <a
-                  href={localedURL(locale, `/services/vacancies/${e._slug}`)}
+                  href={localedURL(locale, `/services/vacancies/${e.id}`)}
                   class='mt-4 w-min cursor-pointer rounded-md bg-blue-600 px-4 py-3 text-center text-white duration-300 hover:scale-105 md:ml-auto md:mt-1'
                 >
                   Детальніше

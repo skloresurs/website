@@ -2,17 +2,14 @@
 import { getLocale } from 'astro-i18n-aut';
 import { t } from 'src/utils/i18n.ts';
 import Block from 'src/components/grid/Block.astro';
-import { Prepr } from 'src/utils/prepr';
-import GetReportings from 'src/queries/get-reportings';
 import Grid from 'src/layouts/Grid.astro';
 import { Icon } from 'astro-icon/components';
+import getAllReportings from 'src/strapi/get-all-reportings';
 
 const locale = getLocale(Astro.url);
 const localedData = t(locale).reportings;
 
-const response = await Prepr(GetReportings());
-const { data } = await response.json();
-const reportings = data.Reportings.items;
+const reportings = (await getAllReportings()) ?? [];
 ---
 
 <Grid title={localedData.title} description={localedData.description}>
@@ -45,7 +42,8 @@ const reportings = data.Reportings.items;
           </h2>
           <div class='mt-3 grid grid-cols-1 gap-5 md:grid-cols-2'>
             <a
-              href={e.finance.url}
+              href={e.finance}
+              target='_blank'
               type='application/pdf'
               title={`${localedData.finance} ${e.year}${localedData.year}`}
               class='flex flex-row items-center gap-3 rounded-md bg-slate-100 duration-300 hover:bg-slate-200'
@@ -61,7 +59,8 @@ const reportings = data.Reportings.items;
               <p class='text-xl'>{localedData.finance}</p>
             </a>
             <a
-              href={e.auditory.url}
+              href={e.auditory}
+              target='_blank'
               type='application/pdf'
               title={`${localedData.auditory} ${e.year}${localedData.year}`}
               class='flex flex-row items-center gap-3 rounded-md bg-slate-100 duration-300 hover:bg-slate-200'

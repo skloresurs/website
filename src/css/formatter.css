@@ -1,0 +1,35 @@
+#content p {
+  @apply mb-3 indent-4;
+}
+
+#content h2 {
+  @apply mb-5 mt-10 text-center text-3xl font-semibold;
+}
+
+#content h3 {
+  @apply mb-5 mt-10 text-center text-2xl font-semibold;
+}
+
+#content h4 {
+  @apply mb-5 mt-10 text-center text-xl font-semibold;
+}
+
+#content h5 {
+  @apply mb-5 mt-10 text-center text-lg font-semibold;
+}
+
+#content h6 {
+  @apply mb-5 mt-10 text-center font-semibold;
+}
+
+#content ul {
+  @apply list-disc pl-5 mb-5;
+}
+
+#contetn ol {
+  @apply list-decimal pl-5 mb-5;
+}
+
+#content a {
+  @apply underline text-blue-600 cursor-pointer;
+}

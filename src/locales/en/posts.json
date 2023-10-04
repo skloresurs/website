@@ -1,6 +1,6 @@
 {
     "category": {
-        "default": "Post",
+        "post": "Post",
         "video": "Video"
     }
 }
