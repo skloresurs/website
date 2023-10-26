@@ -11,7 +11,8 @@ export default async function getProject(
         locale,
         'sort[0]': 'year:desc',
         'sort[1]': 'title',
-        'populate[0]': 'images',
+        'populate[0]': 'location',
+        'populate[2]': 'images',
         'pagination[pageSize]': 1,
         'pagination[page]': page,
       },
@@ -22,7 +23,7 @@ export default async function getProject(
       pageCount: data.meta.pagination.pageCount,
       project: {
         title: data.data[0].attributes.title,
-        location: data.data[0].attributes.location,
+        location: data.data[0].attributes.location.data?.attributes.title,
         glass: data.data[0].attributes.glass,
         year: data.data[0].attributes.year,
         images: data.data[0].attributes.images.data.map((e: any) => {
@@ -35,6 +36,7 @@ export default async function getProject(
       },
     };
   } catch (error) {
+    console.log(error);
     return null;
   }
 }
